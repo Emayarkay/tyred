@@ -15,4 +15,4 @@ puts "creating users"
 
 user = User.create first_name: "Joe", last_name: "Bloggs", email: "Joe@tyred.com", password: "123456", strava_id: "123456"
 
-puts "Finished creatying users"
+puts "Finished creating users"
