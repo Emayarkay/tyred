@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # skip_before_action :authenticate_user!, only:[:new]
+  before_action :disable_footer, only: [:new]
 
   def new
     @user = User.new
