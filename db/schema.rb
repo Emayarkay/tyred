@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_28_121133) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_28_124234) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bike_components", force: :cascade do |t|
+    t.bigint "bike_id", null: false
+    t.bigint "component_id", null: false
+    t.date "date_added"
+    t.float "distance_travelled"
+    t.datetime "custom_time_check_interval"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bike_id"], name: "index_bike_components_on_bike_id"
+    t.index ["component_id"], name: "index_bike_components_on_component_id"
+  end
 
   create_table "bikes", force: :cascade do |t|
     t.string "make"
@@ -29,11 +41,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_121133) do
     t.boolean "passed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "bike_component_id", null: false
+    t.index ["bike_component_id"], name: "index_checks_on_bike_component_id"
   end
 
   create_table "components", force: :cascade do |t|
     t.string "name"
-    t.time "time_until_check"
+    t.datetime "time_until_check"
     t.float "distance_until_check"
     t.text "check_advice"
     t.datetime "created_at", null: false
@@ -55,5 +69,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_121133) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bike_components", "bikes"
+  add_foreign_key "bike_components", "components"
   add_foreign_key "bikes", "users"
+  add_foreign_key "checks", "bike_components"
 end
