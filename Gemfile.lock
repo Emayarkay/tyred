@@ -128,11 +128,17 @@ GEM
     error_highlight (0.5.1)
     erubi (1.12.0)
     execjs (2.9.1)
+    faraday (0.17.6)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.14.0)
+      faraday (>= 0.7.4, < 1.0)
     ffi (1.16.3)
     font-awesome-sass (6.4.2)
       sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hashie (2.1.2)
+    httpauth (0.2.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.3)
@@ -159,6 +165,8 @@ GEM
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
+    multi_json (1.15.0)
+    multipart-post (2.3.0)
     mutex_m (0.2.0)
     net-imap (0.4.6)
       date
@@ -174,8 +182,23 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.5-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.5-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
+    oauth2 (0.6.1)
+      faraday (~> 0.7)
+      httpauth (~> 0.1)
+      multi_json (~> 1.3)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
+    omniauth-oauth2 (1.0.2)
+      oauth2 (~> 0.6.0)
+      omniauth (~> 1.0)
+    omniauth-strava (0.0.6)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
     orm_adapter (0.5.0)
     pg (1.5.4)
     popper_js (2.11.8)
@@ -255,6 +278,11 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
+    strava-ruby-client (0.3.2)
+      activesupport
+      faraday (>= 0.9)
+      faraday_middleware
+      hashie
     stringio (3.0.9)
     thor (1.3.0)
     tilt (2.3.0)
@@ -285,6 +313,7 @@ PLATFORMS
   aarch64-linux
   arm64-darwin-22
   arm64-darwin-23
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
@@ -299,6 +328,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   importmap-rails
   jbuilder
+  omniauth-strava
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.2)
@@ -307,6 +337,7 @@ DEPENDENCIES
   simple_form!
   sprockets-rails
   stimulus-rails
+  strava-ruby-client
   turbo-rails
   tzinfo-data
   web-console
