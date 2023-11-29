@@ -1,0 +1,15 @@
+<div class="page-container">
+
+  <h2>New Component Page</h2>
+
+  <div>
+    <%= simple_form_for @component do |f| %>
+      <%= f.input :name, label: 'Name' %>
+      <%= f.input :time_until_check, label: 'How much time before you check this component?' %>
+      <%= f.input :distance_until_check, label: 'How much distance before you check this component?' %>
+      <%= f.input :check_advice, label: 'Description for how to check this component' %>
+      <%= f.submit value: 'Add this component to your bike' %>
+    <% end %>
+  </div>
+
+</div>

@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.1].define(version: 2023_11_29_150046) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,12 +48,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_150046) do
 
   create_table "components", force: :cascade do |t|
     t.string "name"
-    t.datetime "time_until_check"
     t.float "distance_until_check"
     t.text "check_advice"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "custom", default: false
+    t.integer "time_until_check"
   end
 
   create_table "users", force: :cascade do |t|

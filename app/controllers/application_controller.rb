@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :disable_footer, if: :devise_controller?
+  before_action :disable_navbar, if: :devise_controller?
 
   def home
     if current_user
@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def disable_footer
-    @disable_footer = true
+  def disable_navbar
+    @disable_navbar = true
   end
 
 
