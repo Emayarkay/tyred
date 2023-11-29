@@ -2,6 +2,7 @@
 
   <h1>Bike index page</h1>
 
+
   <% @bikes.each do |bike| %>
     <% if bike.make != "" && bike.model != "" %>
       <h2>My <%= bike.make %> <%= bike.model %></h2>
@@ -16,5 +17,7 @@
   <% end %>
   <h2>Add a Bike</h2>
   <%= link_to "+", new_bike_path %>
+
+  <p><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %></p>
 
 </div>
