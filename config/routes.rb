@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   resources :users, only: %i[new show edit update create destroy]
   resources :bikes do
-    resources :bike_components, only: %i[new show edit update create destroy]
+    resources :bike_components, only: %i[show edit update destroy]
   end
+  resources :components, only: %i[new create]
   resources :checks, only: :update
 end
