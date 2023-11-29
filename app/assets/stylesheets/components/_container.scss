@@ -1,11 +1,15 @@
 .page-container {
   height: calc(100vh - 75px);
   width: 100%;
-  padding: 16px 16px 0 16px;
+  padding: 24px 24px 0 24px;
   margin: 0;
   background: $ivory;
   color: $black;
   text-align: center;
+  a {
+    text-decoration: none;
+    color: $black;
+  }
 }
 
 .profile-container {
