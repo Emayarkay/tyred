@@ -2,22 +2,19 @@
 
   <h1>Bike index page</h1>
 
-  <% if @bikes.count >= 1 %>
-    <% @bikes.each do |bike| %>
-      <% if bike.make != "" && bike.model != "" %>
-        <h2>My <%= bike.make %> <%= bike.model %></h2>
-      <% elsif bike.make != "" && bike.model == "" %>
-        <h2>My <%= bike.make %></h2>
-      <% elsif bike.make == "" && bike.model != "" %>
-        <h2>My <%= bike.model %></h2>
-      <% else %>
-        <h2>My Bike</h2>
-      <% end %>
-      <%= link_to "Edit Bike Make/Model", edit_bike_path(bike) %>
+  <% @bikes.each do |bike| %>
+    <% if bike.make != "" && bike.model != "" %>
+      <h2>My <%= bike.make %> <%= bike.model %></h2>
+    <% elsif bike.make != "" && bike.model == "" %>
+      <h2>My <%= bike.make %></h2>
+    <% elsif bike.make == "" && bike.model != "" %>
+      <h2>My <%= bike.model %></h2>
+    <% else %>
+      <h2>My Bike</h2>
     <% end %>
-  <% else %>
-    <h2>Add a Bike</h2>
-    <%= link_to "+", new_bike_path %>
+    <%= link_to "Edit Bike Make/Model", edit_bike_path(bike) %>
   <% end %>
+  <h2>Add a Bike</h2>
+  <%= link_to "+", new_bike_path %>
 
 </div>
