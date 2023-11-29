@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  #devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  #get '/fetch_distances', to: 'strava#fetch_distances'
+ # get '/fetch_auth_token', to: "strava#fetch_auth_token"
+  #post '/strava/setup', to: 'strava#setup'
 
   root to: "application#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
