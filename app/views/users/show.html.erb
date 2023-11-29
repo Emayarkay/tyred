@@ -1,10 +1,19 @@
 <div class="page-container">
-  <h1>User Profile</h1>
-  <br />
-  <h1>image</h1>
-  <br />
-  <p>Joe Bloggs</p>
-  <p>joe@tyred.com</p>
-  <p>Specialized Alez</p>
-  <p>Strava connected</p>
+  <div class="profile-container">
+
+    <div class="avatar-container">
+      <div class="avatar"></div>
+    </div>
+    <div class="profile-info-container">
+      <p> <%= current_user.first_name %> <%= current_user.last_name %> </p>
+      <p> <%= current_user.email %> </p>
+      <p> Specialized Allez</p>
+      <p>Strava connected ✅</p>
+    </div>
+    <div class="profile-button-container">
+      <button> <%= link_to "Edit Profile", edit_user_path(current_user) %> </button>
+      <button> <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %> </button>
+    </div>
+
+  </div>
 </div>

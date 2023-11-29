@@ -2,12 +2,17 @@ class BikeComponentsController < ApplicationController
 
   def new
     @bikecomponent = BikeComponent.new
+    @components = Component.all
+    @component = Component.new
+    @bike = Bike.find(params[:bike_id])
   end
 
   def create
-    @bikecomponent = BikeComponent.new(bike_component_params)
-    if @bikecomponent.save
-      redirect_to bike_path(@bikecomponent.current_user)
+    @bikecomponent = BikeComponent.new(bike_component_params, date_added: DateTime.now, distance_travelled: 0)
+    @bike = Bike.find(params[:bike_id])
+    @bikecomponent.bike = @bike
+    if @bikecomponent.save!
+      redirect_to bikes_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +37,7 @@ class BikeComponentsController < ApplicationController
   private
 
   def bike_component_params
-    params.require(:bike_components).permit(:date_added)
+    params.require(:bike_components).permit(:component_id)
   end
 
 

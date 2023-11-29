@@ -10,10 +10,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  get '/shop_locator', to: 'pages#show'
 
   resources :users, only: %i[new show edit update create destroy]
   resources :bikes do
-    resources :bike_components, only: %i[new show edit update create destroy]
+    resources :bike_components, except: :index
+    resources :components, only: :create
   end
   resources :checks, only: :update
 end
