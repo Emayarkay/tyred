@@ -12,7 +12,7 @@ require "Date"
 
 User.destroy_all
 Bike.destroy_all
-Components.destroy_all
+Component.destroy_all
 Check.destroy_all
 BikeComponent.destroy_all
 
@@ -26,46 +26,46 @@ puts "Finished creating users"
 # bikes
 puts "creating bikes"
 
-bike1 = Bike.new(
+bike1 = Bike.create(
   make: "Specialized",
   model: "Allez",
-  user_id: user1
+  user_id: user1.id
 )
-bike1.photo.attach(io: File.open('app/assets/images/specialized_allez.jpg'), filename: "specialized-allez.jpg", content_type: "image/jpg")
+# bike1.photo.attach(io: File.open('app/assets/images/specialized_allez.jpg'), filename: "specialized-allez.jpg", content_type: "image/jpg")
 puts "Created #{bike1.make}"
 
-bike2 = Bike.new(
+bike2 = Bike.create(
   make: "Nero",
   model: "Cappuccino",
-  user_id: user1
+  user_id: user1.id
 )
-bike2.photo.attach(io: File.open('app/assets/images/nero_cappuccino.jpg'), filename: "nero_cappuccino.jpg", content_type: "image/jpg")
+# bike2.photo.attach(io: File.open('app/assets/images/nero_cappuccino.jpg'), filename: "nero_cappuccino.jpg", content_type: "image/jpg")
 puts "Created #{bike2.make}"
 
-bike3 = Bike.new(
+bike3 = Bike.create(
   make: "Brompton",
   model: "C Line Explore",
-  user_id: user2
+  user_id: user2.id
 )
-bike3.photo.attach(io: File.open('app/assets/images/brompton_explore.jpg'), filename: "brompton_explore.jpg", content_type: "image/jpg")
+# bike3.photo.attach(io: File.open('app/assets/images/brompton_explore.jpg'), filename: "brompton_explore.jpg", content_type: "image/jpg")
 puts "Created #{bike3.make}"
 
-bike4 = Bike.new(
+bike4 = Bike.create(
   make: "Mango",
   model: "Disc Brake Commuter Bike",
-  user_id: user2
+  user_id: user2.id
 )
-bike4.photo.attach(io: File.open('app/assets/images/mango.jpg'), filename: "mango.jpg", content_type: "image/jpg")
+# bike4.photo.attach(io: File.open('app/assets/images/mango.jpg'), filename: "mango.jpg", content_type: "image/jpg")
 puts "Created #{bike4.make}"
 
 puts "Finished creating bikes"
 
-bike5 = Bike.new(
+bike5 = Bike.create(
   make: "Bobbin",
   model: "Hummingbird",
-  user_id: user3
+  user_id: user3.id
 )
-bike5.photo.attach(io: File.open('app/assets/images/hummingbird.jpg'), filename: "hummingbird..jpg", content_type: "image/jpg")
+# bike5.photo.attach(io: File.open('app/assets/images/hummingbird.jpg'), filename: "hummingbird..jpg", content_type: "image/jpg")
 puts "Created #{bike5.make}"
 puts "Finished creating bikes"
 
