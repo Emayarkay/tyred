@@ -13,6 +13,10 @@
     <% else %>
       <h2>My Bike</h2>
     <% end %>
+    <% bike.bike_components.each do |bike_component| %>
+    <%= bike_component.component.name %>
+    <% end %>
+    <%= link_to "Add Component", new_bike_bike_component_path(bike) %>
     <%= link_to "Edit Bike Make/Model", edit_bike_path(bike) %>
   <% end %>
   <h2>Add a Bike</h2>
