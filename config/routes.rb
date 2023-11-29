@@ -8,4 +8,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get '/fetch_distances', to: 'strava#fetch_distances'
+
+  get '/fetch_auth_token', to: "strava#fetch_auth_token"
+  post '/strava/setup', to: 'strava#setup'
+
 end

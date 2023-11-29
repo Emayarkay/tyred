@@ -1,2 +1,20 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<%= link_to "Login with strava", "https://www.strava.com/oauth/authorize?client_id=117460&redirect_uri=http://localhost:3000/redirect&response_type=code&scope=read" %>
+<h2><%= session[:access_token] %></h2>
+<!-- app/views/strava/setup.html.erb -->
+<%= form_tag(strava_setup_path, method: 'post') do %>
+  <div>
+    <%= label_tag :api_key, 'API Key:' %>
+    <%= text_field_tag :api_key, ENV["STRAVA_API"] %>
+  </div>
+  <div>
+    <%= label_tag :client_id, 'Client ID:' %>
+    <%= text_field_tag :client_id, ENV["CLIENT_ID"] %>
+  </div>
+  <div>
+    <%= label_tag :client_secret, 'Client Secret:' %>
+    <%= text_field_tag :client_secret, ENV["CLIENT_SECRET"]  %>
+  </div>
+  <%= submit_tag 'Submit' %>
+<% end %>
