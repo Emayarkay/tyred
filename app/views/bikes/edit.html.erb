@@ -1,0 +1,16 @@
+<div class="page-container">
+
+  <h1>Edit Bike</h1>
+
+  <div>
+    <%= simple_form_for @bike do |f| %>
+      <%= f.input :make, label: 'Make' %>
+      <%= f.input :model, label: 'Model' %>
+      <%= f.submit value: 'Add Bike to My Garage' %>
+    <% end %>
+  </div>
+
+  <div class="mt-3 mb-3">
+    <%= link_to "Return To My Garage", bikes_path %>
+  </div>
+</div>
