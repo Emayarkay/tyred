@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  root to: "pages#home"
+  devise_for :users
+  get '/fetch_distances', to: 'strava#fetch_distances'
+  get '/fetch_auth_token', to: "strava#fetch_auth_token"
+  post '/strava/setup', to: 'strava#setup'
+
+  root to: "application#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -9,9 +14,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  get '/fetch_distances', to: 'strava#fetch_distances'
-
-  get '/fetch_auth_token', to: "strava#fetch_auth_token"
-  post '/strava/setup', to: 'strava#setup'
-
+  resources :users, only: %i[new show edit update create destroy]
+  resources :bikes do
+    resources :bike_components, only: %i[new show edit update create destroy]
+  end
+  resources :checks, only: :update
 end

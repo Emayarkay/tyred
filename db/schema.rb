@@ -10,8 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 0) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_28_144133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "bike_components", force: :cascade do |t|
+    t.bigint "bike_id", null: false
+    t.bigint "component_id", null: false
+    t.date "date_added"
+    t.float "distance_travelled"
+    t.datetime "custom_time_check_interval"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bike_id"], name: "index_bike_components_on_bike_id"
+    t.index ["component_id"], name: "index_bike_components_on_component_id"
+  end
+
+  create_table "bikes", force: :cascade do |t|
+    t.string "make"
+    t.string "model"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bikes_on_user_id"
+  end
+
+  create_table "checks", force: :cascade do |t|
+    t.date "check_date"
+    t.float "distance_threshold"
+    t.boolean "passed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "bike_component_id", null: false
+    t.index ["bike_component_id"], name: "index_checks_on_bike_component_id"
+  end
+
+  create_table "components", force: :cascade do |t|
+    t.string "name"
+    t.datetime "time_until_check"
+    t.float "distance_until_check"
+    t.text "check_advice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "custom", default: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "strava_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "bike_components", "bikes"
+  add_foreign_key "bike_components", "components"
+  add_foreign_key "bikes", "users"
+  add_foreign_key "checks", "bike_components"
 end
