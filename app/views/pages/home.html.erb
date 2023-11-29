@@ -1,6 +1,6 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
- <!--<%= link_to "Login with strava", "https://www.strava.com/oauth/authorize?client_id=117460&redirect_uri=http://localhost:3000/redirect&response_type=code&scope=read" %>
+ <%= link_to "Login with strava", "https://www.strava.com/oauth/authorize?client_id=117460&redirect_uri=http://localhost:3000/redirect&response_type=code&scope=read" %>
 <h2><%= session[:access_token] %></h2>
  app/views/strava/setup.html.erb
 <%= form_tag(strava_setup_path, method: 'post') do %>
