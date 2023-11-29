@@ -1,10 +1,12 @@
 <div class="page-container">
-  <h1>User Profile</h1>
+  <h1><%=current_user.first_name%>'s Profile</h1>
   <br />
   <h1>image</h1>
   <br />
-  <p>Joe Bloggs</p>
-  <p>joe@tyred.com</p>
-  <p>Specialized Alez</p>
+  <p><%=current_user.first_name%> <%=current_user.last_name%></p>
+  <p><%=current_user.email%></p>
+  <p>Specialized Allez</p>
   <p>Strava connected</p>
+
+  <p><%= link_to "Edit Profile", edit_user_path(current_user) %></p>
 </div>
