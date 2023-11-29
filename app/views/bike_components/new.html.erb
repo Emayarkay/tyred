@@ -3,7 +3,9 @@
 <h2>New Bike Component Page</h2>
 
   <% @components.each do |component| %>
+    <% if component.custom == false %>
     <%= component.name %>
+    <% end %>
   <% end %>
 
   <div>
