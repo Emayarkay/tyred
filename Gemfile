@@ -41,7 +41,7 @@ gem "jbuilder"
 
 gem 'omniauth'
 gem 'httparty'
-gem 'omniauth-strava'
+gem 'omniauth-strava'#, git: "https://github.com/alihamed/omniauth-strava"
 gem 'strava-ruby-client'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
