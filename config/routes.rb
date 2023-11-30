@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   get '/shop_locator', to: 'pages#show'
 
-  resources :users, only: %i[new show edit update create destroy]
+  resources :users, only: %i[show]
   resources :bikes do
     resources :bike_components, except: :index
     resources :components, only: :create
