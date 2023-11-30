@@ -55,9 +55,9 @@ puts "Finished creating core components"
 
 # users
 puts "creating users"
-user1 = User.create first_name: "Joe", last_name: "Bloggs", email: "joe@tyred.com", password: "123456", strava_id: "123456"
-user2 = User.create first_name: "Mark", last_name: "Cavendish", email: "mark@tyred.com", password: "654321", strava_id: "654321"
-user3 = User.create first_name: "Andy", last_name: "Schleck", email: "andy@tyred.com", password: "246810", strava_id: "136912"
+user1 = User.create first_name: "Joe", last_name: "Bloggs", email: "joe@tyred.com", password: "123456"
+user2 = User.create first_name: "Mark", last_name: "Cavendish", email: "mark@tyred.com", password: "654321"
+user3 = User.create first_name: "Andy", last_name: "Schleck", email: "andy@tyred.com", password: "246810"
 puts "Finished creating users"
 
 
