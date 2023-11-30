@@ -1,0 +1,15 @@
+.bike_display_image {
+  width: 125px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid $black;
+}
+
+.component_display_image {
+  width: 100px;
+  height: 100px;
+  border-radius: 25%;
+  overflow: hidden;
+  border: 2px solid $black;
+}
