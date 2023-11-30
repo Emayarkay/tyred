@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  get '/fetch_distances', to: 'strava#fetch_distances'
+  get '/fetch_auth_token', to: "strava#fetch_auth_token"
+  post '/strava/setup', to: 'strava#setup'
+  get '/redirect', to: 'strava#redirect'
 
-  root to: "application#home"
+  root to: "pages#home"
+  # root to: 'bikes#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
