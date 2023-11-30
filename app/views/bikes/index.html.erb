@@ -23,16 +23,15 @@
       <% end %>
 
       <% bike.bike_components.each do |bike_component| %>
-    <div>
-      <%= bike_component.component.name %>
-      <%= cl_image_tag(bike_component.component.icon.key, class:"img-thumbnail") %>
+        <div>
+          <%= bike_component.component.name %>
+          <%= cl_image_tag(bike_component.component.icon.key, class:"img-thumbnail") %>
+        </div>
       <% end %>
-    </div>
       <%= link_to "Add Component", new_bike_bike_component_path(bike) %>
       <%= link_to "Edit Bike Make/Model", edit_bike_path(bike) %>
     <% end %>
     <h2>Add a Bike</h2>
     <%= link_to "+", new_bike_path %>
   </div>
-
 </div>
