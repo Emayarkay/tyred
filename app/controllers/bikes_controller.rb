@@ -7,6 +7,7 @@ class BikesController < ApplicationController
 
   def new
     @bike = Bike.new
+    @component = Component.new
   end
 
   def create
@@ -31,6 +32,18 @@ class BikesController < ApplicationController
     @bike.destroy!
     redirect_to bikes_path
   end
+
+  def reset_meter
+    @bike = Bike.find(params[:id])
+    @bike.bike_components.each do |bike_component|
+      component = bike_component.component
+      component.update(time_until_check: 0, distance_until_check: 0)
+    end
+    flash[:notice] = 'Meter reset successfully.'
+
+  end
+
+
 
   private
 

@@ -2,13 +2,13 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :disable_navbar, if: :devise_controller?
 
-  # def home
-  #   if current_user
-  #     redirect_to bikes_path
-  #   else
-  #     redirect_to new_user_session_path
-  #   end
-  # end
+  def home
+    if current_user
+      redirect_to bikes_path
+    else
+      redirect_to new_user_session_path
+    end
+  end
 
   def disable_navbar
     @disable_navbar = true

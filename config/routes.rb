@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   post '/strava/setup', to: 'strava#setup'
   get '/redirect', to: 'strava#redirect'
 
-  root to: "pages#home"
-  # root to: 'bikes#index'
+  # root to: "pages#home"
+  root to: 'application#home'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
   resources :bikes do
     resources :bike_components, except: :index
     resources :components, only: :create
+    patch 'reset_meter', on: :member
+    post 'apply_preset', on: :member
   end
   resources :checks, only: :update
 end
