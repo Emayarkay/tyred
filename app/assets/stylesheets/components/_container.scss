@@ -6,6 +6,7 @@
   background: $ivory;
   color: $black;
   text-align: center;
+  overflow: scroll;
   a {
     text-decoration: none;
     color: $black;
@@ -52,7 +53,7 @@
   height: 300px;
   margin: 16px 0;
 }
-  
+
 .bike_image_container {
   width: 20%;
   height: 5vh;
@@ -60,4 +61,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.container_shops {
+  width: 100%;
+  height: auto;
 }
