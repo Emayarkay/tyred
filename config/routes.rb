@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/fetch_distances', to: 'strava#fetch_distances'
   get '/fetch_auth_token', to: "strava#fetch_auth_token"
 
-  root to: "pages#home"
+  root to: "application#home"
   # root to: 'bikes#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
