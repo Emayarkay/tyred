@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   get '/fetch_distances', to: 'strava#fetch_distances'
   get '/fetch_auth_token', to: "strava#fetch_auth_token"
-  post '/strava/setup', to: 'strava#setup'
-  get '/redirect', to: 'strava#redirect'
 
   root to: "application#home"
   # root to: 'bikes#index'
@@ -17,7 +15,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   get '/shop_locator', to: 'pages#show'
 
-  resources :users, only: %i[new show edit update create destroy]
+  resources :users, only: %i[show]
   resources :bikes do
     resources :bike_components, except: :index
     resources :components, only: :create

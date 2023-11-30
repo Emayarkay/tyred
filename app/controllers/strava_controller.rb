@@ -16,40 +16,6 @@ class StravaController < ApplicationController
      end
   end
 
-   def fetch_auth_token
-     response = HTTParty.post('https://www.strava.com/api/v3/oauth/token', {
-       body: {
-         client_id: ENV["CLIENT_ID"], # ENV["CLIENT_ID"]
-         client_secret: ENV["CLIENT_SECRET"],
-         code: params[:code],
-         grant_type: 'authorization_code'
-       }
-     })
-    redirect_to "http://www.strava.com/oauth/authorize?client_id=#{ENV["CLIENT_ID"]}&response_type=code&redirect_uri=#{strava_setup_url}&scope=read", allow_other_host: true
-   end
-
-
-  def setup
-
-    api_key = params[:api_key]
-    client_id = params[:client_id]
-    client_secret = params[:client_secret]
-
-
-    session[:api_key] = api_key
-    session[:client_id] = client_id
-    session[:client_secret] = client_secret
-    
-    # Save the user inputs for future use (e.g., in a database associated with the user)
-    # For simplicity, you can store it in the session in this example
-    #session[:api_key] = api_key
-    #session[:client_id] = client_id
-    #session[:client_secret
-    # Redirect to a page where you can trigger the fetching of distances or handle it accordingly
-    redirect_to fetch_auth_token_path
-  end
-
-
   private
 
   def fetch_activities_from_strava(api_key)
