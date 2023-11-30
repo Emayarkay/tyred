@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post '/strava/setup', to: 'strava#setup'
   get '/redirect', to: 'strava#redirect'
 
-  root to: "pages#home"
+  root to: "application#home"
   # root to: 'bikes#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
