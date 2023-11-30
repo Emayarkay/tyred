@@ -7,7 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
- 
+
 User.destroy_all
 Bike.destroy_all
 Component.destroy_all
@@ -163,5 +163,64 @@ check_brake_pads = Check.create(
   bike_component: bike_component3
 )
 
-puts "Finished creating checks"
+puts "Creating bike shops"
+
+shop1 = BikeShop.create(
+  name: "Apex Cycles",
+  location: "Clapham",
+  rating: 5,
+  website: "www.apexcycles.com",
+  phone_number: 02076221334
+)
+
+shop2 = BikeShop.create(
+  name: "Brick Lane Bikes",
+  location: "Shoreditch",
+  rating: 3,
+  website: "www.bricklanebikes.com",
+  phone_number: 02030223002
+)
+
+shop3 = BikeShop.create(
+  name: "Condor Cycles",
+  location: "Holborn",
+  rating: 5,
+  website: "www.condorcycles.com",
+  phone_number: 02035465302
+)
+
+shop4 = BikeShop.create(
+  name: "L' Atelier Du Vélo",
+  location: "Dulwich",
+  rating: 5,
+  website: "www.lduvelo.com",
+  phone_number: 02034345665
+)
+
+shop5 = BikeShop.create(
+  name: "Brixton Cycles",
+  location: "Brixton",
+  rating: 4,
+  website: "www.brixtoncycles.com",
+  phone_number: 02077336055
+)
+
+shop6 = BikeShop.create(
+  name: "Bon Velo",
+  location: "Herne Hill",
+  rating: 4,
+  website: "www.bonvelo.com",
+  phone_number: 02056611002
+)
+
+shop7 = BikeShop.create(
+  name: "Edwardes",
+  location: "Camberwell",
+  rating: 2,
+  website: "www.edwardes.com",
+  phone_number: 02077033676
+)
+
+puts "Finished creating bike shops"
+
 puts "Finished!"

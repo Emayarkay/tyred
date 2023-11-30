@@ -54,6 +54,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_114325) do
     t.index ["component_id"], name: "index_bike_components_on_component_id"
   end
 
+  create_table "bike_shops", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.integer "rating"
+    t.text "website"
+    t.integer "phone_number"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "bikes", force: :cascade do |t|
     t.string "make"
     t.string "model"
