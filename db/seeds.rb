@@ -155,7 +155,8 @@ puts "Finished creating core components"
 puts "creating bike components"
 bike_component1 = BikeComponent.create(
   distance_travelled: 0.0,
-  custom_time_check_interval: 20
+  custom_time_check_interval: 20,
+  date_added: Date.today - 17
 )
 bike_component1.component = chain
 bike_component1.bike = bike1
@@ -163,7 +164,8 @@ bike_component1.save!
 
 bike_component2 = BikeComponent.create(
   distance_travelled: 0.0,
-  custom_time_check_interval: 20
+  custom_time_check_interval: 20,
+  date_added: Date.today - 4
 )
 bike_component2.component = tyre
 bike_component2.bike = bike1
@@ -171,7 +173,8 @@ bike_component2.save!
 
 bike_component3 = BikeComponent.create(
   distance_travelled: 0.0,
-  custom_time_check_interval: 20
+  custom_time_check_interval: 20,
+  date_added: Date.today - 20
 )
 bike_component3.component = brake_pad
 bike_component3.bike = bike1
