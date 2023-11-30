@@ -7,12 +7,16 @@ gem "devise"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
 
+gem "geocoder"
 
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 gem 'strava-ruby-client'
-gem "omniauth-strava"
+
+gem 'httparty'
+gem 'omniauth'
+gem 'omniauth-strava'
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -41,10 +45,6 @@ gem "jbuilder"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
-gem 'omniauth'
-gem 'httparty'
-gem 'omniauth-strava'#, git: "https://github.com/alihamed/omniauth-strava"
-gem 'strava-ruby-client'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
@@ -69,6 +69,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "pry-byebug"
+  gem "pry-rails"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -84,3 +86,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Added for image upload
+gem "cloudinary"

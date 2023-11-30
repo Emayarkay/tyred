@@ -11,8 +11,8 @@
       <p>Strava connected ✅</p>
     </div>
     <div class="profile-button-container">
-      <button class="green"> <%= link_to "Edit Profile", edit_user_path(current_user) %> </button>
-      <button class="green"> <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %> </button>
+      <button class="green custom-btn"> <%= link_to "Edit Profile", edit_user_path(current_user) %> </button>
+      <button class="green custom-btn"> <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %> </button>
     </div>
 
   </div>
