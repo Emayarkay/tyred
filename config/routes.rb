@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   get '/fetch_distances', to: 'strava#fetch_distances'
   get '/fetch_auth_token', to: "strava#fetch_auth_token"
 
-  root to: "application#home"
-  # root to: 'bikes#index'
+  root to: 'bikes#index'
+  # root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
