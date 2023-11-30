@@ -5,12 +5,16 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
+      <%= f.input :uid, as: :hidden, input_html: { value: resource.uid } %>
+      <%= f.input :access_token, as: :hidden, input_html: { value: resource.access_token } %>
+      <%= f.input :refresh_token, as: :hidden, input_html: { value: resource.refresh_token } %>
+      <%= f.input :provider, as: :hidden, input_html: { value: resource.provider } %>
       <%= f.input :first_name, placeholder: 'First Name', label:false,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "first_name" } %>
       <%= f.input :last_name, placeholder: 'Last Name', label:false,
-                required: true,
+                  required: true,
                   autofocus: true,
                   input_html: { autocomplete: "last_name" } %>
       <%= f.input :email, placeholder: 'Email', label:false,
@@ -27,7 +31,7 @@
     </div>
 
     <div class="form-actions">
-     <button> <%= f.button :submit, "Sign up" %> </button>
+      <%= f.button :submit, "Sign up", class: "custom-btn" %>
     </div>
   <% end %>
 

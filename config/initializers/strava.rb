@@ -1,3 +1,8 @@
-Rails.application.config.after_initialize do
-  STRAVA_CLIENT = Strava::Api::Client.new(access_token: ENV['STRAVA_API'])
+OmniAuth::Strategies::Strava.class_eval do
+  def token_params
+    super.tap do |params|
+      params[:client_id] = options[:client_id]
+      params[:client_secret] = options[:client_secret]
+    end
+  end
 end
