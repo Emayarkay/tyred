@@ -1,6 +1,6 @@
 #require 'json'
 #require 'open-uri'
-#class StravaController < ApplicationController
+class StravaController < ApplicationController
  # include HTTParty
   #base_uri "www.strava.com"
   #def fetch_distances
@@ -40,7 +40,7 @@
     #session[:api_key] = api_key
     #session[:client_id] = client_id
     #session[:client_secret] = client_secret
-    raise
+    # raise
     # Redirect to a page where you can trigger the fetching of distances or handle it accordingly
     #redirect_to fetch_auth_token_path
   #end
@@ -65,4 +65,4 @@
 
    # distances
  # end
-#end
+end
