@@ -12,15 +12,40 @@
          <% end %>
     </div>
 
-      <% if bike.make != "" && bike.model != "" %>
-        <h2>My <%= bike.make %> <%= bike.model %></h2>
-      <% elsif bike.make != "" && bike.model == "" %>
-        <h2>My <%= bike.make %></h2>
-      <% elsif bike.make == "" && bike.model != "" %>
-        <h2>My <%= bike.model %></h2>
+  <% @bikes.each do |bike| %>
+    <% if bike.make != "" && bike.model != "" %>
+      <h2>My <%= bike.make %> <%= bike.model %></h2>
+    <% elsif bike.make != "" && bike.model == "" %>
+      <h2>My <%= bike.make %></h2>
+    <% elsif bike.make == "" && bike.model != "" %>
+      <h2>My <%= bike.model %></h2>
+    <% else %>
+      <h2>My Bike</h2>
+    <% end %>
+    <% bike.bike_components.each do |bike_component| %>
+    <%= bike_component.component.name %>
+    <div style="text-align:left; font-size:10px; font-weight:bold;">
+    Time left until check:
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: <%= @time_progress_percentage %>%" aria-valuenow="<%= @time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
+      <div class="px-3">
+      <% if @weeks_left > 2%>
+      <%= @weeks_left.to_i %> weeks
+      <% elsif @weeks_left > 0 && @weeks_left <= 2 %>
+      <%= @days_left.to_i %> days
       <% else %>
-        <h2>My Bike</h2>
+      Check now!
       <% end %>
+      </div>
+      </div>
+    </div>
+    </div>
+    <% end %>
+    <%= link_to "Add Component", new_bike_bike_component_path(bike) %>
+    <%= link_to "Edit Bike Make/Model", edit_bike_path(bike) %>
+  <% end %>
+  <h2>Add a Bike</h2>
+  <%= link_to "+", new_bike_path %>
 
       <% bike.bike_components.each do |bike_component| %>
         <div>
