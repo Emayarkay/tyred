@@ -1,7 +1,5 @@
 <div class="page-container">
-
   <h1>Bike index page</h1>
-
 
   <% @bikes.each do |bike| %>
     <% if bike.make != "" && bike.model != "" %>
@@ -13,13 +11,18 @@
     <% else %>
       <h2>My Bike</h2>
     <% end %>
+
+
     <% bike.bike_components.each do |bike_component| %>
-    <%= bike_component.component.name %>
+      <%= bike_component.component.name %>
     <% end %>
+
     <%= link_to "Add Component", new_bike_bike_component_path(bike) %>
     <%= link_to "Edit Bike Make/Model", edit_bike_path(bike) %>
+
+    <!-- Dropdown menu for presets -->
   <% end %>
+
   <h2>Add a Bike</h2>
   <%= link_to "+", new_bike_path %>
-
 </div>
