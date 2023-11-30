@@ -1,0 +1,49 @@
+.form-inputs {
+  input {
+    background-color: white;
+    border: 1px solid $orange;
+    border-radius: 8px;
+    color: $black;
+    opacity: 75%;
+  }
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem $orange;
+  border: 1px solid $orange;
+  background-color: white;
+  color: $black;
+}
+
+.form-check {
+  padding: 0 0 0 24px;
+  display: flex;
+  justify-content: flex-start;
+  color: $black;
+}
+
+.form-check-label {
+  margin: 0 0 0 8px;
+  color: $black;
+  opacity: 75%;
+}
+
+.form-check-input {
+  background-color: $orange;
+  border: 1px solid $orange;
+}
+
+.form-check-input:checked {
+  background-color: $orange;
+  border: 1px solid $orange;
+  float: none;
+}
+
+.form-check-input:focus {
+  box-shadow: none;
+  border: 1px solid $orange;
+}
+
+.form-text {
+  display: none;
+}

@@ -1,30 +1,25 @@
 <div class="page-container">
-  <h2>Tyred</h2>
-  <h3><%= current_user ? current_user.email: "you are not logged in" %></h3>
+  <h1 class="logo">Tyred</h1>
+
   <% if current_user %>
     <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
-  <% else %>
-
-
   <% end %>
-  <p>Don't lose sleep over your bike</p>
-  <br />
-  <br />
+  <p class="logo_strap_line">Don't lose sleep over your bike</p>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
-      <%= f.input :email,
+      <%= f.input :email, placeholder: 'Email', label:false,
                   required: false,
                   autofocus: true,
-                  input_html: { autocomplete: "email" } %>
-      <%= f.input :password,
+                  input_html: { autocomplete: 'email' } %>
+      <%= f.input :password, placeholder: 'Password', label:false,
                   required: false,
                   input_html: { autocomplete: "current-password" } %>
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+      <button><%= f.button :submit, "Log in" %></button>
     </div>
   <% end %>
 

@@ -7,5 +7,18 @@ button {
   color: $ivory;
   font-family: $body-font;
   font-weight: 700;
-  border: none
+  border: none;
+  a {
+    opacity: 100%;
+    color: $ivory;
+  }
+}
+
+.btn {
+  color: $ivory;
+}
+
+.green {
+  background-color: $green;
+  color: $ivory;
 }
