@@ -8,8 +8,6 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-require "Date"
-
 User.destroy_all
 Bike.destroy_all
 Component.destroy_all
