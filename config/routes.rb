@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :bikes do
     resources :bike_components, except: :index
     resources :components, only: :create
+    patch 'reset_meter', on: :member
+    post 'apply_preset', on: :member
   end
   resources :checks, only: :update
 end
