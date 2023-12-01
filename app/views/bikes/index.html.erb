@@ -26,30 +26,32 @@
       </div>
 
       <% bike.bike_components.each do |bike_component| %>
+        <%= link_to bike_bike_component_path(bike, bike_component) do %>
         <div class="component-card">
           <div class="card-image-info-wrapper">
             <div class="component-card-image"></div>
             <div class="progress-info">
-              <h3> <%= bike_component.component.name %> </h3>
-              <p>Time left until check:</p>
+              <h2> <%= bike_component.component.name %> </h2>
+              <div class="progress-bar-text">
+                  <% if bike_component.weeks_left > 2%>
+                    <p> <%= bike_component.weeks_left.to_i %> weeks until check </p>
+                  <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
+                    <p> <%= bike_component.days_left.to_i %> days until check </p>
+                  <% else %>
+                    <p>Check now!</p>
+                  <% end %>
+                </div>
             </div>
           </div>
             <div class="progress">
               <div class="progress-bar" role="progressbar" style="width: <%= bike_component.time_progress_percentage %>%" aria-valuenow="<%= bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar-text">
-                  <% if bike_component.weeks_left > 2%>
-                    <p> <%= bike_component.weeks_left.to_i %> weeks </p>
-                  <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
-                    <p> <%= bike_component.days_left.to_i %> days </p>
-                  <% else %>
-                    <p>Check!</p>
-                  <% end %>
-                </div>
+
               </div>
             </div>
         </div>
-        <%= link_to "More info about your #{bike_component.component.name}", bike_bike_component_path(bike, bike_component) %>
-        <%= link_to "Edit this #{bike_component.component.name}", edit_bike_bike_component_path(bike, bike_component) %>
+        <% end %>
+
+
       <% end %>
 
       <%# <div>
