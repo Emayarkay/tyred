@@ -3,4 +3,13 @@
  aspect-ratio: 1;
  background-color: cadetblue;
  border-radius: 50%;
+ width: 83.23px;
+ height: 83.23px;
+ overflow: hidden;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

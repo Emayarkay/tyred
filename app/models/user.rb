@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
 
+  has_one_attached :profile_image
+
   def self.from_omniauth(auth)
     p auth
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|

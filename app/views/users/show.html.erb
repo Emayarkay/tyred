@@ -2,8 +2,11 @@
   <div class="profile-container">
 
     <div class="avatar-container">
-      <div class="avatar"></div>
-    </div>
+      <div class="avatar">
+          <%= image_tag @user.profile_image if @user.profile_image.attached? %>
+      </div>
+
+</div>
     <div class="profile-info-container">
       <p> <%= current_user.first_name %> <%= current_user.last_name %> </p>
       <p> <%= current_user.email %> </p>
