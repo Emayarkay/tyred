@@ -45,6 +45,7 @@
             </div>
         </div>
         <%= link_to "More info about your #{bike_component.component.name}", bike_bike_component_path(bike, bike_component) %>
+        <%= link_to "Edit this #{bike_component.component.name}", edit_bike_bike_component_path(bike, bike_component) %>
       <% end %>
 
       <%# <div>
