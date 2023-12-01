@@ -1,62 +1,59 @@
 <div class="page-container">
 
-  <h1>My Garage</h1>
+  <h1><%= current_user.first_name%>'s Bike Garage</h1>
 
-  <div class ="container-sm">
-    <% @bikes.each do |bike| %>
-    <div>
+  <% @bikes.each do |bike| %>
+    <div class="component-card">
+
+      <div class="bike-image-container">
         <% if bike.photo.attached? %>
           <%= cl_image_tag(bike.photo.key, class:"img-thumbnail") %>
         <% else %>
           <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg" %>
-         <% end %>
-    </div>
-
-  <% @bikes.each do |bike| %>
-    <% if bike.make != "" && bike.model != "" %>
-      <h2>My <%= bike.make %> <%= bike.model %></h2>
-    <% elsif bike.make != "" && bike.model == "" %>
-      <h2>My <%= bike.make %></h2>
-    <% elsif bike.make == "" && bike.model != "" %>
-      <h2>My <%= bike.model %></h2>
-    <% else %>
-      <h2>My Bike</h2>
-    <% end %>
-    <% bike.bike_components.each do |bike_component| %>
-    <%= bike_component.component.name %>
-    <div style="text-align:left; font-size:10px; font-weight:bold;">
-    Time left until check:
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" style="width: <%= @time_progress_percentage %>%" aria-valuenow="<%= @time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
-      <div class="px-3">
-      <% if @weeks_left > 2%>
-      <%= @weeks_left.to_i %> weeks
-      <% elsif @weeks_left > 0 && @weeks_left <= 2 %>
-      <%= @days_left.to_i %> days
-      <% else %>
-      Check now!
-      <% end %>
+        <% end %>
       </div>
-      </div>
-    </div>
-    </div>
-    <% end %>
-    <%= link_to "Add Component", new_bike_bike_component_path(bike) %>
-    <%= link_to "Edit Bike Make/Model", edit_bike_path(bike) %>
-  <% end %>
-  <h2>Add a Bike</h2>
-  <%= link_to "+", new_bike_path %>
 
-      <% bike.bike_components.each do |bike_component| %>
-        <div>
-          <%= bike_component.component.name %>
-          <%= cl_image_tag(bike_component.component.icon.key, class:"img-thumbnail") %>
+      <div class="bike-name">
+        <% if bike.make != "" && bike.model != "" %>
+          <h2> <%= bike.make %> <%= bike.model %> </h2>
+        <% elsif bike.make != "" && bike.model == "" %>
+          <h2> <%= bike.make %> </h2>
+        <% elsif bike.make == "" && bike.model != "" %>
+          <h2> <%= bike.model %> </h2>
+        <% else %>
+          <h2>My Bike</h2>
+        <% end %>
+      </div>
+
+      <% bike.components.each do |component| %>
+        <div class="component-container">
+            <p> <%= component.name %> </p>
+            <p>Time left until check:</p>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: <%= @time_progress_percentage %>%" aria-valuenow="<%= @time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar-text">
+                  <% if @weeks_left > 2%>
+                    <p> <%= @weeks_left.to_i %> weeks </p>
+                  <% elsif @weeks_left > 0 && @weeks_left <= 2 %>
+                    <p> <%= @days_left.to_i %> days </p>
+                  <% else %>
+                    <p> Check now! </p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
         </div>
       <% end %>
-      <%= link_to "Add Component", new_bike_bike_component_path(bike) %>
-      <%= link_to "Edit Bike Make/Model", edit_bike_path(bike) %>
-    <% end %>
-    <h2>Add a Bike</h2>
-    <%= link_to "+", new_bike_path %>
-  </div>
+
+      <%# <div>
+        <%= cl_image_tag(bike.components.icon.key, class:"img-thumbnail") %>
+      <%# </div> %>
+
+      <p> <%= link_to "Add Component", new_bike_bike_component_path(bike) %> </p>
+      <p> <%= link_to "Edit Bike", edit_bike_path(bike) %> </p>
+      <p> <%= link_to "Add a Bike", new_bike_path %> </p>
+
+    </div>
+  <% end %>
+
 </div>
