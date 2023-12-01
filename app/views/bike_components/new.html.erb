@@ -13,7 +13,7 @@
   <% end %>
 
   <div>
-    <%= simple_form_for [@bike, Component.new] do |f| %>
+    <%= simple_form_for [@bike, @component] do |f| %>
       <%= f.input :name, label: 'Name' %>
       <%= f.input :time_until_check, label: 'How much time before you check this component?' %>
       <%= f.input :distance_until_check, label: 'How much distance before you check this component?' %>

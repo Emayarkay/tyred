@@ -39,7 +39,12 @@ class StravaController < ApplicationController
     session[:api_key] = api_key
     session[:client_id] = client_id
     session[:client_secret] = client_secret
-
+    
+    # Save the user inputs for future use (e.g., in a database associated with the user)
+    # For simplicity, you can store it in the session in this example
+    #session[:api_key] = api_key
+    #session[:client_id] = client_id
+    #session[:client_secret
     # Redirect to a page where you can trigger the fetching of distances or handle it accordingly
     redirect_to fetch_auth_token_path
   end
