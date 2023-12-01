@@ -54,6 +54,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_113139) do
     t.index ["component_id"], name: "index_bike_components_on_component_id"
   end
 
+  create_table "bike_shops", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.integer "rating"
+    t.text "website"
+    t.integer "phone_number"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "bikes", force: :cascade do |t|
     t.string "make"
     t.string "model"
@@ -93,9 +105,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_113139) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.integer "strava_id"
     t.string "provider"
     t.string "uid"
+    t.string "access_token"
+    t.string "refresh_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

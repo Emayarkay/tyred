@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   get '/fetch_distances', to: 'strava#fetch_distances'
   get '/fetch_auth_token', to: "strava#fetch_auth_token"
-  post '/strava/setup', to: 'strava#setup'
-  get '/redirect', to: 'strava#redirect'
 
-  root to: "application#home"
-  # root to: 'bikes#index'
+  root to: 'bikes#index'
+  # root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -17,7 +15,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   get '/shop_locator', to: 'pages#show'
 
-  resources :users, only: %i[new show edit update create destroy]
+  resources :users, only: %i[show]
   resources :bikes do
     resources :bike_components, except: :index
     resources :components, only: :create

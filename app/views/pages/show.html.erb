@@ -1,3 +1,40 @@
 <div class="page-container">
+
   <h1>Bike Shop Locator</h1>
+  <div class="search_shops">
+    <%= form_with url: shop_locator_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Enter your location"
+      %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <div class="container-map">
+    <div style="width: 100%; height: 100%;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+
+  <div class="container_shops">
+      <% if @bike_shops.any? %>
+        <% @bike_shops.each do |shop| %>
+          <div class="shop-card">
+            <div class="shop-card-image"></div>
+            <div class="shop-card-info">
+              <h4> <%= shop.name %> </h4>
+              <p> <%= shop.location %> </p>
+              <p> <%= shop.website %> </p>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <em>Sorry, no shops found.</em>
+      <% end %>
+  </div>
+
 </div>

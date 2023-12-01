@@ -1,10 +1,9 @@
-button {
-  width: 125px;
-  height: 40px;
+.custom-btn {
   margin: 16px 0px;
+  padding: 8px 16px;
   border-radius: 8px;
   background-color: $orange;
-  color: $ivory;
+  color: $ivory !important;
   font-family: $body-font;
   font-weight: 700;
   border: none;
@@ -16,6 +15,14 @@ button {
 
 .btn {
   color: $ivory;
+}
+
+.btn-primary {
+  background-color: $green;
+  border: none;
+  :hover {
+    background: $green;
+  }
 }
 
 .green {

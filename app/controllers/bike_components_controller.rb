@@ -1,5 +1,10 @@
 class BikeComponentsController < ApplicationController
 
+  def show
+    @bike = Bike.find(params[:bike_id])
+    @bike_component = BikeComponent.find(params[:id])
+  end
+
   def new
     @bikecomponent = BikeComponent.new
     @components = Component.all
@@ -19,13 +24,17 @@ class BikeComponentsController < ApplicationController
   end
 
   def edit
-    @bikecomponent = BikeComponent.find(params[:id])
+    @bike = Bike.find(params[:bike_id])
+    @bike_component = BikeComponent.find(params[:id])
   end
 
   def update
     @bikecomponent = BikeComponent.find(params[:id])
     @bikecomponent.update(bike_component_params)
-    redirect_to user_path(@bikecomponent.current_user)
+    respond_to do |format|
+      format.html { redirect_to user_path(@bikecomponent.user) }
+      format.text
+    end
   end
 
   def destroy
@@ -37,7 +46,7 @@ class BikeComponentsController < ApplicationController
   private
 
   def bike_component_params
-    params.require(:bike_components).permit(:component_id)
+    params.require(:bike_component).permit(:component_id, :date_added)
   end
 
 

@@ -1,0 +1,16 @@
+<div class="page-container">
+  <%= form_with(model: [@bike, @bike_component]) do |f| %>
+    <p>
+      Change Time Until Check:
+      <%= f.text_field :custom_time_check_interval %>
+    </p>
+    <p>
+      Change Date Added:
+      <%= f.date_field :date_added %>
+    </p>
+    <%= f.submit "Update" %>
+  <% end %>
+
+<%= link_to 'Back', :back %>
+
+</div>

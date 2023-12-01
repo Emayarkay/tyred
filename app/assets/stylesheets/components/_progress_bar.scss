@@ -1,0 +1,19 @@
+.progress {
+  width: 100%;
+  height: 30px;
+  border-radius: 16px;
+}
+
+.progress-bar {
+  background-color: $orange;
+  border-radius: 16px;
+  padding: 0 0 0 16px;
+  color: $black;
+  overflow: visible;
+  font-weight: bold;
+  p {
+    font-size: 20px;
+    position: relative;
+    font-weight: 400;
+  }
+}

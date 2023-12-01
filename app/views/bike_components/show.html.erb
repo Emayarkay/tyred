@@ -1,0 +1,34 @@
+<div class="page-container" data-controller="progress-bar" data-progress-bar-url-value="<%= bike_bike_component_url(@bike, @bike_component) %>" data-progress-bar-time-value="<%= @bike_component.time_until_check %>">
+
+  <%= link_to 'Back', :back %>
+
+  <%= @bike_component.component.name %>
+
+
+  <p>Time left until check:</p>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" data-progress-bar-target="bar" style="width: <%= @bike_component.time_progress_percentage %>%" aria-valuenow="<%= @bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar-text">
+        <% if @bike_component.weeks_left > 2%>
+          <%= @bike_component.weeks_left.to_i %> weeks
+        <% elsif @bike_component.weeks_left > 0 && @bike_component.weeks_left <= 2 %>
+          <%= @bike_component.days_left.to_i %> days
+        <% else %>
+          Check now!
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <p><%= @bike_component.component.check_advice %></p>
+
+  <button data-action="click->progress-bar#reset"></button>
+
+</div>
+
+
+
+
+    <%# <% @bike.bike_components.each do |bike_component| %>
+      <%# <p>Total Cumulative Time: <%= bike_component.component&.time_until_check</p> %>
+      <%# <p>Total Cumulative Distance: <%= bike_component.component&.distance_until_check</p> %>
