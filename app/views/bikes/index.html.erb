@@ -3,7 +3,7 @@
   <h1><%= current_user.first_name%>'s Bike Garage</h1>
 
   <% @bikes.each do |bike| %>
-    <div class="component-card">
+    <div class="bike-card">
 
       <div class="bike-image-container">
         <% if bike.photo.attached? %>
@@ -26,7 +26,7 @@
       </div>
 
       <% bike.components.each do |component| %>
-        <div class="component-container">
+        <div class="component-card">
             <p> <%= component.name %> </p>
             <p>Time left until check:</p>
             <div class="progress">
