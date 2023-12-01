@@ -29,14 +29,16 @@
         <div class="component-card">
             <p> <%= bike_component.component.name %> </p>
             <p>Time left until check:</p>
+            <div class="component-card-image"></div>
             <div class="progress">
               <div class="progress-bar" role="progressbar" style="width: <%= bike_component.time_progress_percentage %>%" aria-valuenow="<%= bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
                 <div class="progress-bar-text">
                   <% if bike_component.weeks_left > 2%>
                     <p> <%= bike_component.weeks_left.to_i %> weeks </p>
                   <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
-                    <%= bike_component.days_left.to_i %> days
+                    <p> <%= bike_component.days_left.to_i %> days </p>
                   <% else %>
+                    <p>Check!</p>
                   <% end %>
                 </div>
               </div>
