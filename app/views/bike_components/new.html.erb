@@ -21,25 +21,3 @@
       <%= f.submit value: 'Add this component to your bike' %>
     <% end %>
   </div>
-<!-- 1 Reset Meter Button
-    <%= link_to "Reset Meter", "#", onclick: "event.preventDefault(); document.getElementById('reset-form').submit();" %>
-    <%= form_tag(reset_meter_bike_path(@bike), method: :patch, id: 'reset-form', style: 'display: none;') do %>
-      <%= submit_tag "Reset Meter" %>
-    <% end %>
-
-    2 Display Total Cumulative Time/Distance for each BikeComponent
-    <% @bike.bike_components.each do |bike_component| %>
-      <p>Total Cumulative Time: <%= bike_component.component&.time_until_check %></p>
-      <p>Total Cumulative Distance: <%= bike_component.component&.distance_until_check %></p>
-      <%= form_for [@bike, bike_component] do |f| %>
-        <p>
-          Change Time Until Check:
-          <%= f.text_field :custom_time_check_interval %>
-        </p>
-        <p>
-          Change Date Added:
-          <%= f.date_field :date_added %>
-        </p>
-        <%= f.submit "Update" %>
-      <% end %>
-    <% end %> -->

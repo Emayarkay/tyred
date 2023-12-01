@@ -1,5 +1,9 @@
 class BikeComponentsController < ApplicationController
 
+  def show
+    
+  end
+
   def new
     @bikecomponent = BikeComponent.new
     @components = Component.all
