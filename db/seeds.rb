@@ -86,7 +86,7 @@ chain.icon.attach(io: File.open('app/assets/images/bike_chain.png'), filename: "
 puts "Created #{chain.name}"
 
 tyre = Component.create(
-  name: "Tyre",
+  name: "Tyres",
   time_until_check: 1.0, # weeks
   distance_until_check: 150.0,
   check_advice: "The easiest way to check is to pinch each side of your tire to see the amount of pressure. Put a finger on each side of the tire and try to touch them together with the tire in between. This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. If you have a lot of flex, you will more than likely need to get more air in.",
