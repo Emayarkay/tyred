@@ -1,6 +1,6 @@
 .progress {
   width: 100%;
-  height: 30px;
+  height: 16px;
   border-radius: 16px;
 }
 
@@ -15,5 +15,19 @@
     font-size: 20px;
     position: relative;
     font-weight: 400;
+  }
+}
+
+.progress-info {
+  height: 100%;
+  width: auto;
+  flex-grow: 1;
+  text-align: start;
+  padding: 0 0 0 16px;
+  p {
+    margin: 0;
+  }
+  h3 {
+    margin: 0;
   }
 }

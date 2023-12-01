@@ -27,9 +27,13 @@
 
       <% bike.bike_components.each do |bike_component| %>
         <div class="component-card">
-            <p> <%= bike_component.component.name %> </p>
-            <p>Time left until check:</p>
+          <div class="card-image-info-wrapper">
             <div class="component-card-image"></div>
+            <div class="progress-info">
+              <h3> <%= bike_component.component.name %> </h3>
+              <p>Time left until check:</p>
+            </div>
+          </div>
             <div class="progress">
               <div class="progress-bar" role="progressbar" style="width: <%= bike_component.time_progress_percentage %>%" aria-valuenow="<%= bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
                 <div class="progress-bar-text">
