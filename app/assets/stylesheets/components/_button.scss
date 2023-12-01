@@ -13,6 +13,17 @@
   }
 }
 
+.back-btn {
+  border-radius: 50%;
+  margin: 16px 0px;
+  padding: 16px 16px;
+  background-color: $orange;
+  color: $ivory !important;
+  font-family: $body-font;
+  font-weight: 700;
+  border: none;
+}
+
 .btn {
   color: $ivory;
 }
