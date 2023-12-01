@@ -12,16 +12,16 @@
           <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg" %>
         <% end %>
       </div>
-      
+
       <div class="bike-name">
         <% if bike.make != "" && bike.model != "" %>
-          <h2> <%= bike.make %> <%= bike.model %> </h2>
+          <h2 class="py-3"> <%= bike.make %> <%= bike.model %> </h2>
         <% elsif bike.make != "" && bike.model == "" %>
-          <h2> <%= bike.make %> </h2>
+          <h2 class="py-3">  <%= bike.make %> </h2>
         <% elsif bike.make == "" && bike.model != "" %>
-          <h2> <%= bike.model %> </h2>
+          <h2 class="py-3"> <%= bike.model %> </h2>
         <% else %>
-          <h2>My Bike</h2>
+          <h2 class="py-3">My Bike</h2>
         <% end %>
       </div>
 
@@ -37,7 +37,6 @@
                   <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
                     <%= bike_component.days_left.to_i %> days
                   <% else %>
-                    Check now!
                   <% end %>
                 </div>
               </div>

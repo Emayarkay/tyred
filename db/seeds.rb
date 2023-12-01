@@ -87,7 +87,7 @@ puts "Created #{chain.name}"
 
 tyre = Component.create(
   name: "Tyre",
-  time_until_check: 1.0,
+  time_until_check: 1.0, # weeks
   distance_until_check: 150.0,
   check_advice: "The easiest way to check is to pinch each side of your tire to see the amount of pressure. Put a finger on each side of the tire and try to touch them together with the tire in between. This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. If you have a lot of flex, you will more than likely need to get more air in.",
   custom: false
@@ -99,7 +99,7 @@ puts "Created #{tyre.name}"
 
 brake_pad = Component.create(
   name: "Brake Pad",
-  time_until_check: 5.0,
+  time_until_check: 5.0, # weeks
   distance_until_check: 1000.0,
   check_advice: "A simple visual inspection of the brake assembly should allow you to determine how much brake pad material remains. Shine a flashlight or other bright light onto the brake assembly so you can clearly see the brake pad backing, brake pads, and rotor. If very little brake pad thickness remains and the brake pad backing is almost touching the rotor, it's time to replace your brake pads.",
   custom: false
