@@ -10,8 +10,6 @@
           <%= cl_image_tag(bike.photo.key, class:"img-thumbnail") %>
         <% else %>
           <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg" %>
-        <% end %>
-      </div>
 
       <div class="bike-name">
         <% if bike.make != "" && bike.model != "" %>
@@ -25,24 +23,25 @@
         <% end %>
       </div>
 
-      <% bike.components.each do |component| %>
+      <% bike.bike_components.each do |bike_component| %>
         <div class="component-card">
-            <p> <%= component.name %> </p>
+            <p> <%= bike_component.component.name %> </p>
             <p>Time left until check:</p>
             <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: <%= @time_progress_percentage %>%" aria-valuenow="<%= @time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar" role="progressbar" style="width: <%= bike_component.time_progress_percentage %>%" aria-valuenow="<%= bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
                 <div class="progress-bar-text">
-                  <% if @weeks_left > 2%>
-                    <p> <%= @weeks_left.to_i %> weeks </p>
-                  <% elsif @weeks_left > 0 && @weeks_left <= 2 %>
-                    <p> <%= @days_left.to_i %> days </p>
+                  <% if bike_component.weeks_left > 2%>
+                    <p> <%= bike_component.weeks_left.to_i %> weeks </p>
+                  <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
+                    <%= bike_component.days_left.to_i %> days
                   <% else %>
-                    <p> Check now! </p>
+                    Check now!
                   <% end %>
                 </div>
               </div>
             </div>
         </div>
+        <%= link_to "More info about your #{bike_component.component.name}", bike_bike_component_path(bike, bike_component) %>
       <% end %>
 
       <%# <div>
