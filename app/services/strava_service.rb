@@ -1,4 +1,4 @@
-#class StravaService
+class StravaService
  # def fetch_strava_data(access_token)
    # client = Strava::Api::V3::Client.new(access_token: access_token)
 
@@ -16,4 +16,4 @@
   #    puts 'Activity not found'
  #   end
 #  end
-# end
+end
