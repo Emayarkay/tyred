@@ -10,6 +10,8 @@
           <%= cl_image_tag(bike.photo.key, class:"img-thumbnail") %>
         <% else %>
           <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg" %>
+        <% end %>
+      </div>
 
       <div class="bike-name">
         <% if bike.make != "" && bike.model != "" %>
@@ -42,6 +44,7 @@
             </div>
         </div>
         <%= link_to "More info about your #{bike_component.component.name}", bike_bike_component_path(bike, bike_component) %>
+        <%= link_to "Edit this #{bike_component.component.name}", edit_bike_bike_component_path(bike, bike_component) %>
       <% end %>
 
       <%# <div>

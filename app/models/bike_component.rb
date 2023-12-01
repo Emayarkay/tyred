@@ -28,4 +28,7 @@ class BikeComponent < ApplicationRecord
     (days_left / (component.time_until_check * 7)) * 100
   end
 
+  def time_until_check
+    component.time_until_check
+  end
 end
