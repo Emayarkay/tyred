@@ -7,14 +7,13 @@
 .progress-bar {
   background-color: $orange;
   border-radius: 16px;
-  padding: 0 16px;
+  padding: 0 0 0 16px;
   color: $black;
   overflow: visible;
   font-weight: bold;
-  display: flex;
-  align-items: start;
   p {
     font-size: 20px;
     position: relative;
+    font-weight: 400;
   }
 }
