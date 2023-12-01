@@ -13,6 +13,7 @@ Bike.destroy_all
 Component.destroy_all
 Check.destroy_all
 BikeComponent.destroy_all
+BikeShop.destroy_all
 
 # users
 puts "creating users"

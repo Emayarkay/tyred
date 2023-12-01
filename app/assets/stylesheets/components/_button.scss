@@ -17,6 +17,14 @@
   color: $ivory;
 }
 
+.btn-primary {
+  background-color: $green;
+  border: none;
+  :hover {
+    background: $green;
+  }
+}
+
 .green {
   background-color: $green;
   color: $ivory;
