@@ -36,7 +36,7 @@ puts "Created #{bike1.make}"
 bike2 = Bike.create(
   make: "Nero",
   model: "Cappuccino",
-  user_id: user1.id
+  user_id: user2.id
 )
 bike2.photo.attach(io: File.open('app/assets/images/nero_cappuccino.jpg'), filename: "nero_cappuccino.jpg", content_type: "image/jpg")
 puts "Created #{bike2.make}"
