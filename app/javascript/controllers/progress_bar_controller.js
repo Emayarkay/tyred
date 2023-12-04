@@ -9,7 +9,6 @@ export default class extends Controller {
   }
 
   connect() {
-    // console.log("Hello from Progress Bar")
   }
 
   reset() {
@@ -26,7 +25,12 @@ export default class extends Controller {
         this.#updateBikeComponent()
         this.barTarget.ariaValueNow = 100
         this.barTarget.style.cssText = "width: 100%;"
-        this.barTarget.innerText = `${this.timeValue} weeks`
+        // this.barTarget.innerText = `${this.timeValue} weeks`
+        if (this.timeValue <= 1) {
+          this.timeTarget.innerText = `${this.timeValue * 7} days until next check`
+        } else {
+          this.timeTarget.innerText = `${this.timeValue} weeks until next check`
+        }
       }
     });
   }
