@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["bar"]
   static values = {
     url: String,
-    time: Number
   }
 
   connect() {
@@ -13,11 +12,23 @@ export default class extends Controller {
   }
 
   reset() {
-    console.log("hello from reset")
-    this.#updateBikeComponent()
-    this.barTarget.ariaValueNow = 100
-    this.barTarget.style.cssText = "width: 100%;"
-    this.barTarget.innerText = `${this.timeValue} weeks`
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Your check reminders will be permanently reset!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#0D5D56",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, I have checked!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.#updateBikeComponent()
+        this.barTarget.ariaValueNow = 100
+        this.barTarget.style.cssText = "width: 100%;"
+        this.barTarget.innerText = `${this.timeValue} weeks`
+      }
+    });
+
   }
 
   #updateBikeComponent() {
