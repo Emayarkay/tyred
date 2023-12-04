@@ -1,9 +1,20 @@
 <div class="page-container">
 
-  <h1><%= current_user.first_name%>'s Bike Garage</h1>
+  <h1>My Garage</h1>
 
-  <% @bikes.each do |bike| %>
-    <div class="bike-card">
+<ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+<% @bikes.each_with_index do |bike, index|  %>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link custom-btn <%= "active" if index == 0 %>" id="pills-<%= index %>-tab" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" type="button" role="tab" aria-controls="pills-<%= index %>" aria-selected="true"><%= index + 1 %></button>
+  </li>
+  <% end %>
+</ul>
+
+<div class="tab-content" id="pills-tabContent">
+<% @bikes.each_with_index do |bike, index|  %>
+  <div class="tab-pane fade show <%= "active" if index == 0 %>" id="pills-<%= index %>" role="tabpanel" aria-labelledby="pills-<%= index %>-tab" tabindex="0">
+
+  <div class="bike-card">
 
       <div class="bike-image-container">
         <% if bike.photo.attached? %>
@@ -51,18 +62,14 @@
         </div>
         <% end %>
 
-
       <% end %>
-
-      <%# <div>
-        <%= cl_image_tag(bike.components.icon.key, class:"img-thumbnail") %>
-      <%# </div> %>
 
       <p> <%= link_to "Add Component", new_bike_bike_component_path(bike) %> </p>
       <p> <%= link_to "Edit Bike", edit_bike_path(bike) %> </p>
       <p> <%= link_to "Add a Bike", new_bike_path %> </p>
 
     </div>
+  </div>
   <% end %>
-
+  </div>
 </div>
