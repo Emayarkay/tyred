@@ -75,3 +75,49 @@
     padding: 0;
   }
 }
+
+.comp-show-page-header {
+  width: 100%;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-btn-container {
+  height: 100%;
+  aspect-ratio: 1;
+}
+
+.comp-show-title {
+  height: 100%;
+  width: auto;
+  flex-grow: 1;
+}
+
+.comp-show-prog-container {
+  width: 100%;
+  height: auto;
+  padding: 32px 0;
+  margin: 16px 0;
+  border-bottom: 1px solid $green;
+}
+
+.check-advise {
+  width: 100%;
+  height: auto;
+  margin: 32px 0;
+  p {
+    margin: 0;
+  }
+}
+
+.comp-advise-image {
+  width: 100%;
+  aspect-ratio: 1;
+  background-image: url("check_chain.jpg");
+  background-size: cover;
+  background-color: lightgrey;
+  text-align: center;
+  margin: 0 auto 16px auto;
+  border-radius: 16px;
+}
