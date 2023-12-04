@@ -2,22 +2,28 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="progress-bar"
 export default class extends Controller {
-  static targets = ["bar"]
+  static targets = ["bar", "time"]
   static values = {
     url: String,
     time: Number
   }
 
   connect() {
-    console.log("Hello from Progress Bar")
+    // console.log("Hello from Progress Bar")
   }
 
   reset() {
-    console.log("hello from reset")
+    // console.log("hello from reset")
     this.#updateBikeComponent()
     this.barTarget.ariaValueNow = 100
     this.barTarget.style.cssText = "width: 100%;"
-    this.barTarget.innerText = `${this.timeValue} weeks`
+    // this.barTarget.innerText = `${this.timeValue} weeks`
+    if (this.timeValue <= 1) {
+      this.timeTarget.innerText = `${this.timeValue * 7} days until check`
+    } else {
+      this.timeTarget.innerText = `${this.timeValue} weeks until check`
+
+    }
   }
 
   #updateBikeComponent() {

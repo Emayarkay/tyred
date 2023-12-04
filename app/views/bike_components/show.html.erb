@@ -14,13 +14,14 @@
   </div>
 
   <div class="comp-show-prog-container">
-    <h2> <% if @bike_component.weeks_left > 2%>
-          <p><%= @bike_component.weeks_left.to_i %> weeks until check</p>
-        <% elsif @bike_component.weeks_left > 0 && @bike_component.weeks_left <= 2 %>
-          <h2><%= @bike_component.days_left.to_i %> days until check</p>
-        <% else %>
-          <p>Check now!</p>
-        <% end %>
+    <h2 data-progress-bar-target="time">
+      <% if @bike_component.weeks_left > 2 %>
+        <%= @bike_component.weeks_left.to_i %> weeks until check
+      <% elsif @bike_component.weeks_left > 0 && @bike_component.weeks_left <= 2 %>
+        <%= @bike_component.days_left.to_i %> days until check
+      <% else %>
+        Check now!
+      <% end %>
     </h2>
 
     <div class="progress">
