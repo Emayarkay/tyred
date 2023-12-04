@@ -25,7 +25,9 @@ class BikeComponent < ApplicationRecord
   end
 
   def time_progress_percentage
-    (days_left / (component.time_until_check * 7)) * 100
+    time_progress_percentage = (days_left / (component.time_until_check * 7)) * 100
+
+    time_progress_percentage <= 0 ? 0 : time_progress_percentage
   end
 
   def time_until_check

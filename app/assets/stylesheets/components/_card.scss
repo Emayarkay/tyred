@@ -1,6 +1,6 @@
 .shop-card {
   width: 100%;
-  height: 100px;
+  height: 150px;
   margin-bottom: 16px;
   padding: 8px;
   background-color: white;
@@ -13,9 +13,15 @@
 
 .shop-card-image {
   height: 100%;
-  width: 120px;
+  aspect-ratio: 1;
   background-color: $green;
-  opacity: 50%;
+  border-radius: 8px;
+  background-size: cover;
+}
+
+.shop-img {
+  height: 100%;
+  aspect-ratio: 1;
   border-radius: 8px;
 }
 
@@ -35,8 +41,6 @@
 }
 
 .component-card {
-  width: 100%;
-  height: 120px;
   background-color: $green;
   color: $ivory;
   border-radius: 8px;
@@ -50,17 +54,18 @@
   }
 }
 
+.component-card-image img {
+  max-height: 61px;
+
+}
+
 .component-card-image {
-  height: 100%;
-  aspect-ratio: 1;
   background-color: lightgray;
   border: 2px solid $orange;
   border-radius: 4px;
 }
 
 .card-image-info-wrapper {
-  height: 100%;
-  width: 100%;
   padding: 0 0 8px 0;
   display: flex;
   justify-content: space-between;

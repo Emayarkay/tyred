@@ -2,14 +2,14 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="progress-bar"
 export default class extends Controller {
-  static targets = ["bar"]
+  static targets = ["bar", "time"]
   static values = {
     url: String,
     time: Number
   }
 
   connect() {
-    console.log("Hello from Progress Bar")
+    // console.log("Hello from Progress Bar")
   }
 
   reset() {
@@ -29,7 +29,6 @@ export default class extends Controller {
         this.barTarget.innerText = `${this.timeValue} weeks`
       }
     });
-
   }
 
   #updateBikeComponent() {
