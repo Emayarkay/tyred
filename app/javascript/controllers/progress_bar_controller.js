@@ -13,17 +13,22 @@ export default class extends Controller {
   }
 
   reset() {
-    // console.log("hello from reset")
-    this.#updateBikeComponent()
-    this.barTarget.ariaValueNow = 100
-    this.barTarget.style.cssText = "width: 100%;"
-    // this.barTarget.innerText = `${this.timeValue} weeks`
-    if (this.timeValue <= 1) {
-      this.timeTarget.innerText = `${this.timeValue * 7} days until check`
-    } else {
-      this.timeTarget.innerText = `${this.timeValue} weeks until check`
-
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Your check reminders will be permanently reset!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#0D5D56",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, I have checked!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.#updateBikeComponent()
+        this.barTarget.ariaValueNow = 100
+        this.barTarget.style.cssText = "width: 100%;"
+        this.barTarget.innerText = `${this.timeValue} weeks`
+      }
+    });
   }
 
   #updateBikeComponent() {
