@@ -47,7 +47,7 @@
             <div class="component_name-and-delete d-flex justify-content-between">
                    <h2> <%= bike_component.component.name %> </h2>
                <%= link_to bike_bike_component_path(bike, bike_component), class: "text-decoration-none", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this part?" } do %>
-            <i class="fa-solid fa-trash"></i>
+            <i class="fa-solid fa-xmark"></i>
                 <% end %>
               </div>
               <div class="progress-bar-text">
