@@ -1,34 +1,44 @@
 <div class="page-container" data-controller="progress-bar" data-progress-bar-url-value="<%= bike_bike_component_url(@bike, @bike_component) %>" data-progress-bar-time-value="<%= @bike_component.time_until_check %>">
 
-  <%= link_to :back, class: "back-btn green" do %>
-    <i class="fa-solid fa-arrow-left"></i>
-  <% end %>
+  <div class="comp-show-page-header">
 
-  <%= @bike_component.component.name %>
+    <div class="back-btn-container">
+      <%= link_to :back, class: "back-btn green" do %>
+        <i class="fa-solid fa-arrow-left"></i>
+      <% end %>
+    </div>
+    <div class="comp-show-title">
+      <h1><%= @bike_component.component.name %></h1>
+    </div>
 
+  </div>
 
-  <p>Time left until check:</p>
-  <div class="progress">
-    <div class="progress-bar" role="progressbar" data-progress-bar-target="bar" style="width: <%= @bike_component.time_progress_percentage %>%" aria-valuenow="<%= @bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
-      <div class="progress-bar-text">
-        <% if @bike_component.weeks_left > 2%>
-          <p><%= @bike_component.weeks_left.to_i %> weeks</p>
+  <div class="comp-show-prog-container">
+    <h2> <% if @bike_component.weeks_left > 2%>
+          <p><%= @bike_component.weeks_left.to_i %> weeks until check</p>
         <% elsif @bike_component.weeks_left > 0 && @bike_component.weeks_left <= 2 %>
-          <p><%= @bike_component.days_left.to_i %> days</p>
+          <h2><%= @bike_component.days_left.to_i %> days until check</p>
         <% else %>
           <p>Check now!</p>
         <% end %>
-      </div>
+    </h2>
+
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" data-progress-bar-target="bar" style="width: <%= @bike_component.time_progress_percentage %>%" aria-valuenow="<%= @bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
+
   </div>
 
-  <p><%= @bike_component.component.check_advice %></p>
+  <div class="check-advise">
+    <div class="comp-advise-image"></div>
+    <p><%= @bike_component.component.check_advice %></p>
+  </div>
 
-  <button class="custom-btn green" data-action="click->progress-bar#reset">I've Replaced My <%= @bike_component.component.name %></button>
+  <button class="custom-btn green" data-action="click->progress-bar#reset">I've Checked My <%= @bike_component.component.name %></button>
 
   <p>If you feel this component needs replacing, either replace it yourself or use our handy Bike Shop Locator tool below!</p>
 
-  <%= link_to "Bike Shop Locator", shop_locator_path, class: "custom-btn green"%>
+  <p> <%= link_to "Bike Shop Locator", shop_locator_path, class: "custom-btn green"%> </p>
 
 
 
