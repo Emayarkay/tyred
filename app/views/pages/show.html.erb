@@ -1,12 +1,15 @@
-<div class="page-container">
+<div class="page-container" data-controller="search-bar" data-search-bar-url-value="<%=bikes_url%>">
 
   <h1>Bike Shop Locator</h1>
   <div class="search_shops">
-    <%= form_with url: shop_locator_path, method: :get, class: "d-flex" do %>
+    <%= form_with url: bike_shops_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          placeholder: "Enter your location"
+          placeholder: "Enter your location",
+          data: {
+            action: "keyup->search-bar#search"
+          }
       %>
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>

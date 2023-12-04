@@ -1,13 +1,7 @@
-class PagesController < ApplicationController
+class BikeShopsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    respond_to do |format|
-      format.json
-    end
-  end
-
-  def show
     @bike_shops = BikeShop.all
 
     if params[:query].present?
@@ -21,9 +15,16 @@ class PagesController < ApplicationController
       }
     end
 
+    respond_to do |format|
+      format.html
+      format.json do
+        render(
+          json: {
+            html: render_to_string(partial: "bike_shops/list", locals: { bike_shops: @bike_shops }, formats: [:html]),
+            markers: @markers
+          }
+        )
+      end
+    end
   end
-
-  def home
-  end
-
 end
