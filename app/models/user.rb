@@ -39,4 +39,9 @@ class User < ApplicationRecord
   def strava_connected?
     uid.present?
   end
+
+  def strava_service
+    @strava_service = StravaService.new(user_id: id)
+  end
 end
+ # current_user.strava_connected?
