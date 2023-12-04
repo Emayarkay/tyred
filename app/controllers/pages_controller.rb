@@ -4,6 +4,10 @@ class PagesController < ApplicationController
   def show
     @bike_shops = BikeShop.all
 
+    if params[:query].present?
+      @bike_shops = @bike_shops.where("location ILIKE ?", "%#{params[:query]}%")
+    end
+
     @markers = @bike_shops.geocoded.map do |shop|
       {
         lat: shop.latitude,
@@ -11,9 +15,6 @@ class PagesController < ApplicationController
       }
     end
 
-    if params[:query].present?
-      @bike_shops = @bike_shops.where(location: params[:query])
-    end
   end
 
   def home

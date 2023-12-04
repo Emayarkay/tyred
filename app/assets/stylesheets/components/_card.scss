@@ -1,6 +1,6 @@
 .shop-card {
   width: 100%;
-  height: 100px;
+  height: 150px;
   margin-bottom: 16px;
   padding: 8px;
   background-color: white;
@@ -13,7 +13,7 @@
 
 .shop-card-image {
   height: 100%;
-  width: 120px;
+  aspect-ratio: 1;
   background-color: $green;
   opacity: 50%;
   border-radius: 8px;

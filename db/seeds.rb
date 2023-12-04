@@ -175,7 +175,7 @@ shop1 = BikeShop.create(
   location: "Clapham",
   rating: 5,
   website: "www.apexcycles.com",
-  phone_number: 02076221334
+  phone_number: "020 7622 1334"
 )
 
 shop2 = BikeShop.create(
@@ -183,7 +183,7 @@ shop2 = BikeShop.create(
   location: "Shoreditch",
   rating: 3,
   website: "www.bricklanebikes.com",
-  phone_number: 02030223002
+  phone_number: "020 3020 3002"
 )
 
 shop3 = BikeShop.create(
@@ -191,7 +191,7 @@ shop3 = BikeShop.create(
   location: "Holborn",
   rating: 5,
   website: "www.condorcycles.com",
-  phone_number: 02035465302
+  phone_number: "020 3584 65302"
 )
 
 shop4 = BikeShop.create(
@@ -199,7 +199,7 @@ shop4 = BikeShop.create(
   location: "Dulwich",
   rating: 5,
   website: "www.lduvelo.com",
-  phone_number: 02034345665
+  phone_number: "020 3434 5665"
 )
 
 shop5 = BikeShop.create(
@@ -207,7 +207,7 @@ shop5 = BikeShop.create(
   location: "Brixton",
   rating: 4,
   website: "www.brixtoncycles.com",
-  phone_number: 02077336055
+  phone_number: "020 7733 6055"
 )
 
 shop6 = BikeShop.create(
@@ -215,7 +215,7 @@ shop6 = BikeShop.create(
   location: "Herne Hill",
   rating: 4,
   website: "www.bonvelo.com",
-  phone_number: 02056611002
+  phone_number: "020 5661 1002"
 )
 
 shop7 = BikeShop.create(
@@ -223,7 +223,7 @@ shop7 = BikeShop.create(
   location: "Camberwell",
   rating: 2,
   website: "www.edwardes.com",
-  phone_number: 02077033676
+  phone_number: "020 7703 3676"
 )
 
 puts "Finished creating bike shops"
