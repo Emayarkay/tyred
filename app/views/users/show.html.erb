@@ -1,22 +1,32 @@
 <div class="page-container">
   <div class="profile-container">
-
     <div class="avatar-container">
       <div class="avatar">
-          <%= image_tag @user.profile_image if @user.profile_image.attached? %>
+        <%= cl_image_tag @user.profile_image.key if @user.profile_image.attached? %>
       </div>
+    </div>
 
-</div>
     <div class="profile-info-container">
       <p> <%= current_user.first_name %> <%= current_user.last_name %> </p>
       <p> <%= current_user.email %> </p>
       <p> Specialized Allez</p>
-      <p>Strava connected ✅</p>
-    </div>
-    <div class="profile-button-container">
-      <button class="green custom-btn"> <%= link_to "Edit Profile", edit_user_registration_path(current_user) %> </button>
-      <button class="green custom-btn"> <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %> </button>
+      <% if @strava_connected %>
+        <p>Strava connected ✅</p>
+      <% else %>
+        <p>Strava not connected ❌</p>
+      <% end %>
     </div>
 
+    <% if devise_mapping.omniauthable? && !@strava_connected %>
+      <% User.omniauth_providers.each do |provider| %>
+        <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(:user, provider), data: { turbo: false }, class: 'custom-btn' %><br />
+      <% end %>
+    <% end %>
+
+    <div class="profile-button-container">
+      <button class="green custom-btn"> <%= link_to "Edit Profile", edit_user_registration_path%> </button>
+
+      <button class="green custom-btn"> <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %> </button>
+    </div>
   </div>
 </div>
