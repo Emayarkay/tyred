@@ -15,7 +15,13 @@
   height: 100%;
   aspect-ratio: 1;
   background-color: $green;
-  opacity: 50%;
+  border-radius: 8px;
+  background-size: cover;
+}
+
+.shop-img {
+  height: 100%;
+  aspect-ratio: 1;
   border-radius: 8px;
 }
 

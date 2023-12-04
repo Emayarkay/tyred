@@ -177,6 +177,7 @@ shop1 = BikeShop.create(
   website: "www.apexcycles.com",
   phone_number: "020 7622 1334"
 )
+shop1.photo.attach(io: File.open("app/assets/images/apex.jpg"), filename: 'apex.jpg', content_type: 'image/jpg')
 
 shop2 = BikeShop.create(
   name: "Brick Lane Bikes",
@@ -185,6 +186,7 @@ shop2 = BikeShop.create(
   website: "www.bricklanebikes.com",
   phone_number: "020 3020 3002"
 )
+shop2.photo.attach(io: File.open("app/assets/images/blb.jpg"), filename: 'blb.jpg', content_type: 'image/jpg')
 
 shop3 = BikeShop.create(
   name: "Condor Cycles",
@@ -193,6 +195,7 @@ shop3 = BikeShop.create(
   website: "www.condorcycles.com",
   phone_number: "020 3584 65302"
 )
+shop3.photo.attach(io: File.open("app/assets/images/condor.jpg"), filename: 'condor.jpg', content_type: 'condor/jpg')
 
 shop4 = BikeShop.create(
   name: "L' Atelier Du Vélo",
@@ -201,6 +204,7 @@ shop4 = BikeShop.create(
   website: "www.lduvelo.com",
   phone_number: "020 3434 5665"
 )
+shop4.photo.attach(io: File.open("app/assets/images/latelier.jpg"), filename: 'latelier.jpg', content_type: 'image/jpg')
 
 shop5 = BikeShop.create(
   name: "Brixton Cycles",
@@ -209,6 +213,7 @@ shop5 = BikeShop.create(
   website: "www.brixtoncycles.com",
   phone_number: "020 7733 6055"
 )
+shop5.photo.attach(io: File.open("app/assets/images/brixton.jpg"), filename: 'brixton.jpg', content_type: 'image/jpg')
 
 shop6 = BikeShop.create(
   name: "Bon Velo",
@@ -217,6 +222,7 @@ shop6 = BikeShop.create(
   website: "www.bonvelo.com",
   phone_number: "020 5661 1002"
 )
+shop6.photo.attach(io: File.open("app/assets/images/bon.jpg"), filename: 'bon.jpg', content_type: 'image/jpg')
 
 shop7 = BikeShop.create(
   name: "Edwardes",
@@ -225,6 +231,7 @@ shop7 = BikeShop.create(
   website: "www.edwardes.com",
   phone_number: "020 7703 3676"
 )
+shop7.photo.attach(io: File.open("app/assets/images/edwardes.jpg"), filename: 'edwardes.jpg', content_type: 'image/jpg')
 
 puts "Finished creating bike shops"
 

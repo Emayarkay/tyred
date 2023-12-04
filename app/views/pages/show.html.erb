@@ -24,7 +24,13 @@
       <% if @bike_shops.any? %>
         <% @bike_shops.each do |shop| %>
           <div class="shop-card">
-            <div class="shop-card-image"></div>
+            <div class="shop-card-image">
+              <% if shop.photo.attached? %>
+                <%= cl_image_tag shop.photo.key, class:"shop-img" %>
+              <% else %>
+                <%= "No image" %>
+              <% end %>
+            </div>
             <div class="shop-card-info">
               <h4> <%= shop.name %> </h4>
               <p> <%= shop.location %> </p>
