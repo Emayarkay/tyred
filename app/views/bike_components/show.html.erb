@@ -22,14 +22,16 @@
     </div>
   </div>
 
-  <p><%= @bike_component.component.check_advice %></p>
+ <button class="custom-btn green my-4" data-action="click->progress-bar#reset">I've Checked My <%= @bike_component.component.name %></button>
 
-  <button class="custom-btn green" data-action="click->progress-bar#reset">I've Checked My <%= @bike_component.component.name %></button>
-
-  <p>If you feel this component needs replacing, either replace it yourself or use our handy Bike Shop Locator tool below!</p>
-
-  <%= link_to "Bike Shop Locator", shop_locator_path, class: "custom-btn green"%>
-
+  <div data-controller="toggle-advice" data-toggle-advice-component-value="<%= @bike_component.component.name %>">
+  <button data-action="click->toggle-advice#fire" data-toggle-advice-target="button" class="custom-btn green my-2">Show Me How To Check My <%= @bike_component.component.name %></button>
+    <div data-toggle-advice-target="togglableElement" class="d-none">
+    <p><%= @bike_component.component.check_advice %></p>
+    <p>If you feel this component needs replacing, either replace it yourself or use our handy Bike Shop Locator tool below!</p>
+    <%= link_to "Bike Shop Locator", shop_locator_path, class: "custom-btn green"%>
+    </div>
+  </div>
 
 
 </div>

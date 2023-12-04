@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ["bar"]
   static values = {
     url: String,
+    time: Number
   }
 
   connect() {
