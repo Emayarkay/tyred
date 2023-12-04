@@ -16,7 +16,7 @@ BikeComponent.destroy_all
 BikeShop.destroy_all
 
 # users
-puts "creating users"
+puts "Creating Users"
 user1 = User.create first_name: "Jonny", last_name: "Shipton", email: "jonny@gmail.com", password: "123456"
 user2 = User.create first_name: "Mark", last_name: "Watkinson", email: "mark@gmail.com", password: "123456"
 user3 = User.create first_name: "Eliot", last_name: "Smith", email: "eliot@gmail.com", password: "123456"
@@ -24,7 +24,7 @@ user4 = User.create first_name: "Robbie", last_name: "Bullough", email: "robbie@
 puts "Finished creating users"
 
 # bikes
-puts "creating bikes"
+puts "Creating Bikes"
 
 bike1 = Bike.create(
   make: "Specialized",
@@ -70,7 +70,7 @@ puts "Created #{bike5.make}"
 puts "Finished creating bikes"
 
 # components
-puts "creating components"
+puts "Creating Components"
 
 chain = Component.create(
   name: "Chain",
@@ -85,20 +85,32 @@ chain.icon.attach(io: File.open('app/assets/images/bike_chain.png'), filename: "
 
 puts "Created #{chain.name}"
 
-tyre = Component.create(
-  name: "Tyres",
+front_tyre = Component.create(
+  name: "Front Tyre",
   time_until_check: 1.0, # weeks
   distance_until_check: 150.0,
   check_advice: "The easiest way to check is to pinch each side of your tire to see the amount of pressure. Put a finger on each side of the tire and try to touch them together with the tire in between. This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. If you have a lot of flex, you will more than likely need to get more air in.",
   custom: false
 )
 
-tyre.check_img.attach(io: File.open('app/assets/images/pinch_test.jpeg'), filename: "pinch_test.jpeg", content_type: "image/jpeg")
-tyre.icon.attach(io: File.open('app/assets/images/bike_tyre.png'), filename: "bike_tyre.png", content_type: "image/png")
-puts "Created #{tyre.name}"
+front_tyre.check_img.attach(io: File.open('app/assets/images/pinch_test.jpeg'), filename: "pinch_test.jpeg", content_type: "image/jpeg")
+front_tyre.icon.attach(io: File.open('app/assets/images/bike_tyre.png'), filename: "bike_tyre.png", content_type: "image/png")
+puts "Created #{front_tyre.name}"
+
+rear_tyre = Component.create(
+  name: "Rear Tyre",
+  time_until_check: 1.0, # weeks
+  distance_until_check: 150.0,
+  check_advice: "The easiest way to check is to pinch each side of your tire to see the amount of pressure. Put a finger on each side of the tire and try to touch them together with the tire in between. This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. If you have a lot of flex, you will more than likely need to get more air in.",
+  custom: false
+)
+
+rear_tyre.check_img.attach(io: File.open('app/assets/images/pinch_test.jpeg'), filename: "pinch_test.jpeg", content_type: "image/jpeg")
+rear_tyre.icon.attach(io: File.open('app/assets/images/bike_tyre.png'), filename: "bike_tyre.png", content_type: "image/png")
+puts "Created #{rear_tyre.name}"
 
 brake_pad = Component.create(
-  name: "Brake Pad",
+  name: "Brake Pads",
   time_until_check: 5.0, # weeks
   distance_until_check: 1000.0,
   check_advice: "A simple visual inspection of the brake assembly should allow you to determine how much brake pad material remains. Shine a flashlight or other bright light onto the brake assembly so you can clearly see the brake pad backing, brake pads, and rotor. If very little brake pad thickness remains and the brake pad backing is almost touching the rotor, it's time to replace your brake pads.",
@@ -109,12 +121,12 @@ brake_pad.check_img.attach(io: File.open('app/assets/images/check_brake_pads.jpg
 brake_pad.icon.attach(io: File.open('app/assets/images/brake_pad.png'), filename: "brake_pad.png", content_type: "image/png")
 puts "Created #{brake_pad.name}"
 
-puts "Finished creating core components"
+puts "Finished Creating Core Components"
 
 # Could add some extra components here that will appear in dropdown menu?
 
 # bike_components
-puts "creating bike components"
+puts "Creating Bike Components"
 bike_component1 = BikeComponent.create(
   distance_travelled: 0.0,
   custom_time_check_interval: 20,
@@ -127,25 +139,34 @@ bike_component1.save!
 bike_component2 = BikeComponent.create(
   distance_travelled: 0.0,
   custom_time_check_interval: 20,
-  date_added: Date.today - 4
+  date_added: Date.today - 8
 )
-bike_component2.component = tyre
+bike_component2.component = front_tyre
 bike_component2.bike = bike1
 bike_component2.save!
 
 bike_component3 = BikeComponent.create(
   distance_travelled: 0.0,
   custom_time_check_interval: 20,
-  date_added: Date.today - 3.weeks
+  date_added: Date.today - 4
 )
-bike_component3.component = brake_pad
+bike_component3.component = rear_tyre
 bike_component3.bike = bike1
 bike_component3.save!
 
-puts "Finished creating bike components"
+bike_component4 = BikeComponent.create(
+  distance_travelled: 0.0,
+  custom_time_check_interval: 20,
+  date_added: Date.today - 3.weeks
+)
+bike_component4.component = brake_pad
+bike_component4.bike = bike1
+bike_component4.save!
+
+puts "Finished Creating Bike Components"
 
 # checks
-puts "creating checks"
+puts "Creating Checks"
 
 check_chain = Check.create(
   check_date: Date.today - 1.day,
@@ -168,7 +189,7 @@ check_brake_pads = Check.create(
   bike_component: bike_component3
 )
 
-puts "Creating bike shops"
+puts "Creating Bike Shops"
 
 shop1 = BikeShop.create(
   name: "Apex Cycles",
@@ -226,6 +247,6 @@ shop7 = BikeShop.create(
   phone_number: 02077033676
 )
 
-puts "Finished creating bike shops"
+puts "Finished Creating Bike Shops"
 
 puts "Finished!"
