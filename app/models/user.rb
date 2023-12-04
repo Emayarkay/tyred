@@ -24,7 +24,7 @@ class User < ApplicationRecord
     #   # uncomment the line below to skip the confirmation emails.
     #   # user.skip_confirmation!
     # end
-    user.update!(
+    user.update(
       email: auth.info.email || current_user_email,
       first_name: auth.info.first_name || user.first_name,
       last_name: auth.info.last_name || user.last_name,

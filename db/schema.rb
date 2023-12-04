@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_122107) do
     t.string "location"
     t.integer "rating"
     t.text "website"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false

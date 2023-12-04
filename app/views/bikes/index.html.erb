@@ -1,9 +1,20 @@
 <div class="page-container">
 
-  <h1><%= current_user.first_name%>'s Bike Garage</h1>
+  <h1>My Garage</h1>
 
-  <% @bikes.each do |bike| %>
-    <div class="bike-card">
+<ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+<% @bikes.each_with_index do |bike, index|  %>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link custom-btn <%= "active" if index == 0 %>" id="pills-<%= index %>-tab" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" type="button" role="tab" aria-controls="pills-<%= index %>" aria-selected="true"><%= index + 1 %></button>
+  </li>
+  <% end %>
+</ul>
+
+<div class="tab-content" id="pills-tabContent">
+<% @bikes.each_with_index do |bike, index|  %>
+  <div class="tab-pane fade show <%= "active" if index == 0 %>" id="pills-<%= index %>" role="tabpanel" aria-labelledby="pills-<%= index %>-tab" tabindex="0">
+
+  <div class="bike-card">
 
       <div class="bike-image-container">
         <% if bike.photo.attached? %>
@@ -29,7 +40,9 @@
         <%= link_to bike_bike_component_path(bike, bike_component) do %>
         <div class="component-card">
           <div class="card-image-info-wrapper">
-            <div class="component-card-image"></div>
+            <div class="component-card-image">
+            <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
+            </div>
             <div class="progress-info">
               <h2> <%= bike_component.component.name %> </h2>
               <div class="progress-bar-text">
@@ -45,24 +58,18 @@
           </div>
             <div class="progress">
               <div class="progress-bar" role="progressbar" style="width: <%= bike_component.time_progress_percentage %>%" aria-valuenow="<%= bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
-
               </div>
             </div>
         </div>
         <% end %>
-
-
       <% end %>
-
-      <%# <div>
-        <%= cl_image_tag(bike.components.icon.key, class:"img-thumbnail") %>
-      <%# </div> %>
 
       <p> <%= link_to "Add Component", new_bike_bike_component_path(bike) %> </p>
       <p> <%= link_to "Edit Bike", edit_bike_path(bike) %> </p>
       <p> <%= link_to "Add a Bike", new_bike_path %> </p>
 
     </div>
+  </div>
   <% end %>
-
+  </div>
 </div>

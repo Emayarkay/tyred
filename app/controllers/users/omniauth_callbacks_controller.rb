@@ -4,8 +4,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def strava
     @user = User.from_omniauth(request.env["omniauth.auth"], current_user.email)
     if @user.persisted?
-      sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: "Strava") if is_navigational_format?
+      sign_in_and_redirect @user, event: :authentication
     else
       session["devise.strava_data"] = request.env["omniauth.auth"].except(:extra)
       redirect_to new_user_registration_path, alert: "Please fill in the missing information"
