@@ -35,32 +35,30 @@
 }
 
 .component-card {
-  background-color: $green;
-  color: $ivory;
-  border-radius: 8px;
-  padding: 8px;
-  margin: 16px 0;
+  width: 100%;
+  margin-bottom: 16px;
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 1px $green;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  // justify-content: space-between;
+  align-items: center;
   .progress-bar-text {
     text-align: left;
   }
 }
 
 .component-card-image img {
-  max-height: 61px;
-
-}
-
-.component-card-image {
-  background-color: lightgray;
-  border: 2px solid $orange;
-  border-radius: 4px;
+  width: 100px;
+  background-color: $green;
+  opacity: 50%;
 }
 
 .card-image-info-wrapper {
-  padding: 0 0 8px 0;
+  flex-grow: 1;
+  padding: 10px 13px;;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  // justify-content: sp  ace-between;
 }
