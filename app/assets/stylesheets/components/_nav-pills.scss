@@ -1,7 +1,8 @@
 .nav-pills .nav-link.active {
-  background-color: $orange; opacity:1.0;
+  background-color: rgba($orange, 1);
+  scale: 1.1;
 }
 
 .nav-pills .nav-link {
-  background-color: $orange; opacity:0.6;
+  background-color: rgba($orange, 0.6);
 }

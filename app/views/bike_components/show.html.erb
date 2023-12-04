@@ -16,11 +16,11 @@
   <div class="comp-show-prog-container">
     <h2 data-progress-bar-target="time">
       <% if @bike_component.weeks_left > 2 %>
-        <%= @bike_component.weeks_left.to_i %> weeks until next check
+        <%= @bike_component.weeks_left.to_i %> weeks until check
       <% elsif @bike_component.weeks_left > 0 && @bike_component.weeks_left <= 2 %>
-        <%= @bike_component.days_left.to_i %> days until next check
+        <%= @bike_component.days_left.to_i %> days until check
       <% else %>
-        Check now! ⚠
+        Check now!
       <% end %>
     </h2>
 
@@ -38,7 +38,7 @@
     <div class="comp-advise-image"></div>
     <p><%= @bike_component.component.check_advice %></p>
     <p>If you feel this component needs replacing, either replace it yourself or use our handy Bike Shop Locator tool below!</p>
-    <%= link_to "Bike Shop Locator", bike_shops_path, class: "custom-btn green"%>
+    <%= link_to "Bike Shop Locator", shop_locator_path, class: "custom-btn green"%>
     </div>
   </div>
 </div>

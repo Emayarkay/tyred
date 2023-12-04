@@ -1,5 +1,13 @@
 .bike-name {
+  width: 100%;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
   h2 {
     font-weight: bold !important;
+    margin: 0;
+  }
+  a {
+    font-style: italic;
   }
 }

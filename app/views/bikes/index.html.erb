@@ -1,80 +1,101 @@
 <div class="page-container">
 
-  <h1>My Garage</h1>
+  <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist">
+    <% @bikes.each_with_index do |bike, index|  %>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link custom-btn <%= "active" if index == 0 %>" id="pills-<%= index %>-tab" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" type="button" role="tab" aria-controls="pills-<%= index %>" aria-selected="true"><%= bike.model %></button>
+      </li>
+    <% end %>
+  </ul>
 
-<ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
-<% @bikes.each_with_index do |bike, index|  %>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link custom-btn <%= "active" if index == 0 %>" id="pills-<%= index %>-tab" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" type="button" role="tab" aria-controls="pills-<%= index %>" aria-selected="true"><%= bike.model %></button>
-  </li>
-  <% end %>
-</ul>
+  <div class="tab-content" id="pills-tabContent">
+    <% @bikes.each_with_index do |bike, index|  %>
+      <div class="tab-pane fade show <%= "active" if index == 0 %>" id="pills-<%= index %>" role="tabpanel" aria-labelledby="pills-<%= index %>-tab" tabindex="0">
 
-<div class="tab-content" id="pills-tabContent">
-<% @bikes.each_with_index do |bike, index|  %>
-  <div class="tab-pane fade show <%= "active" if index == 0 %>" id="pills-<%= index %>" role="tabpanel" aria-labelledby="pills-<%= index %>-tab" tabindex="0">
+        <div class="bike-card">
 
-  <div class="bike-card">
-
-      <div class="bike-image-container">
-        <% if bike.photo.attached? %>
-          <%= cl_image_tag(bike.photo.key, class:"img-thumbnail") %>
-        <% else %>
-          <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg" %>
-        <% end %>
-      </div>
-
-      <div class="bike-name">
-        <% if bike.make != "" && bike.model != "" %>
-          <h2 class="py-3"> <%= bike.make %> <%= bike.model %> </h2>
-        <% elsif bike.make != "" && bike.model == "" %>
-          <h2 class="py-3">  <%= bike.make %> </h2>
-        <% elsif bike.make == "" && bike.model != "" %>
-          <h2 class="py-3"> <%= bike.model %> </h2>
-        <% else %>
-          <h2 class="py-3">My Bike</h2>
-        <% end %>
-      </div>
-
-      <% bike.bike_components.each do |bike_component| %>
-        <%= link_to bike_bike_component_path(bike, bike_component) do %>
-        <div class="component-card">
-          <div class="component-card-image">
-            <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
+          <div class="bike-name">
+            <% if bike.make != "" && bike.model != "" %>
+              <h2> <%= bike.make %> <%= bike.model %> </h2>
+            <% elsif bike.make != "" && bike.model == "" %>
+              <h2>  <%= bike.make %> </h2>
+            <% elsif bike.make == "" && bike.model != "" %>
+              <h2> <%= bike.model %> </h2>
+            <% else %>
+              <h2>My Bike</h2>
+            <% end %>
+            <div>
+              <%= link_to "Edit Bike", edit_bike_path(bike) %>
+              <%= link_to "Add Bike", new_bike_path %>
+            </div>
           </div>
-          <div class="card-image-info-wrapper">
-            <div class="progress-info">
-            <div class="component_name-and-delete d-flex justify-content-between">
-                   <h2> <%= bike_component.component.name %> </h2>
-               <%= link_to bike_bike_component_path(bike, bike_component), class: "text-decoration-none", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this part?" } do %>
-            <i class="fa-solid fa-xmark"></i>
-                <% end %>
-              </div>
-              <div class="progress-bar-text">
-                  <% if bike_component.weeks_left > 2%>
-                    <p> <%= bike_component.weeks_left.to_i %> weeks until check </p>
-                  <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
-                    <p> <%= bike_component.days_left.to_i %> days until check </p>
-                  <% else %>
-                    <p>Check now! ⚠</p>
-                  <% end %>
+
+          <div class="bike-image-container">
+            <% if bike.photo.attached? %>
+              <%= cl_image_tag(bike.photo.key, class:"img-thumbnail") %>
+            <% else %>
+              <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg" %>
+            <% end %>
+          </div>
+
+          <p style="text-align: right; font-style: italic"> <%= link_to "Add Component", new_bike_bike_component_path(bike) %> </p>
+
+          <% bike.bike_components.each do |bike_component| %>
+            <%= link_to bike_bike_component_path(bike, bike_component) do %>
+              <div class="component-card">
+
+                <div class="card-image-info-wrapper">
+                  <div class="component-card-image">
+                    <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
+                  </div>
+
+                  <div class="progress-info">
+                    <div class="component-name-and-delete">
+                      <h2> <%= bike_component.component.name %> </h2>
+                      <%= link_to bike_bike_component_path(bike, bike_component), class: "text-decoration-none", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this part?" } do %>
+                        <i class="fa-solid fa-xmark"></i>
+                      <% end %>
+                    </div>
+
+                    <div class="progress-bar-text">
+                      <% if bike_component.weeks_left > 2%>
+                        <p> <%= bike_component.weeks_left.to_i %> weeks until check </p>
+                      <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
+                        <p> <%= bike_component.days_left.to_i %> days until check </p>
+                      <% else %>
+                        <p>Check now! <span style="color: red">⚠</span></p>
+                      <% end %>
+                      <p>100km left until check</p>
+                    </div>
+                  </div>
+
                 </div>
-            </div>
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: <%= bike_component.time_progress_percentage %>%" aria-valuenow="<%= bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
+
+                <div class="bars">
+                  <div class="bar-names">
+                    <p class="time-text">Time >></p>
+                    <p class="distance-text">Distance >></p>
+                  </div>
+                  <div class="progress-bars-container">
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: <%= bike_component.time_progress_percentage %>%" aria-valuenow="<%= bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: <%= bike_component.time_progress_percentage %>%" aria-valuenow="<%= bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                </div>
+                </div>
               </div>
-            </div>
-          </div>
+            <% end %>
+          <% end %>
+
         </div>
-        <% end %>
-      <% end %>
+      </div>
+    <% end %>
 
-      <p> <%= link_to "Add Component", new_bike_bike_component_path(bike) %> </p>
-      <p> <%= link_to "Edit Bike", edit_bike_path(bike) %> </p>
-      <p> <%= link_to "Add a Bike", new_bike_path %> </p>
+  </div>
 
-    </div>
-  </div>
-  <% end %>
-  </div>
 </div>
