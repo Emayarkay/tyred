@@ -44,7 +44,12 @@
           </div>
           <div class="card-image-info-wrapper">
             <div class="progress-info">
-              <h2> <%= bike_component.component.name %> </h2>
+            <div class="component_name-and-delete d-flex justify-content-between">
+                   <h2> <%= bike_component.component.name %> </h2>
+               <%= link_to bike_bike_component_path(bike, bike_component), class: "text-decoration-none", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this part?" } do %>
+            <i class="fa-solid fa-trash"></i>
+                <% end %>
+              </div>
               <div class="progress-bar-text">
                   <% if bike_component.weeks_left > 2%>
                     <p> <%= bike_component.weeks_left.to_i %> weeks until check </p>
