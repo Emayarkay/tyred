@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @user = current_user
+    @strava_connected = @user.present? && @user.strava_connected?
   end
 
   def edit

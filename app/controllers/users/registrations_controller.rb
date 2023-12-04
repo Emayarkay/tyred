@@ -13,4 +13,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     end
   end
+
+  def after_update_path_for(resource)
+    user_path(resource)
+  end
 end
