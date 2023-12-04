@@ -13,8 +13,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  get '/shop_locator', to: 'pages#show'
-
   resources :users, only: %i[show]
   resources :bikes do
     resources :bike_components, except: :index
@@ -23,4 +21,5 @@ Rails.application.routes.draw do
     post 'apply_preset', on: :member
   end
   resources :checks, only: :update
+  resources :bike_shops, only: %i[index]
 end
