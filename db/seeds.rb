@@ -163,6 +163,42 @@ bike_component4.component = brake_pad
 bike_component4.bike = bike1
 bike_component4.save!
 
+bike_component5 = BikeComponent.create(
+  distance_travelled: 0.0,
+  custom_time_check_interval: 20,
+  date_added: Date.today - 16.weeks
+)
+bike_component5.component = chain
+bike_component5.bike = bike2
+bike_component5.save!
+
+bike_component6 = BikeComponent.create(
+  distance_travelled: 0.0,
+  custom_time_check_interval: 20,
+  date_added: Date.today - 16
+)
+bike_component6.component = front_tyre
+bike_component6.bike = bike2
+bike_component6.save!
+
+bike_component7 = BikeComponent.create(
+  distance_travelled: 0.0,
+  custom_time_check_interval: 20,
+  date_added: Date.today - 11
+)
+bike_component7.component = rear_tyre
+bike_component7.bike = bike2
+bike_component7.save!
+
+bike_component8 = BikeComponent.create(
+  distance_travelled: 0.0,
+  custom_time_check_interval: 20,
+  date_added: Date.today - 3.weeks
+)
+bike_component8.component = brake_pad
+bike_component8.bike = bike2
+bike_component8.save!
+
 puts "Finished Creating Bike Components"
 
 # checks

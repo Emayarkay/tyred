@@ -5,7 +5,7 @@
 <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
 <% @bikes.each_with_index do |bike, index|  %>
   <li class="nav-item" role="presentation">
-    <button class="nav-link custom-btn <%= "active" if index == 0 %>" id="pills-<%= index %>-tab" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" type="button" role="tab" aria-controls="pills-<%= index %>" aria-selected="true"><%= index + 1 %></button>
+    <button class="nav-link custom-btn <%= "active" if index == 0 %>" id="pills-<%= index %>-tab" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" type="button" role="tab" aria-controls="pills-<%= index %>" aria-selected="true"><%= bike.model %></button>
   </li>
   <% end %>
 </ul>
@@ -39,12 +39,17 @@
       <% bike.bike_components.each do |bike_component| %>
         <%= link_to bike_bike_component_path(bike, bike_component) do %>
         <div class="component-card">
-          <div class="card-image-info-wrapper">
-            <div class="component-card-image">
+          <div class="component-card-image">
             <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
-            </div>
+          </div>
+          <div class="card-image-info-wrapper">
             <div class="progress-info">
-              <h2> <%= bike_component.component.name %> </h2>
+            <div class="component_name-and-delete d-flex justify-content-between">
+                   <h2> <%= bike_component.component.name %> </h2>
+               <%= link_to bike_bike_component_path(bike, bike_component), class: "text-decoration-none", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this part?" } do %>
+            <i class="fa-solid fa-xmark"></i>
+                <% end %>
+              </div>
               <div class="progress-bar-text">
                   <% if bike_component.weeks_left > 2%>
                     <p> <%= bike_component.weeks_left.to_i %> weeks until check </p>
@@ -55,11 +60,11 @@
                   <% end %>
                 </div>
             </div>
-          </div>
             <div class="progress">
               <div class="progress-bar" role="progressbar" style="width: <%= bike_component.time_progress_percentage %>%" aria-valuenow="<%= bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
               </div>
             </div>
+          </div>
         </div>
         <% end %>
       <% end %>
