@@ -1,6 +1,6 @@
 <div class="page-container">
 
-  <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist">
+  <ul class="nav nav-pills justify-content-center <%= "d-none" if current_user.bikes.count < 2 %>" id="pills-tab" role="tablist">
     <% @bikes.each_with_index do |bike, index|  %>
       <li class="nav-item" role="presentation">
         <button class="nav-link custom-btn <%= "active" if index == 0 %>" id="pills-<%= index %>-tab" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" type="button" role="tab" aria-controls="pills-<%= index %>" aria-selected="true"><%= bike.model %></button>
@@ -25,8 +25,12 @@
               <h2>My Bike</h2>
             <% end %>
             <div>
-              <%= link_to "Edit Bike", edit_bike_path(bike) %>
-              <%= link_to "Add Bike", new_bike_path %>
+              <%= link_to edit_bike_path(bike), class: "text-decoration-none" do %>
+                <i class="fa-solid fa-pen"></i>
+              <% end %>
+              <%= link_to new_bike_path, class: "text-decoration-none" do %>
+                <i class="fa-solid fa-plus"></i>
+              <% end %>
             </div>
           </div>
 
