@@ -38,7 +38,7 @@
               <% if bike.photo.attached? %>
                 <%= cl_image_tag(bike.photo.key, class:"img-thumbnail") %>
               <% else %>
-                <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg" %>
+                <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg", :class => "img-thumbnail" %>
               <% end %>
             </div>
 
