@@ -2,10 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="progress-bar"
 export default class extends Controller {
-  static targets = ["bar", "time"]
+  static targets = ["bar", "time", "distance", "distance_bar"]
   static values = {
     url: String,
-    time: Number
+    time: Number,
+    distance: Number
   }
 
   connect() {
@@ -25,12 +26,15 @@ export default class extends Controller {
         this.#updateBikeComponent()
         this.barTarget.ariaValueNow = 100
         this.barTarget.style.cssText = "width: 100%;"
+        this.distance_barTarget.ariaValueNow = 100
+        this.distance_barTarget.style.cssText = "width: 100%;"
         // this.barTarget.innerText = `${this.timeValue} weeks`
         if (this.timeValue <= 1) {
           this.timeTarget.innerText = `${this.timeValue * 7} days until next check`
         } else {
           this.timeTarget.innerText = `${this.timeValue} weeks until next check`
         }
+        this.distanceTarget.innerText = `${this.distanceValue}km until next check`
       }
     });
   }

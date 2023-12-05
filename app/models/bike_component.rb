@@ -19,9 +19,24 @@ class BikeComponent < ApplicationRecord
     component.time_until_check - ((Date.today - date_added) / 7).to_i
   end
 
+  def travelled_distance
+    if bike.user.strava_connected?
+      bike.user.strava_service.calculate_total_distance(since_date: date_added )
+    else
+      0
+    end
+  end
+
   def distance_left
     # unfinished
-    component.distance_until_check
+    # "max distance: #{component.distance_until_check} MINUS travelled_distance: #{bike.user.strava_service.calculate_total_distance(since_date: date_added )}"
+    component.distance_until_check - travelled_distance
+  end
+
+  def distance_progress_percentage
+    distance_progress_percentage = (distance_left / component.distance_until_check) * 100
+
+    distance_progress_percentage <= 0 ? 0 : distance_progress_percentage
   end
 
   def time_progress_percentage
@@ -32,5 +47,9 @@ class BikeComponent < ApplicationRecord
 
   def time_until_check
     component.time_until_check
+  end
+
+  def distance_until_check
+    component.distance_until_check
   end
 end

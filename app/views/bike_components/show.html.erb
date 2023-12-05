@@ -1,4 +1,4 @@
-<div class="page-container" data-controller="progress-bar" data-progress-bar-url-value="<%= bike_bike_component_url(@bike, @bike_component) %>" data-progress-bar-time-value="<%= @bike_component.time_until_check %>">
+<div class="page-container" data-controller="progress-bar" data-progress-bar-url-value="<%= bike_bike_component_url(@bike, @bike_component) %>" data-progress-bar-time-value="<%= @bike_component.time_until_check %>" data-progress-bar-distance-value="<%= @bike_component.distance_until_check %>">
 
   <div class="comp-show-page-header">
 
@@ -26,6 +26,23 @@
 
     <div class="progress">
       <div class="progress-bar" role="progressbar" data-progress-bar-target="bar" style="width: <%= @bike_component.time_progress_percentage %>%" aria-valuenow="<%= @bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+  </div>
+
+  <div class="comp-show-prog-container">
+    <h2 data-progress-bar-target="distance">
+      <% distance_percentage = @bike_component.distance_progress_percentage %>
+      <% if distance_percentage < 1%>
+        Check now!
+      <% else %>
+        <%= @bike_component.distance_left.round %> km until check
+      <% end %>
+
+    </h2>
+
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" data-progress-bar-target="distance_bar" style="width: <%= distance_percentage %>%" aria-valuenow="<%= distance_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
 
   </div>

@@ -29,7 +29,7 @@ puts "Creating Bikes"
 bike1 = Bike.create(
   make: "Specialized",
   model: "Allez",
-  user_id: user1.id
+  user_id: user2.id
 )
 bike1.photo.attach(io: File.open('app/assets/images/specialized_allez.jpg'), filename: "specialized-allez.jpg", content_type: "image/jpg")
 puts "Created #{bike1.make}"
@@ -37,7 +37,7 @@ puts "Created #{bike1.make}"
 bike2 = Bike.create(
   make: "Nero",
   model: "Cappuccino",
-  user_id: user1.id
+  user_id: user2.id
 )
 bike2.photo.attach(io: File.open('app/assets/images/nero_cappuccino.jpg'), filename: "nero_cappuccino.jpg", content_type: "image/jpg")
 puts "Created #{bike2.make}"
@@ -240,7 +240,7 @@ shop2 = BikeShop.create(
   name: "Brick Lane Bikes",
   location: "Shoreditch",
   rating: 3,
-  website: "www.bricklanebikes.com",
+  website: "www.bricklanebikes.co.uk",
   phone_number: "020 3020 3002"
 )
 shop2.photo.attach(io: File.open("app/assets/images/blb.jpg"), filename: 'blb.jpg', content_type: 'image/jpg')
@@ -258,7 +258,7 @@ shop4 = BikeShop.create(
   name: "L' Atelier Du Vélo",
   location: "Dulwich",
   rating: 5,
-  website: "www.lduvelo.com",
+  website: "www.latelier.cc",
   phone_number: "020 3434 5665"
 )
 shop4.photo.attach(io: File.open("app/assets/images/latelier.jpg"), filename: 'latelier.jpg', content_type: 'image/jpg')
@@ -267,7 +267,7 @@ shop5 = BikeShop.create(
   name: "Brixton Cycles",
   location: "Brixton",
   rating: 4,
-  website: "www.brixtoncycles.com",
+  website: "www.brixtoncycles.co.uk",
   phone_number: "020 7733 6055"
 )
 shop5.photo.attach(io: File.open("app/assets/images/brixton.jpg"), filename: 'brixton.jpg', content_type: 'image/jpg')
@@ -276,28 +276,19 @@ shop6 = BikeShop.create(
   name: "Bon Velo",
   location: "Herne Hill",
   rating: 4,
-  website: "www.bonvelo.com",
+  website: "www.bonvelo.co.uk",
   phone_number: "020 5661 1002"
 )
 shop6.photo.attach(io: File.open("app/assets/images/bon.jpg"), filename: 'bon.jpg', content_type: 'image/jpg')
 
 shop7 = BikeShop.create(
-  name: "Edwardes",
-  location: "Camberwell",
-  rating: 2,
-  website: "www.edwardes.com",
-  phone_number: "020 7703 3676"
-)
-shop7.photo.attach(io: File.open("app/assets/images/edwardes.jpg"), filename: 'edwardes.jpg', content_type: 'image/jpg')
-
-shop8 = BikeShop.create(
   name: "SBC Cycles",
   location: "Hoxton",
   rating: 5,
   website: "www.sbccycles.com",
   phone_number: "020 7253 0339"
 )
-shop8.photo.attach(io: File.open("app/assets/images/sbc-cycles.jpg"), filename: 'sbc-cycles.jpg', content_type: 'image/jpg')
+shop7.photo.attach(io: File.open("app/assets/images/sbc-cycles.jpg"), filename: 'sbc-cycles.jpg', content_type: 'image/jpg')
 
 puts "Finished Creating Bike Shops"
 
