@@ -41,7 +41,7 @@
                 <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg" %>
               <% end %>
             </div>
-            
+
             <p style="text-align: right; font-style: italic"> <%= link_to "Add Component", new_bike_bike_component_path(bike) %> </p>
 
           <% bike.bike_components.each do |bike_component| %>
@@ -51,6 +51,8 @@
                 <div class="card-image-info-wrapper">
                     <div class="component-card-image">
                       <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
+                      </div>
+
                   <div class="progress-info">
                     <div class="component-name-and-delete">
                       <h2> <%= bike_component.component.name %> </h2>
@@ -58,16 +60,8 @@
                         <button class="component-delete-button" data-action="click->delete-check#delete_component"><i class="fa-solid fa-xmark"></i></button>
                         <%= link_to "", bike_bike_component_path(bike, bike_component), class: "text-decoration-none d-none", data: { 'delete-check-target' => 'icon', turbo_method: :delete } %>
                       </div>
-
                     </div>
 
-                    <div class="progress-info">
-                      <div class="component-name-and-delete">
-                        <h2> <%= bike_component.component.name %> </h2>
-                        <%= link_to bike_bike_component_path(bike, bike_component), class: "text-decoration-none", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this part?" } do %>
-                          <i class="fa-solid fa-xmark"></i>
-                        <% end %>
-                      </div>
 
                       <div class="progress-bar-text">
                         <% if bike_component.weeks_left > 2%>
@@ -87,6 +81,7 @@
                       </div>
                     </div>
                   </div>
+
 
                     <div class="bars">
                       <div class="bar-names">
