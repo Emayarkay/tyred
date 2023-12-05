@@ -2,10 +2,10 @@ class BikeShopsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-
+    @distance_to_location = {}
 
     if params[:search].present? && params[:search][:location].present?
-      @location = Geocoder.coordinates(params[:search][:location])
+      @location = Geocoder.search(request.ip)&.first&.coordinates
       if @location
         @bike_shops = BikeShop.near(@location, 10) # Search within 10 miles, adjust as needed
         @distance_to_location = {} # Store distances for each shop
@@ -47,18 +47,5 @@ class BikeShopsController < ApplicationController
   end
 
 
-def search
-  if params[:location].present?
-    @location = Geocoder.coordinates(params[:location])
-    if @location
-      @bike_shops = BikeShop.near(@location, 10) # Search within 10 miles, adjust as needed
-    else
-      flash[:alert] = "Invalid location. Please enter a valid address."
-      redirect_to bike_shops_path # Redirect to the bike shops index or another relevant page
-      return # Make sure to return here to prevent further execution
-    end
-  else
-    @bike_shops = BikeShop.all
-  end
-end
+
 end

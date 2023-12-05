@@ -1,7 +1,3 @@
-<head>
-<script src="/app/javascript/controllers/location.js"></script>
-</head>
-
 <div class="page-container" data-controller="search-bar" data-search-bar-url-value="<%=bike_shops_url%>">
 
   <h1>Bike Shop Locator</h1>
@@ -15,6 +11,8 @@
             action: "keyup->search-bar#search"
           }
       %>
+    <button id="zoomToCurrentLocation" class="btn btn-primary">Zoom to Current Location</button>
+
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
   </div>
@@ -25,7 +23,7 @@
     data-map-markers-value="<%= @markers.to_json %>"
     data-search-bar-target="map"
     data-action="updateSearch@window->map#updateSearch"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-action='click->map#zoomMap'>
     </div>
   </div>
 
@@ -47,6 +45,7 @@
     <% @bike_shops.each do |bike_shop| %>
       <div class="bike_shop">
         <h2><%= bike_shop.name %></h2>
+        <p>Proximity: <%= @distance_to_location[bike_shop.id] %> miles</p>
         <!-- Render other bike shop information here -->
       </div>
     <% end %>
