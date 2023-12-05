@@ -6,12 +6,13 @@
     <%= simple_form_for @bike do |f| %>
       <%= f.input :make, label: 'Make' %>
       <%= f.input :model, label: 'Model' %>
-      <%= f.submit value: 'Add Bike to My Garage' %>
+      <%= f.input :photos, as: :file, input_html: { multiple: false }, label: 'Upload a photo' %>
+      <%= f.submit value: 'Confirm Changes', class: 'custom-btn green' %>
     <% end %>
   </div>
 
   <div data-controller="delete-check">
-    <button data-action="click->delete-check#delete", class="custom-btn red">
+    <button data-action="click->delete-check#delete_bike", class="custom-btn red">
       Delete This Bike
     </button>
     <%# this link is triggered by stimulus (delete-check) %>

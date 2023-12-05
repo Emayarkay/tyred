@@ -281,6 +281,15 @@ shop6 = BikeShop.create(
 )
 shop6.photo.attach(io: File.open("app/assets/images/bon.jpg"), filename: 'bon.jpg', content_type: 'image/jpg')
 
+shop7 = BikeShop.create(
+  name: "SBC Cycles",
+  location: "Hoxton",
+  rating: 5,
+  website: "www.sbccycles.com",
+  phone_number: "020 7253 0339"
+)
+shop7.photo.attach(io: File.open("app/assets/images/sbc-cycles.jpg"), filename: 'sbc-cycles.jpg', content_type: 'image/jpg')
+
 puts "Finished Creating Bike Shops"
 
 puts "Finished!"

@@ -6,7 +6,7 @@
     <%= simple_form_for @bike do |f| %>
       <%= f.input :make, label: 'Make' %>
       <%= f.input :model, label: 'Model' %>
-      <%= f.input :photos, as: :file, input_html: { multiple: false } %>
+      <%= f.input :photos, as: :file, input_html: { multiple: false }, label: 'Upload a photo' %>
       <%= f.submit value: 'Add Bike to My Garage' %>
     <% end %>
   </div>

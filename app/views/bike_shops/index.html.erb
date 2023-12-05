@@ -1,6 +1,5 @@
 <div class="page-container" data-controller="search-bar" data-search-bar-url-value="<%=bike_shops_url%>">
 
-  <h1>Bike Shop Locator</h1>
   <div class="search_shops">
     <%= form_with url: bike_shops_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,

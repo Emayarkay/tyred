@@ -41,16 +41,24 @@
                 <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg" %>
               <% end %>
             </div>
-
+            
             <p style="text-align: right; font-style: italic"> <%= link_to "Add Component", new_bike_bike_component_path(bike) %> </p>
 
-            <% bike.bike_components.each do |bike_component| %>
-              <%= link_to bike_bike_component_path(bike, bike_component) do %>
-                <div class="component-card">
+          <% bike.bike_components.each do |bike_component| %>
+            <%= link_to bike_bike_component_path(bike, bike_component) do %>
+              <div class="component-card" data-controller="delete-check">
 
-                  <div class="card-image-info-wrapper">
+                <div class="card-image-info-wrapper">
                     <div class="component-card-image">
                       <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
+                  <div class="progress-info">
+                    <div class="component-name-and-delete">
+                      <h2> <%= bike_component.component.name %> </h2>
+                      <div>
+                        <button class="component-delete-button" data-action="click->delete-check#delete_component"><i class="fa-solid fa-xmark"></i></button>
+                        <%= link_to "", bike_bike_component_path(bike, bike_component), class: "text-decoration-none d-none", data: { 'delete-check-target' => 'icon', turbo_method: :delete } %>
+                      </div>
+
                     </div>
 
                     <div class="progress-info">
