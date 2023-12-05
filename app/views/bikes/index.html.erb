@@ -61,16 +61,21 @@
                         <% end %>
                       </div>
 
-                      <div class="progress-bar-text">
-                        <% if bike_component.weeks_left > 2%>
-                          <p> <%= bike_component.weeks_left.to_i %> weeks until check </p>
-                        <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
-                          <p> <%= bike_component.days_left.to_i %> days until check </p>
-                        <% else %>
-                          <p>Check now! <span style="color: red">⚠</span></p>
-                        <% end %>
-                        <p>100km left until check</p>
-                      </div>
+                    <div class="progress-bar-text">
+                      <% if bike_component.weeks_left > 2%>
+                        <p> <%= bike_component.weeks_left.to_i %> weeks until check </p>
+                      <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
+                        <p> <%= bike_component.days_left.to_i %> days until check </p>
+                      <% else %>
+                        <p>Check now! <span style="color: red">⚠</span></p>
+                      <% end %>
+
+                      <% distance_percentage = bike_component.distance_progress_percentage %>
+                      <% if distance_percentage < 1%>
+                       <p>Check now!</p>
+                      <% else %>
+                       <p><%= bike_component.distance_left.round %> km until check</p>
+                      <% end %>
                     </div>
 
                   </div>
@@ -86,10 +91,10 @@
                       </div>
                     </div>
 
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: <%= bike_component.time_progress_percentage %>%" aria-valuenow="<%= bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
-                      </div>
-                    </div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" data-progress-bar-target="distance_bar" style="width: <%= distance_percentage %>%" aria-valuenow="<%= distance_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                      
                   </div>
                   </div>
                 </div>
