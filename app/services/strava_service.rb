@@ -27,4 +27,3 @@ class StravaService < ApplicationService
     end.fdiv(1_000)
   end
 end
-# current_user.strava_service.calculate_total_distance(since_date: Date.new(2020, 1, 1))

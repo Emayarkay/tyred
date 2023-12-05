@@ -69,7 +69,13 @@
                       <% else %>
                         <p>Check now! <span style="color: red">⚠</span></p>
                       <% end %>
-                      <p>100km left until check</p>
+
+                      <% distance_percentage = bike_component.distance_progress_percentage %>
+                      <% if distance_percentage < 1%>
+                       <p>Check now!</p>
+                      <% else %>
+                       <p><%= bike_component.distance_left.round %> km until check</p>
+                      <% end %>
                     </div>
                   </div>
 
@@ -87,8 +93,8 @@
                   </div>
 
                   <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: <%= bike_component.time_progress_percentage %>%" aria-valuenow="<%= bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
-                    </div>
+                    <div class="progress-bar" role="progressbar" data-progress-bar-target="distance_bar" style="width: <%= distance_percentage %>%" aria-valuenow="<%= distance_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
                   </div>
                 </div>
                 </div>

@@ -38,6 +38,7 @@
 
 .bike-card {
   margin: 24px 0;
+
 }
 
 .component-card {
@@ -45,9 +46,11 @@
   height: auto;
   margin-bottom: 16px;
   background-color: white;
+
   padding: 8px;
   border-radius: 16px;
   overflow: hidden;
+  // border: 3px solid red;
   box-shadow: 0 0 1px $green;
   .progress-bar-text {
     text-align: left;
