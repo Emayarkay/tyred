@@ -20,7 +20,11 @@ class BikeComponent < ApplicationRecord
   end
 
   def travelled_distance
-    bike.user.strava_service.calculate_total_distance(since_date: date_added )
+    if bike.user.strava_connected?
+      bike.user.strava_service.calculate_total_distance(since_date: date_added )
+    else
+      0
+    end
   end
 
   def distance_left
