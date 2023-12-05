@@ -54,26 +54,22 @@
   margin: 16px 0;
 }
 
-// .bike_image_container {
-//   width: 20%;
-//   height: 5vh;
-//   margin: 32px 0;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
+.bike-image-container {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  padding: 0;
+  margin: 16px 0;
+  img {
+    border-radius: 16px;
+    margin: 0;
+    padding: 0;
+  }
+}
 
 .container_shops {
   width: 100%;
   height: auto;
-}
-
-.bike-image-container {
-  width: 100%;
-  height: auto;
-  img {
-    padding: 0;
-  }
 }
 
 .comp-show-page-header {

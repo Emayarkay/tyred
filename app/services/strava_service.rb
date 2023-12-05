@@ -1,19 +1,30 @@
-class StravaService
- # def fetch_strava_data(access_token)
-   # client = Strava::Api::V3::Client.new(access_token: access_token)
+class StravaService < ApplicationService
+  attr_reader :user, :access_token
 
-    # Fetch a specific activity by its ID
- #   activity_id = ''
- #   activity = client.retrieve_an_activity(activity_id)
+  def initialize(user_id:)
+    @user = User.find(user_id)
+    @access_token = @user.access_token
+  end
 
- #   if activity
-  #    distance = activity['distance'] # Distance in meters
-   #   distance_in_km = distance / 1000.0 # Convert meters to kilometers
-    #  distance_in_miles = distance * 0.000621371 # Convert meters to miles
+  def client
+    Strava::Api::Client.new(access_token: access_token)
+  end
 
-  #    puts "Distance: #{distance_in_km} km or #{distance_in_miles} miles"
-  #  else
-  #    puts 'Activity not found'
- #   end
-#  end
+  def calculate_total_distance(since_date:)
+    page = 1
+    sum = 0
+    activities = []
+    collection = client.athlete_activities(after: since_date.to_time.to_i, per_page: 30, page: page).collection
+    activities << collection
+
+    while collection.any?
+      page += 1
+      collection = client.athlete_activities(after: since_date.to_time.to_i, per_page: 30, page: page).collection
+      activities << collection
+    end
+    activities.flatten.sum do |activity|
+      activity["distance"]
+    end.fdiv(1_000)
+  end
 end
+# current_user.strava_service.calculate_total_distance(since_date: Date.new(2020, 1, 1))

@@ -42,29 +42,66 @@
 
 .component-card {
   width: 100%;
+  height: auto;
   margin-bottom: 16px;
   background-color: white;
+  padding: 8px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 0 1px $green;
-  display: flex;
-  align-items: center;
   .progress-bar-text {
     text-align: left;
+    p {
+      margin-top: 5px;
+    }
   }
 }
 
 .component-card-image {
-  background-color: $green;
+  width: 100px;
+  aspect-ratio: 1;
+  background-color: rgba($green, .3);
+  border-radius: 8px;
 }
 
 .component-card-image img {
   width: 100px;
+  aspect-ratio: 1;
 }
 
 .card-image-info-wrapper {
-  flex-grow: 1;
-  padding: 10px 13px;;
+  // padding: 10px 13px;
   display: flex;
-  flex-direction: column;
+}
+
+.bars {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.bar-names {
+  width: 100px;
+  text-align: right;
+  p {
+    margin: 8px 0 0 0;
+  }
+}
+
+.component-name-and-delete {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 8px;
+  h2 {
+    flex-grow: 1;
+  }
+}
+
+.fa-solid {
+  font-size: 24px;
+  margin: 0;
+  padding-right: 3px;
 }
