@@ -31,7 +31,7 @@ export default class extends Controller {
         crd.latitude,
         crd.longitude
       )
-      this.distanceTarget.innerHTML = `${distance.toFixed(1)} km`
+      this.distanceTarget.innerHTML = `${distance.toFixed(1)} km away`
     } else {
       this.distanceTarget.innerHTML = "Cannot determine distance"
     }
