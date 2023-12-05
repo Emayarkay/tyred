@@ -240,7 +240,7 @@ shop2 = BikeShop.create(
   name: "Brick Lane Bikes",
   location: "Shoreditch",
   rating: 3,
-  website: "www.bricklanebikes.com",
+  website: "www.bricklanebikes.co.uk",
   phone_number: "020 3020 3002"
 )
 shop2.photo.attach(io: File.open("app/assets/images/blb.jpg"), filename: 'blb.jpg', content_type: 'image/jpg')
@@ -258,7 +258,7 @@ shop4 = BikeShop.create(
   name: "L' Atelier Du Vélo",
   location: "Dulwich",
   rating: 5,
-  website: "www.lduvelo.com",
+  website: "www.latelier.cc",
   phone_number: "020 3434 5665"
 )
 shop4.photo.attach(io: File.open("app/assets/images/latelier.jpg"), filename: 'latelier.jpg', content_type: 'image/jpg')
@@ -267,7 +267,7 @@ shop5 = BikeShop.create(
   name: "Brixton Cycles",
   location: "Brixton",
   rating: 4,
-  website: "www.brixtoncycles.com",
+  website: "www.brixtoncycles.co.uk",
   phone_number: "020 7733 6055"
 )
 shop5.photo.attach(io: File.open("app/assets/images/brixton.jpg"), filename: 'brixton.jpg', content_type: 'image/jpg')
@@ -276,19 +276,10 @@ shop6 = BikeShop.create(
   name: "Bon Velo",
   location: "Herne Hill",
   rating: 4,
-  website: "www.bonvelo.com",
+  website: "www.bonvelo.co.uk",
   phone_number: "020 5661 1002"
 )
 shop6.photo.attach(io: File.open("app/assets/images/bon.jpg"), filename: 'bon.jpg', content_type: 'image/jpg')
-
-shop7 = BikeShop.create(
-  name: "Edwardes",
-  location: "Camberwell",
-  rating: 2,
-  website: "www.edwardes.com",
-  phone_number: "020 7703 3676"
-)
-shop7.photo.attach(io: File.open("app/assets/images/edwardes.jpg"), filename: 'edwardes.jpg', content_type: 'image/jpg')
 
 puts "Finished Creating Bike Shops"
 
