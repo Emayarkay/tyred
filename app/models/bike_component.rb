@@ -34,9 +34,11 @@ class BikeComponent < ApplicationRecord
   end
 
   def distance_progress_percentage
-    distance_progress_percentage = (distance_left / component.distance_until_check) * 100
+    # return 0
 
-    distance_progress_percentage <= 0 ? 0 : distance_progress_percentage
+    distance_progress_percentage_result = (distance_left / component.distance_until_check) * 100
+
+    distance_progress_percentage_result <= 0 ? 0 : distance_progress_percentage_result
   end
 
   def time_progress_percentage
@@ -51,5 +53,12 @@ class BikeComponent < ApplicationRecord
 
   def distance_until_check
     component.distance_until_check
+
+    # to do
+    # if super.blank?
+    #   component.distance_until_check
+    # else
+    #   super
+    # end
   end
 end
