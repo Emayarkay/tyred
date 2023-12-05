@@ -24,12 +24,9 @@
               <% else %>
                 <h2>My Bike</h2>
               <% end %>
-              <div>
-                <%= link_to edit_bike_path(bike), class: "text-decoration-none" do %>
+              <div class="bike-options d-flex">
+                <%= link_to edit_bike_path(bike), class: "text-decoration-none pen-icon" do %>
                   <i class="fa-solid fa-pen"></i>
-                <% end %>
-                <%= link_to new_bike_path, class: "text-decoration-none" do %>
-                  <i class="fa-solid fa-plus"></i>
                 <% end %>
               </div>
             </div>
