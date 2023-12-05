@@ -1,7 +1,7 @@
 .navbar {
   width: 100%;
   height: 75px;
-  position: sticky;
+  position: fixed;
   bottom: 0px;
   background-color: $orange;
   color: $ivory;
@@ -14,4 +14,9 @@
     color: $ivory;
     font-weight: 700;
   }
+}
+
+.nav-button {
+  width: 114px;
+  text-align: center;
 }
