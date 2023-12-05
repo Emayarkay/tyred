@@ -1,3 +1,7 @@
+<head>
+<script src="/app/javascript/controllers/location.js"></script>
+</head>
+
 <div class="page-container" data-controller="search-bar" data-search-bar-url-value="<%=bike_shops_url%>">
 
   <h1>Bike Shop Locator</h1>
@@ -27,6 +31,28 @@
 
   <div class="container_shops" data-search-bar-target="cards">
      <%= render "bike_shops/list", bike_shops: @bike_shops %>
-  </div>
+
+
+  <%= form_tag(search_bike_shops_path, method: "get") do %>
+  <%= text_field_tag :location, params[:location], placeholder: "Enter location" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+
+  <% @bike_shops.each do |place| %>
+  <!-- Display place information -->
+   <% end %>
+
+   <% if @bike_shops.present? %>
+    <% @bike_shops.each do |bike_shop| %>
+      <div class="bike_shop">
+        <h2><%= bike_shop.name %></h2>
+        <!-- Render other bike shop information here -->
+      </div>
+    <% end %>
+  <% else %>
+    <p>No bike shops found.</p>
+    <!-- Handle other cases when @bike_shops is nil or empty -->
+  <% end %>
 
 </div>

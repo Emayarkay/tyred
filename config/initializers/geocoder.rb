@@ -24,4 +24,9 @@ Geocoder.configure(
   #   expiration: 2.days,
   #   prefix: 'geocoder:'
   # }
-)
+
+    lookup: :mapbox,
+    api_key: 'pk.eyJ1IjoiZW1heWFya2F5IiwiYSI6ImNscGI0MHZ3ZjBhcmgycWxzZ29uYjI1NjEifQ.0Mkj2ArEkyQ7_9IUaSRTUw
+    ',
+    timeout: 15 # Set timeout limit as needed
+  )

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   get '/fetch_distances', to: 'strava#fetch_distances'
   get '/fetch_auth_token', to: "strava#fetch_auth_token"
+  get '/bike_shops/search', to: 'bike_shops#search', as: 'search_bike_shops'
+
 
   root to: 'bikes#index'
   # root to: "pages#home"
