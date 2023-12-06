@@ -52,7 +52,11 @@
 
                   <div class="card-image-info-wrapper">
                     <div class="component-card-image">
+                      <% if bike_component.component.icon.present? %>
                       <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
+                      <% else %>
+                      <%= image_tag "custom-component-icon.png", class:"bike-component-image" %>
+                      <% end %>
                     </div>
 
                       <div class="progress-info">

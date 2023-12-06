@@ -1,24 +1,27 @@
 <div class="page-container">
   <h2>New Bike Component Page</h2>
 
-  <%= form_tag(apply_preset_bike_path(@bike), method: :post) do %>
-    <%= select_tag 'preset', options_for_select(['Preset 1', 'Preset 2', 'Preset 3']) %>
-    <%= submit_tag 'Apply Preset' %>
-  <% end %>
-
-  <% @components.each do |component| %>
-    <% if component.custom == false %>
-      <%= component.name %>
+  <div data-controller="autofill">
+  <div>
+    <%= form_tag(apply_preset_bike_path(@bike), method: :post) do %>
+      <%= select_tag 'preset', options_for_select(@components.map do |component|
+        if component.custom == false
+          [component.name, component_url(component)]
+        end
+      end), data: { autofill_target: 'component' } %>
+      <br>
+      <%= submit_tag 'Apply Preset', data: { 'action' => 'click->autofill#autofill' }, class: 'custom-btn green' %>
     <% end %>
-  <% end %>
+  </div>
 
   <div>
     <%= simple_form_for [@bike, @component] do |f| %>
-      <%= f.input :name, label: 'Name' %>
-      <%= f.input :time_until_check, label: 'How much time before you check this component?' %>
-      <%= f.input :distance_until_check, label: 'How much distance before you check this component?' %>
-      <%= f.input :check_advice, label: 'Description for how to check this component' %>
-      <%= f.submit value: 'Add this component to your bike' %>
+      <%= f.input :name, label: 'Component Name', input_html: { data: { autofill_target: 'name' } } %>
+      <%= f.input :time_until_check, label: 'Set the time between each check:', input_html: { data: { autofill_target: 'time' } } %>
+      <%= f.input :distance_until_check, label: 'Set the range between each check:', input_html: { data: { autofill_target: 'distance' } } %>
+      <%= f.input :check_advice, label: 'Add a description for how to check this component (optional):', input_html: { rows: 5, data: { autofill_target: 'description' } } %>
+      <%= f.submit value: 'Add this component to your bike', class: 'custom-btn green' %>
     <% end %>
+  </div>
   </div>
 </div>
