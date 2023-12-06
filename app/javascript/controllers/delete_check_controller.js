@@ -8,7 +8,6 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("hello from delete check")
   }
 
 

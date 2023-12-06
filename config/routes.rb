@@ -19,11 +19,12 @@ Rails.application.routes.draw do
     post 'sync_strava', on: :collection
   end
   resources :bikes do
-    resources :bike_components, except: [:index, :destroy]
+    resources :bike_components, except: %i[index destroy]
     resources :components, only: :create
     patch 'reset_meter', on: :member
     post 'apply_preset', on: :member
   end
+  resources :components, only: :show
   resources :checks, only: :update
   resources :bike_components, only: :destroy
   resources :bike_shops, only: %i[index]

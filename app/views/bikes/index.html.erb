@@ -47,10 +47,14 @@
               <%= link_to bike_bike_component_path(bike, bike_component) do %>
                 <div class="component-card" data-controller="delete-check" data-delete-check-path-value='bike_components/<%= bike_component.id %>'>
 
-                <div class="card-image-info-wrapper">
-                  <div class="component-card-image">
-                    <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
-                  </div>
+                  <div class="card-image-info-wrapper">
+                    <div class="component-card-image">
+                      <% if bike_component.component.icon.present? %>
+                      <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
+                      <% else %>
+                      <%= image_tag "custom-component-icon.png", class:"bike-component-image" %>
+                      <% end %>
+                    </div>
 
                       <div class="progress-info">
                         <div class="component-name-and-delete">
