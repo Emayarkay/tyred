@@ -40,7 +40,14 @@ class BikeComponentsController < ApplicationController
   def destroy
     @bikecomponent = BikeComponent.find(params[:id])
     @bikecomponent.destroy
-    redirect_to bike_path
+    respond_to do |format|
+      format.html do
+        redirect_to bike_path
+      end
+      format.text do
+        head :ok
+      end
+    end
   end
 
   private
