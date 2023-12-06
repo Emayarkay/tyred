@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center pt-4">
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Edit Profile</h2>
 </div>
 <div class="page-container">
 
@@ -13,11 +13,11 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password,
+    <%= f.input :new_password,
                 hint: "Leave it blank if you don't want to change it",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+    <%= f.input :confirm_password,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
