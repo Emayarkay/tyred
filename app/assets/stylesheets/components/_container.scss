@@ -32,7 +32,7 @@
 .profile-info-container {
   width: 100%;
   height: auto;
-  flex-grow: 1;
+  margin-bottom: 16px;
 }
 
 .profile-button-container {
@@ -83,7 +83,7 @@
   height: 100%;
   aspect-ratio: 1;
   text-align: left;
-  position: fixed;
+  // position: fixed;
 }
 
 .comp-show-title {

@@ -65,10 +65,11 @@
   aspect-ratio: 1;
   background-color: rgba($green, .3);
   border-radius: 8px;
+  padding: 8px;
 }
 
 .component-card-image img {
-  width: 100px;
+  width: 100%;
   aspect-ratio: 1;
 }
 

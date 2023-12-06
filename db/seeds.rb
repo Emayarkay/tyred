@@ -53,7 +53,7 @@ puts "Created #{bike3.make}"
 bike4 = Bike.create(
   make: "Mango",
   model: "Disc Brake Commuter Bike",
-  user_id: user2.id
+  user_id: user3.id
 )
 bike4.photo.attach(io: File.open('app/assets/images/mango.jpg'), filename: "mango.jpg", content_type: "image/jpg")
 puts "Created #{bike4.make}"
@@ -76,7 +76,7 @@ chain = Component.create(
   name: "Chain",
   time_until_check: 4.0, # weeks
   distance_until_check: 400.0,
-  check_advice: "You can check for chain wear with a ruler. It's a little easier if you go with imperial measurement here because one complete chain link of a standard chain measures 1in. Start at one link pin and measure 12 complete links. You need to put some tension on the chain to be accurate. On a standard new chain, 12 complete links will measure 12in, but when a chain is worn the 12in mark of the ruler won't quite reach the relevant link pin.If the distance from the 12in mark to the centre of the link pin is less than 1/16in, your chain is fine, but if it gets to 1/8in (or 2/16) mark it has gone beyond the point at which it needs replacing.",
+  check_advice: "You can check for chain wear with a ruler. Start at one link pin and measure 12 complete links. You need to put some tension on the chain to be accurate. 12 complete links will measure 12in, but when a chain is worn the 12in mark of the ruler won't quite reach the relevant link pin. If the distance from the 12in mark to the centre of the link pin is less than 1/16in, your chain is fine, but if it gets to 1/8in (or 2/16) mark it has gone beyond the point at which it needs replacing.",
   custom: false
 )
 
