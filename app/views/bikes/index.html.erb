@@ -24,11 +24,11 @@
               <% else %>
                 <h2>My Bike</h2>
               <% end %>
-              <div>
-                <%= link_to edit_bike_path(bike), class: "text-decoration-none" do %>
+              <div class="bike-options d-flex">
+                <%= link_to edit_bike_path(bike), class: "text-decoration-none pen-icon" do %>
                   <i class="fa-solid fa-pen"></i>
                 <% end %>
-                <%= link_to new_bike_path, class: "text-decoration-none" do %>
+                <%= link_to new_bike_path(bike), class: "text-decoration-none pen-icon" do %>
                   <i class="fa-solid fa-plus"></i>
                 <% end %>
               </div>
@@ -38,9 +38,11 @@
               <% if bike.photo.attached? %>
                 <%= cl_image_tag(bike.photo.key, class:"img-thumbnail") %>
               <% else %>
-                <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg" %>
+                <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg", :class => "img-thumbnail" %>
               <% end %>
             </div>
+
+            <%# <%= cl_image_tag @bike.photo.key %>
 
             <p style="text-align: right; font-style: italic"> <%= link_to "Add Component", new_bike_bike_component_path(bike) %> </p>
 
@@ -77,6 +79,7 @@
                         </div>
                       </div>
                     </div>
+
 
                     <div class="bars">
                       <div class="bar-names">

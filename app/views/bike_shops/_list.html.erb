@@ -1,26 +1,30 @@
 <% if bike_shops.any? %>
-        <% bike_shops.each do |shop| %>
-          <div class="shop-card">
-            <div class="shop-card-image">
-              <% if shop.photo.attached? %>
-                <%= cl_image_tag shop.photo.key, class:"shop-img" %>
-              <% else %>
-                <%= "No image" %>
-              <% end %>
-            </div>
-            <div class="shop-card-info">
-              <h4> <%= shop.name %> </h4>
-              <p> <%= shop.location %> </p>
-              <a href= "https://<%= shop.website %>" target="_blank"> <%= shop.website %> </a>
-              <p> <%= shop.phone_number %> </p>
-              <p>
-                <% shop.rating.times do %>
-                  <%= "⭐️" %>
-                <% end %>
-              </p>
-            </div>
-          </div>
+  <% bike_shops.each do |shop| %>
+    <div class="shop-card"
+         data-controller="geolocation"
+         data-geolocation-latitude-value="<%= shop.latitude %>"
+         data-geolocation-longitude-value="<%= shop.longitude %>">
+      <div class="shop-card-image">
+        <% if shop.photo.attached? %>
+          <%= cl_image_tag shop.photo.key, class:"shop-img" %>
+        <% else %>
+          <%= "No image" %>
         <% end %>
-      <% else %>
-        <em>Sorry, no shops found.</em>
-      <% end %>
+      </div>
+      <div class="shop-card-info">
+        <h4> <%= shop.name %> </h4>
+        <p> <%= shop.location %> </p>
+        <p> <%= shop.website %> </p>
+        <p> <%= shop.phone_number %> </p>
+        <p data-geolocation-target="distance">Loading distance...</p>
+        <p>
+          <% shop.rating.times do %>
+            <%= "⭐️" %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <em>Sorry, no shops found.</em>
+<% end %>

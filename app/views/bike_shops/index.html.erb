@@ -1,5 +1,4 @@
 <div class="page-container" data-controller="search-bar" data-search-bar-url-value="<%=bike_shops_url%>">
-
   <div class="search_shops">
     <%= form_with url: bike_shops_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
@@ -10,6 +9,8 @@
             action: "keyup->search-bar#search"
           }
       %>
+      <button id="zoomToCurrentLocation" class="btn btn-primary">Zoom to Current Location</button>
+
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
   </div>
@@ -20,12 +21,31 @@
     data-map-markers-value="<%= @markers.to_json %>"
     data-search-bar-target="map"
     data-action="updateSearch@window->map#updateSearch"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-action='click->map#zoomMap'>
     </div>
   </div>
 
   <div class="container_shops" data-search-bar-target="cards">
-     <%= render "bike_shops/list", bike_shops: @bike_shops %>
-  </div>
+    <%= render "bike_shops/list", bike_shops: @bike_shops %>
 
+
+    <%= form_tag(search_bike_shops_path, method: "get") do %>
+      <%= text_field_tag :location, params[:location], placeholder: "Enter location" %>
+      <%= submit_tag "Search" %>
+    <% end %>
+
+    <% if @bike_shops.present? %>
+      <% @bike_shops.each do |bike_shop| %>
+        <div class="bike_shop">
+          <h2><%= bike_shop.name %></h2>
+          <p>Proximity: <%= @distance_to_location[bike_shop.id] %> miles</p>
+          <!-- Render other bike shop information here -->
+        </div>
+      <% end %>
+    <% else %>
+      <p>No bike shops found.</p>
+      <!-- Handle other cases when @bike_shops is nil or empty -->
+    <% end %>
+
+  </div>
 </div>
