@@ -29,9 +29,13 @@
 }
 
 .locator-button span {
-    display:block;
+  display:block;
 }
 
 .locator-button {
-flex-shrink: 0;
+  flex-shrink: 0;
+}
+
+.align-icon {
+  padding-right: 4px;
 }

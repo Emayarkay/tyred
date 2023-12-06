@@ -123,6 +123,20 @@ brake_pad.check_img.attach(io: File.open('app/assets/images/check_brake_pads.jpg
 brake_pad.icon.attach(io: File.open('app/assets/images/brake_pad.png'), filename: "brake_pad.png", content_type: "image/png")
 puts "Created #{brake_pad.name}"
 
+suspension_fork = Component.create!(
+  name: "Suspension Fork",
+  time_until_check: 20,
+  distance_until_check: 1000.0,
+  check_advice: "Smoothness: A well-functioning suspension fork should feel smooth and responsive when compressing and rebounding. If it feels excessively stiff, sticky, or too soft, there might be an issue.
+  Noise: Listen for any unusual noises like creaking, clunking, or grinding sounds when compressing or rebounding the fork. Unusual sounds could indicate internal damage or worn-out components.
+  Sag Test: Perform a sag test to check the fork's compression. Set the sag as per manufacturer recommendations and see if the fork holds the correct amount of sag when you sit on the bike without bouncing. If it doesn't, it might indicate worn-out internals.",
+  custom: false
+)
+
+suspension_fork.check_img.attach(io: File.open('app/assets/images/check_suspension_fork.jpg'), filename: "check_suspension_fork.jpg", content_type: "image/jpg")
+suspension_fork.icon.attach(io: File.open('app/assets/images/suspension_fork..png'), filename: "suspension_fork.png", content_type: "image/png")
+puts "Created #{brake_pad.name}"
+
 puts "Finished Creating Core Components"
 
 # Could add some extra components here that will appear in dropdown menu?
