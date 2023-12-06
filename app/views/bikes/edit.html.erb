@@ -9,13 +9,13 @@
       <% if @bike.photo.attached? %>
         <%= cl_image_tag @bike.photo.key, height: 100 %>
       <% end %>
-      <%= f.input :photo, as: :file, required: false %>
-      <%= f.submit value: 'Update Bike in My Garage' %>
+      <%= f.input :photo, as: :file, required: false, label: 'Upload a photo' %>
+      <%= f.submit value: 'Confirm Changes', class: 'custom-btn green' %>
     <% end %>
   </div>
 
   <div data-controller="delete-check">
-    <button data-action="click->delete-check#delete", class="custom-btn red">
+    <button data-action="click->delete-check#delete_bike", class="custom-btn red">
       Delete This Bike
     </button>
     <%# this link is triggered by stimulus (delete-check) %>

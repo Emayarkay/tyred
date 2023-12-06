@@ -1,5 +1,32 @@
 <div class="navbar">
-  <div class="nav-link"><%= link_to "Garage", bikes_path %></div>
-  <div class="nav-link"><%= link_to "Profile", user_path(current_user) %></div>
-  <div class="nav-link"><%= link_to "Bike Shops", bike_shops_path %> </div>
+  <%= link_to bikes_path do %>
+    <div class="nav-button">
+      <div class="nav-icon">
+        <%= image_tag "garage-icon.png", height: 40 %>
+      </div>
+      <div>
+        Garage
+      </div>
+    </div>
+  <% end %>
+  <%= link_to user_path(current_user) do %>
+    <div class="nav-button">
+      <div class="nav-icon">
+        <%= image_tag "profile-icon.png", height: 40 %>
+      </div>
+      <div>
+        Profile
+      </div>
+    </div>
+  <% end %>
+  <%= link_to bike_shops_path do %>
+    <div class="nav-button">
+      <div class="nav-icon">
+        <%= image_tag "bike-shop-locator-icon.png", height: 40 %>
+      </div>
+      <div>
+        Bike Shops
+      </div>
+    </div>
+  <% end %>
 </div>
