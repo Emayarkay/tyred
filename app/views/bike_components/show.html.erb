@@ -14,37 +14,42 @@
   </div>
 
   <div class="comp-show-prog-container">
-    <h2 data-progress-bar-target="time">
-      <% if @bike_component.weeks_left > 2 %>
-        <%= @bike_component.weeks_left.to_i %> weeks until check
-      <% elsif @bike_component.weeks_left > 0 && @bike_component.weeks_left <= 2 %>
-        <%= @bike_component.days_left.to_i %> days until check
-      <% else %>
-        Check now!
-      <% end %>
-    </h2>
 
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" data-progress-bar-target="bar" style="width: <%= @bike_component.time_progress_percentage %>%" aria-valuenow="<%= @bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+    <h4 style="text-align: left;">
+      Your <%= @bike_component.component.name.downcase %> is set to be checked  every <span style="font-weight: bold;"><%= @bike_component.component.time_until_check %> weeks</span> or every <span style="font-weight: bold;"><%= @bike_component.distance_until_check.round %> kms</span>
+    </h4>
+
+    <div class="comp-show-mini-card">
+      <h2 data-progress-bar-target="time">
+        <% if @bike_component.weeks_left > 2 %>
+          <%= @bike_component.weeks_left.to_i %> weeks until check
+        <% elsif @bike_component.weeks_left > 0 && @bike_component.weeks_left <= 2 %>
+          <%= @bike_component.days_left.to_i %> days until check
+        <% else %>
+          Check now!
+        <% end %>
+      </h2>
+
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" data-progress-bar-target="bar" style="width: <%= @bike_component.time_progress_percentage %>%" aria-valuenow="<%= @bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
     </div>
 
-  </div>
+    <div class="comp-show-mini-card">
+      <h2 data-progress-bar-target="distance">
+        <% distance_percentage = @bike_component.distance_progress_percentage %>
+        <% if distance_percentage < 1%>
+          Check now!
+        <% else %>
+          <%= @bike_component.distance_left.round %> km until check
+        <% end %>
 
-  <div class="comp-show-prog-container">
-    <h2 data-progress-bar-target="distance">
-      <% distance_percentage = @bike_component.distance_progress_percentage %>
-      <% if distance_percentage < 1%>
-        Check now!
-      <% else %>
-        <%= @bike_component.distance_left.round %> km until check
-      <% end %>
+      </h2>
 
-    </h2>
-
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" data-progress-bar-target="distance_bar" style="width: <%= distance_percentage %>%" aria-valuenow="<%= distance_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" data-progress-bar-target="distance_bar" style="width: <%= distance_percentage %>%" aria-valuenow="<%= distance_percentage %>" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
     </div>
-
   </div>
 
  <button class="custom-btn green my-4" data-action="click->progress-bar#reset">I've Checked My <%= @bike_component.component.name %></button>
@@ -54,15 +59,8 @@
     <div data-toggle-advice-target="togglableElement" class="d-none check-advise">
     <div class="comp-advise-image"></div>
     <p><%= @bike_component.component.check_advice %></p>
-    <p>If you feel this component needs replacing, either replace it yourself or use our handy Bike Shop Locator tool below!</p>
+    <p style="margin-bottom: 16px;">If you feel this component needs replacing, either replace it yourself or use our handy Bike Shop Locator tool below!</p>
     <%= link_to "Bike Shop Locator", bike_shops_path, class: "custom-btn green"%>
     </div>
   </div>
 </div>
-
-
-
-
-    <%# <% @bike.bike_components.each do |bike_component| %>
-      <%# <p>Total Cumulative Time: <%= bike_component.component&.time_until_check</p> %>
-      <%# <p>Total Cumulative Distance: <%= bike_component.component&.distance_until_check</p> %>

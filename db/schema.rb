@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_04_122107) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_06_105613) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_122107) do
     t.datetime "custom_time_check_interval"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "custom_distance_until_check"
     t.index ["bike_id"], name: "index_bike_components_on_bike_id"
     t.index ["component_id"], name: "index_bike_components_on_component_id"
   end

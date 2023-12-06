@@ -1,10 +1,8 @@
 .avatar {
- height: 100%;
- aspect-ratio: 1;
- background-color: cadetblue;
- border-radius: 50%;
- width: 125px;
  height: 125px;
+ aspect-ratio: 1;
+ background-color: rgba($green, 0.5);
+ border-radius: 50%;
  overflow: hidden;
 }
 
