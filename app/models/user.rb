@@ -6,12 +6,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[strava]
 
   has_many :bikes, dependent: :destroy
+  has_many :bike_components, through: :bikes
 
   validates :first_name, :last_name, presence: true
 
   has_one_attached :profile_image
-
-
 
   def self.from_omniauth(auth, current_user_email)
     user = User.find_by(email: current_user_email)
@@ -33,7 +32,16 @@ class User < ApplicationRecord
       access_token: auth.credentials.token,
       refresh_token: auth.credentials.refresh_token
     )
+
+    user.sync_bike_components_with_strava
+
     user
+  end
+
+  def sync_bike_components_with_strava
+    bike_components.each do |bike_component|
+      SyncStravaJob.perform_later(bike_component)
+    end
   end
 
   def strava_connected?

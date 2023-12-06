@@ -1,32 +1,37 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="d-flex justify-content-center pt-4">
+<h2>Edit Profile</h2>
+</div>
 <div class="page-container">
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :email, placeholder: 'Email', label:false, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
+    <%= f.input :password, placeholder: 'Enter new password', label:false,
+                hint: "Leave it blank if you don't want to change it",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+    <%= f.input :confirm_password, placeholder: 'Confirm password', label:false,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+    <%= f.input :current_password, placeholder: 'Current password', label:false,
+                hint: "We need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
-    <%= f.input :profile_image, as: :file %>
+    <% if @user.profile_image.attached? %>
+      <%= cl_image_tag @user.profile_image.key, height: 100 %>
+    <% end %>
+    <%= f.input :profile_image, as: :file, required: false, label: 'Current profile picture' %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+    <%= f.button :submit, "Update", class: 'btn btn-primary mb-4' %>
   </div>
 <% end %>
 

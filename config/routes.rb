@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :users, only: %i[show]
+  resources :users, only: %i[show] do
+    post 'sync_strava', on: :collection
+  end
   resources :bikes do
     resources :bike_components, except: %i[index destroy]
     resources :components, only: :create
@@ -26,4 +28,7 @@ Rails.application.routes.draw do
   resources :checks, only: :update
   resources :bike_components, only: :destroy
   resources :bike_shops, only: %i[index]
+
+  # todo: only show this for admins or remove altoghether
+  mount Sidekiq::Web => '/sidekiq'
 end
