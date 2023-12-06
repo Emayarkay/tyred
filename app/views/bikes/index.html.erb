@@ -1,4 +1,5 @@
 <div class="page-container">
+  <h1>My Garage</h1>
   <% if current_user.bikes.count >= 1 %>
     <ul class="nav nav-pills justify-content-center <%= "d-none" if current_user.bikes.count < 2 %>" id="pills-tab" role="tablist">
       <% @bikes.each_with_index do |bike, index|  %>

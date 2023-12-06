@@ -1,11 +1,9 @@
 <div class="page-container">
   <%= image_tag "bike_tyre.png", class: "logo-img" %>
   <h1 class="logo">Tyred</h1>
-
-  <% if current_user %>
-    <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
-  <% end %>
-  <p class="logo_strap_line">Don't lose sleep over your bike</p>
+  <p class="mt-4"><strong>Get reminders</strong> to look after your bike</p>
+  <p><strong>Save money</strong> on repairs</p>
+  <p class="logo_strap_line"><strong>Don't lose sleep</strong> over your bike!</p>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
