@@ -4,12 +4,13 @@
       <%= text_field_tag :query,
           params[:query],
           class: "form-control",
+          id: "stand-out",
           placeholder: "Enter your location",
           data: {
             action: "keyup->search-bar#search"
           }
       %>
-      <button id="zoomToCurrentLocation" class="btn btn-primary"><i class="fa-solid fa-location-crosshairs"></i></button>
+      <div class="locator-button"> <button id="zoomToCurrentLocation" class="btn btn-primary text-under-icon icon-text"><i class="fa-solid fa-location-crosshairs"></i> <span> My Location </span></button> </div>
     <% end %>
   </div>
 
