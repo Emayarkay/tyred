@@ -14,12 +14,18 @@ class StravaService < ApplicationService
     page = 1
     sum = 0
     activities = []
+    # puts "getting collection"
     collection = client.athlete_activities(after: since_date.to_time.to_i, per_page: 30, page: page).collection
+    # puts "done getting collection"
+    # binding.break
+    # puts collection
     activities << collection
 
     while collection.any?
       page += 1
+      # puts "getting ahtlete activities"
       collection = client.athlete_activities(after: since_date.to_time.to_i, per_page: 30, page: page).collection
+      # puts "done getting ahtlete activities"
       activities << collection
     end
     activities.flatten.sum do |activity|

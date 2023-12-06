@@ -22,6 +22,10 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def sync_strava
+    current_user.sync_bike_components_with_strava
+  end
+
   private
 
   def user_params

@@ -9,11 +9,15 @@
     <div class="profile-info-container">
       <p> <%= current_user.first_name %> <%= current_user.last_name %> </p>
       <p> <%= current_user.email %> </p>
-      <p> Specialized Allez</p>
+      <p style="font-weight: bold;">Bikes:</p>
+      <% current_user.bikes.each do |bike| %>
+        <p style="margin: 0;"><%= bike.make %></p>
+      <% end %>
       <% if @strava_connected %>
-        <p>Strava connected ✅</p>
+        <p style="margin-top: 16px;">Strava connected ✅</p>
+        <%= button_to "Sync Strava rides", sync_strava_users_path, data: { turbo: false }, class: 'custom-btn' %><br />
       <% else %>
-        <p>Strava not connected ❌</p>
+        <p style="margin-top: 32px !important;">Strava not connected ❌</p>
       <% end %>
     </div>
 
