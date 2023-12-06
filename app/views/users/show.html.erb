@@ -2,10 +2,9 @@
   <div class="profile-container">
     <div class="avatar-container">
       <div class="avatar">
-        <%= cl_image_tag @user.profile_image.key if @user.profile_image.attached? %>
+        <%= cl_image_tag @user.profile_image.key, class:"profile-image" if @user.profile_image.attached? %>
       </div>
     </div>
-
     <div class="profile-info-container">
       <p> <%= current_user.first_name %> <%= current_user.last_name %> </p>
       <p> <%= current_user.email %> </p>
@@ -13,20 +12,19 @@
       <% current_user.bikes.each do |bike| %>
         <p style="margin: 0;"><%= bike.make %></p>
       <% end %>
+      <button class="green custom-btn"> <%= link_to "Add a Bike", new_bike_path%> </button>
       <% if @strava_connected %>
-        <p style="margin-top: 16px;">Strava connected ✅</p>
+        <p style="margin-top: 16px;">Strava connected :white_check_mark:</p>
         <%= button_to "Sync Strava rides", sync_strava_users_path, data: { turbo: false }, class: 'custom-btn' %><br />
       <% else %>
-        <p style="margin-top: 32px !important;">Strava not connected ❌</p>
+        <p style="margin-top: 32px !important;">Strava not connected ❌ </p>
       <% end %>
     </div>
-
     <% if devise_mapping.omniauthable? && !@strava_connected %>
       <% User.omniauth_providers.each do |provider| %>
         <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(:user, provider), data: { turbo: false }, class: 'custom-btn' %><br />
       <% end %>
     <% end %>
-
     <div class="profile-button-container" data-controller="logout-check">
       <button class="green custom-btn" style="width: 150px;"> <%= link_to "Edit Profile", edit_user_registration_path %> </button>
       <div>

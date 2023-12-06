@@ -9,7 +9,7 @@
       <% if @bike.photo.attached? %>
         <%= cl_image_tag @bike.photo.key, height: 100 %>
       <% end %>
-      <%= f.input :photo, as: :file, required: false, label: 'Upload a photo' %>
+      <%= f.input :photo, as: :file, required: false, label: 'Current photo' %>
       <%= f.submit value: 'Confirm Changes', class: 'custom-btn green' %>
     <% end %>
   </div>
