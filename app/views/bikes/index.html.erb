@@ -26,7 +26,7 @@
               <% end %>
               <div class="bike-options d-flex">
                 <%= link_to edit_bike_path(bike), class: "text-decoration-none pen-icon" do %>
-                  <i class="fa-solid fa-pen"></i>
+                  <i class="fa-solid fa-pen" style="margin-right: 3px;"></i>
                 <% end %>
               </div>
             </div>
@@ -47,16 +47,17 @@
               <%= link_to bike_bike_component_path(bike, bike_component) do %>
                 <div class="component-card" data-controller="delete-check" data-delete-check-path-value='bike_components/<%= bike_component.id %>'>
 
-                  <div class="card-image-info-wrapper">
-                    <div class="component-card-image">
-                      <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
-                    </div>
+                <div class="card-image-info-wrapper">
+                  <div class="component-card-image">
+                    <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
+                  </div>
 
                       <div class="progress-info">
                         <div class="component-name-and-delete">
-                          <h2> <%= bike_component.component.name %> </h2>
+                          <h2 style="color: #0D5D56;"> <%= bike_component.component.name %> </h2>
                           <div>
-                            <button class="component-delete-button" data-action="click->delete-check#delete_component"><i class="fa-solid fa-xmark"></i></button>                          </div>
+                            <button class="component-delete-button" data-action="click->delete-check#delete_component"><i class="fa-solid fa-xmark"></i></button>
+                          </div>
                         </div>
 
                         <div class="progress-bar-text">
@@ -75,30 +76,31 @@
                           <% end %>
                         </div>
                       </div>
-                    </div>
-
-
-                    <div class="bars">
-                      <div class="bar-names">
-                        <p class="time-text">Time >></p>
-                        <p class="distance-text">Distance >></p>
-                      </div>
-                      <div class="progress-bars-container">
-                        <div class="progress">
-                          <div class="progress-bar" role="progressbar" style="width: <%= bike_component.time_progress_percentage %>%" aria-valuenow="<%= bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
-                          </div>
-                        </div>
-
-                        <div class="progress">
-                          <div class="progress-bar" role="progressbar" data-progress-bar-target="distance_bar" style="width: <%= distance_percentage %>%" aria-valuenow="<%= distance_percentage %>" aria-valuemin="0" aria-valuemax="100">
-                          </div>
-                        </div>
-
-                        </div>
-                      </div>
                   </div>
-                <% end %>
-              <% end %>
+
+
+
+                  <div class="bars">
+                    <div class="bar-names">
+                      <p class="time-text">Time >></p>
+                      <p class="distance-text">Distance >></p>
+                    </div>
+                    <div class="progress-bars-container">
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: <%= bike_component.time_progress_percentage %>%" aria-valuenow="<%= bike_component.time_progress_percentage %>" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                      </div>
+
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" data-progress-bar-target="distance_bar" style="width: <%= distance_percentage %>%" aria-valuenow="<%= distance_percentage %>" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+              </div>
+            <% end %>
+          <% end %>
 
             </div>
           </div>

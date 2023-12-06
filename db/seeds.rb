@@ -17,16 +17,18 @@ BikeShop.destroy_all
 
 # users
 puts "Creating Users"
-user1 = User.create first_name: "Jonny", last_name: "Shipton", email: "jonny@gmail.com", password: "123456"
-user2 = User.create first_name: "Mark", last_name: "Watkinson", email: "mark@gmail.com", password: "123456"
-user3 = User.create first_name: "Eliot", last_name: "Smith", email: "eliot@gmail.com", password: "123456"
-user4 = User.create first_name: "Robbie", last_name: "Bullough", email: "robbie@gmail.com", password: "123456"
+
+user1 = User.create! first_name: "Jonny", last_name: "Shipton", email: "jonny@gmail.com", password: "123456"
+user2 = User.create! first_name: "Mark", last_name: "Watkinson", email: "mark@gmail.com", password: "123456"
+user3 = User.create! first_name: "Eliot", last_name: "Smith", email: "eliot@gmail.com", password: "123456"
+user4 = User.create! first_name: "Robbie", last_name: "Bullough", email: "robbie@gmail.com", password: "123456"
+
 puts "Finished creating users"
 
 # bikes
 puts "Creating Bikes"
 
-bike1 = Bike.create(
+bike1 = Bike.create!(
   make: "Specialized",
   model: "Allez",
   user_id: user2.id
@@ -34,7 +36,7 @@ bike1 = Bike.create(
 bike1.photo.attach(io: File.open('app/assets/images/specialized_allez.jpg'), filename: "specialized-allez.jpg", content_type: "image/jpg")
 puts "Created #{bike1.make}"
 
-bike2 = Bike.create(
+bike2 = Bike.create!(
   make: "Nero",
   model: "Cappuccino",
   user_id: user2.id
@@ -42,7 +44,7 @@ bike2 = Bike.create(
 bike2.photo.attach(io: File.open('app/assets/images/nero_cappuccino.jpg'), filename: "nero_cappuccino.jpg", content_type: "image/jpg")
 puts "Created #{bike2.make}"
 
-bike3 = Bike.create(
+bike3 = Bike.create!(
   make: "Brompton",
   model: "C Line Explore",
   user_id: user2.id
@@ -50,17 +52,17 @@ bike3 = Bike.create(
 bike3.photo.attach(io: File.open('app/assets/images/brompton_explore.jpg'), filename: "brompton_explore.jpg", content_type: "image/jpg")
 puts "Created #{bike3.make}"
 
-bike4 = Bike.create(
+bike4 = Bike.create!(
   make: "Mango",
   model: "Disc Brake Commuter Bike",
-  user_id: user2.id
+  user_id: user3.id
 )
 bike4.photo.attach(io: File.open('app/assets/images/mango.jpg'), filename: "mango.jpg", content_type: "image/jpg")
 puts "Created #{bike4.make}"
 
 puts "Finished creating bikes"
 
-bike5 = Bike.create(
+bike5 = Bike.create!(
   make: "Bobbin",
   model: "Hummingbird",
   user_id: user3.id
@@ -72,11 +74,11 @@ puts "Finished creating bikes"
 # components
 puts "Creating Components"
 
-chain = Component.create(
+chain = Component.create!(
   name: "Chain",
   time_until_check: 4.0, # weeks
   distance_until_check: 400.0,
-  check_advice: "You can check for chain wear with a ruler. It's a little easier if you go with imperial measurement here because one complete chain link of a standard chain measures 1in. Start at one link pin and measure 12 complete links. You need to put some tension on the chain to be accurate. On a standard new chain, 12 complete links will measure 12in, but when a chain is worn the 12in mark of the ruler won't quite reach the relevant link pin.If the distance from the 12in mark to the centre of the link pin is less than 1/16in, your chain is fine, but if it gets to 1/8in (or 2/16) mark it has gone beyond the point at which it needs replacing.",
+  check_advice: "You can check for chain wear with a ruler. Start at one link pin and measure 12 complete links. You need to put some tension on the chain to be accurate. 12 complete links will measure 12in, but when a chain is worn the 12in mark of the ruler won't quite reach the relevant link pin. If the distance from the 12in mark to the centre of the link pin is less than 1/16in, your chain is fine, but if it gets to 1/8in (or 2/16) mark it has gone beyond the point at which it needs replacing.",
   custom: false
 )
 
@@ -85,7 +87,7 @@ chain.icon.attach(io: File.open('app/assets/images/bike_chain.png'), filename: "
 
 puts "Created #{chain.name}"
 
-front_tyre = Component.create(
+front_tyre = Component.create!(
   name: "Front Tyre",
   time_until_check: 1.0, # weeks
   distance_until_check: 150.0,
@@ -97,7 +99,7 @@ front_tyre.check_img.attach(io: File.open('app/assets/images/pinch_test.jpeg'), 
 front_tyre.icon.attach(io: File.open('app/assets/images/bike_tyre.png'), filename: "bike_tyre.png", content_type: "image/png")
 puts "Created #{front_tyre.name}"
 
-rear_tyre = Component.create(
+rear_tyre = Component.create!(
   name: "Rear Tyre",
   time_until_check: 1.0, # weeks
   distance_until_check: 150.0,
@@ -109,7 +111,7 @@ rear_tyre.check_img.attach(io: File.open('app/assets/images/pinch_test.jpeg'), f
 rear_tyre.icon.attach(io: File.open('app/assets/images/bike_tyre.png'), filename: "bike_tyre.png", content_type: "image/png")
 puts "Created #{rear_tyre.name}"
 
-brake_pad = Component.create(
+brake_pad = Component.create!(
   name: "Brake Pads",
   time_until_check: 5.0, # weeks
   distance_until_check: 1000.0,
@@ -127,7 +129,7 @@ puts "Finished Creating Core Components"
 
 # bike_components
 puts "Creating Bike Components"
-bike_component1 = BikeComponent.create(
+bike_component1 = BikeComponent.new(
   distance_travelled: 0.0,
   custom_time_check_interval: 20,
   date_added: Date.today - 30.weeks
@@ -136,7 +138,7 @@ bike_component1.component = chain
 bike_component1.bike = bike1
 bike_component1.save!
 
-bike_component2 = BikeComponent.create(
+bike_component2 = BikeComponent.new(
   distance_travelled: 0.0,
   custom_time_check_interval: 20,
   date_added: Date.today - 8
@@ -145,7 +147,7 @@ bike_component2.component = front_tyre
 bike_component2.bike = bike1
 bike_component2.save!
 
-bike_component3 = BikeComponent.create(
+bike_component3 = BikeComponent.new(
   distance_travelled: 0.0,
   custom_time_check_interval: 20,
   date_added: Date.today - 4
@@ -154,7 +156,7 @@ bike_component3.component = rear_tyre
 bike_component3.bike = bike1
 bike_component3.save!
 
-bike_component4 = BikeComponent.create(
+bike_component4 = BikeComponent.new(
   distance_travelled: 0.0,
   custom_time_check_interval: 20,
   date_added: Date.today - 3.weeks
@@ -163,7 +165,7 @@ bike_component4.component = brake_pad
 bike_component4.bike = bike1
 bike_component4.save!
 
-bike_component5 = BikeComponent.create(
+bike_component5 = BikeComponent.new(
   distance_travelled: 0.0,
   custom_time_check_interval: 20,
   date_added: Date.today - 16.weeks
@@ -172,7 +174,7 @@ bike_component5.component = chain
 bike_component5.bike = bike2
 bike_component5.save!
 
-bike_component6 = BikeComponent.create(
+bike_component6 = BikeComponent.new(
   distance_travelled: 0.0,
   custom_time_check_interval: 20,
   date_added: Date.today - 16
@@ -181,7 +183,7 @@ bike_component6.component = front_tyre
 bike_component6.bike = bike2
 bike_component6.save!
 
-bike_component7 = BikeComponent.create(
+bike_component7 = BikeComponent.new(
   distance_travelled: 0.0,
   custom_time_check_interval: 20,
   date_added: Date.today - 11
@@ -190,7 +192,7 @@ bike_component7.component = rear_tyre
 bike_component7.bike = bike2
 bike_component7.save!
 
-bike_component8 = BikeComponent.create(
+bike_component8 = BikeComponent.new(
   distance_travelled: 0.0,
   custom_time_check_interval: 20,
   date_added: Date.today - 3.weeks
@@ -204,21 +206,21 @@ puts "Finished Creating Bike Components"
 # checks
 puts "Creating Checks"
 
-check_chain = Check.create(
+check_chain = Check.create!(
   check_date: Date.today - 1.day,
   distance_threshold: 300,
   passed: true,
   bike_component: bike_component1
 )
 
-check_tyre = Check.create(
+check_tyre = Check.create!(
   check_date: Date.today - 1.day,
   distance_threshold: 100,
   passed: true,
   bike_component: bike_component2
 )
 
-check_brake_pads = Check.create(
+check_brake_pads = Check.create!(
   check_date: Date.today - 1.day,
   distance_threshold: 250,
   passed: true,
@@ -227,7 +229,7 @@ check_brake_pads = Check.create(
 
 puts "Creating Bike Shops"
 
-shop1 = BikeShop.create(
+shop1 = BikeShop.create!(
   name: "Apex Cycles",
   location: "Clapham",
   rating: 5,
@@ -236,7 +238,7 @@ shop1 = BikeShop.create(
 )
 shop1.photo.attach(io: File.open("app/assets/images/apex.jpg"), filename: 'apex.jpg', content_type: 'image/jpg')
 
-shop2 = BikeShop.create(
+shop2 = BikeShop.create!(
   name: "Brick Lane Bikes",
   location: "Shoreditch",
   rating: 3,
@@ -245,7 +247,7 @@ shop2 = BikeShop.create(
 )
 shop2.photo.attach(io: File.open("app/assets/images/blb.jpg"), filename: 'blb.jpg', content_type: 'image/jpg')
 
-shop3 = BikeShop.create(
+shop3 = BikeShop.create!(
   name: "Condor Cycles",
   location: "Holborn",
   rating: 5,
@@ -254,7 +256,7 @@ shop3 = BikeShop.create(
 )
 shop3.photo.attach(io: File.open("app/assets/images/condor.jpg"), filename: 'condor.jpg', content_type: 'condor/jpg')
 
-shop4 = BikeShop.create(
+shop4 = BikeShop.create!(
   name: "L' Atelier Du Vélo",
   location: "Dulwich",
   rating: 5,
@@ -263,7 +265,7 @@ shop4 = BikeShop.create(
 )
 shop4.photo.attach(io: File.open("app/assets/images/latelier.jpg"), filename: 'latelier.jpg', content_type: 'image/jpg')
 
-shop5 = BikeShop.create(
+shop5 = BikeShop.create!(
   name: "Brixton Cycles",
   location: "Brixton",
   rating: 4,
@@ -272,7 +274,7 @@ shop5 = BikeShop.create(
 )
 shop5.photo.attach(io: File.open("app/assets/images/brixton.jpg"), filename: 'brixton.jpg', content_type: 'image/jpg')
 
-shop6 = BikeShop.create(
+shop6 = BikeShop.create!(
   name: "Bon Velo",
   location: "Herne Hill",
   rating: 4,
@@ -281,7 +283,7 @@ shop6 = BikeShop.create(
 )
 shop6.photo.attach(io: File.open("app/assets/images/bon.jpg"), filename: 'bon.jpg', content_type: 'image/jpg')
 
-shop7 = BikeShop.create(
+shop7 = BikeShop.create!(
   name: "SBC Cycles",
   location: "Hoxton",
   rating: 5,
