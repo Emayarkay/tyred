@@ -1,23 +1,24 @@
 <div class="page-container">
-  <h1>My Garage</h1>
+  <%# <h1>My Garage</h1> %>
   <% if current_user.bikes.count >= 1 %>
     <!-- Dropdown button for bikes -->
-    <div class="dropdown text-center">
+    <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="bikeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        Select Bike
+        My Bike Garage
       </button>
       <!-- Dropdown menu -->
       <ul class="dropdown-menu" aria-labelledby="bikeDropdown">
         <% @bikes.each_with_index do |bike, index| %>
           <li>
-            <button class="dropdown-item <%= "active" if index == 0 %>" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" aria-controls="pills-<%= index %>" aria-selected="<%= index == 0 %>"><%= bike.model %></button>
+            <button class="dropdown-item <%= "active" if index == 0 %>" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" aria-controls="pills-<%= index %>" aria-selected="<%= index == 0 %>"><%= bike.make %> <%= bike.model %></button>
           </li>
         <% end %>
         <!-- New Bike option -->
         <li>
-          <a class="dropdown-item" href="<%= new_bike_path %>">Add New Bike</a>
+          <a class="dropdown-item" href="<%= new_bike_path %>">+ add a new bike</a>
         </li>
       </ul>
+    </div>
 
     <div class="tab-content" id="pills-tabContent">
       <% @bikes.each_with_index do |bike, index|  %>

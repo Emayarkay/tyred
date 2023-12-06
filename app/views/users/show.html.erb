@@ -7,13 +7,13 @@
       </div>
     </div>
     <div class="profile-info-container">
-      <p> <%= current_user.first_name %> <%= current_user.last_name %> </p>
-      <p> <%= current_user.email %> </p>
+      <h5 style="font-weight: bold;"> <%= current_user.first_name %> <%= current_user.last_name %> </h5>
+      <h5 style="font-weight: bold;"> <%= current_user.email %> </h5>
+      <br />
       <p style="font-weight: bold;">My Bikes:</p>
       <% current_user.bikes.each do |bike| %>
         <p style="margin: 0;"><%= bike.make %></p>
       <% end %>
-      <button class="green custom-btn"> <%= link_to "Add a Bike", new_bike_path%> </button>
       <% if @strava_connected %>
         <p style="margin-top: 16px;">Strava connected ✅ </p>
         <%= button_to "Sync Strava rides", sync_strava_users_path, data: { turbo: false }, class: 'custom-btn' %><br />

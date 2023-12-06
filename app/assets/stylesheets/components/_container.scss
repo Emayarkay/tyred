@@ -32,7 +32,18 @@
 .profile-info-container {
   width: 100%;
   height: auto;
-  margin-bottom: 16px;
+  // margin-bottom: 8px;
+  background-color: white;
+  border-radius: 16px;
+  padding: 16px;
+  margin-top: 16px;
+  box-shadow: 0 0 1px $green;
+  button {
+    margin: 0px;
+  }
+  p {
+  //   margin: 0;
+  }
 }
 
 .profile-button-container {
