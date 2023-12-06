@@ -1,12 +1,22 @@
 <div class="page-container">
   <% if current_user.bikes.count >= 1 %>
-    <ul class="nav nav-pills justify-content-center <%= "d-none" if current_user.bikes.count < 2 %>" id="pills-tab" role="tablist">
-      <% @bikes.each_with_index do |bike, index|  %>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link custom-btn <%= "active" if index == 0 %>" id="pills-<%= index %>-tab" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" type="button" role="tab" aria-controls="pills-<%= index %>" aria-selected="true"><%= bike.model %></button>
+    <!-- Dropdown button for bikes -->
+    <div class="dropdown text-center">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="bikeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        Select Bike
+      </button>
+      <!-- Dropdown menu -->
+      <ul class="dropdown-menu" aria-labelledby="bikeDropdown">
+        <% @bikes.each_with_index do |bike, index| %>
+          <li>
+            <button class="dropdown-item <%= "active" if index == 0 %>" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" aria-controls="pills-<%= index %>" aria-selected="<%= index == 0 %>"><%= bike.model %></button>
+          </li>
+        <% end %>
+        <!-- New Bike option -->
+        <li>
+          <a class="dropdown-item" href="<%= new_bike_path %>">Add New Bike</a>
         </li>
-      <% end %>
-    </ul>
+      </ul>
 
     <div class="tab-content" id="pills-tabContent">
       <% @bikes.each_with_index do |bike, index|  %>
@@ -38,8 +48,13 @@
                 <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg", :class => "img-thumbnail" %>
               <% end %>
             </div>
-
-            <p style="text-align: right; font-style: italic"> <%= link_to "Add Component", new_bike_bike_component_path(bike) %> </p>
+            
+              <div class="d-flex justify-content-between">
+                <p>Components:</p>
+                <%= link_to new_bike_bike_component_path(bike), class: "align-icon text-decoration-none" do %>
+                <i class="fa-solid fa-plus" style="margin-right: 3px;"></i>
+                <% end %>
+              </div>
 
             <% bike.bike_components.each do |bike_component| %>
               <%= link_to bike_bike_component_path(bike, bike_component) do %>
