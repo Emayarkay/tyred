@@ -39,9 +39,12 @@
               <% end %>
             </div>
 
-            <%# <%= cl_image_tag @bike.photo.key %>
-
-            <p style="text-align: right; font-style: italic"> <%= link_to "Add Component", new_bike_bike_component_path(bike) %> </p>
+              <div class="d-flex justify-content-between">
+                <p>Components:</p>
+                <%= link_to new_bike_bike_component_path(bike), class: "align-icon text-decoration-none" do %>
+                <i class="fa-solid fa-plus" style="margin-right: 3px;"></i>
+                <% end %>
+              </div>
 
             <% bike.bike_components.each do |bike_component| %>
               <%= link_to bike_bike_component_path(bike, bike_component) do %>
