@@ -11,6 +11,7 @@ gem "geocoder"
 gem 'mapbox-sdk'
 
 
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 gem 'strava-ruby-client'
