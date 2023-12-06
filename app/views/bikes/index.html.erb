@@ -28,6 +28,9 @@
                 <%= link_to edit_bike_path(bike), class: "text-decoration-none pen-icon" do %>
                   <i class="fa-solid fa-pen"></i>
                 <% end %>
+                <%= link_to new_bike_path(bike), class: "text-decoration-none pen-icon" do %>
+                  <i class="fa-solid fa-plus"></i>
+                <% end %>
               </div>
             </div>
 
@@ -39,11 +42,13 @@
               <% end %>
             </div>
 
+            <%# <%= cl_image_tag @bike.photo.key %>
+
             <p style="text-align: right; font-style: italic"> <%= link_to "Add Component", new_bike_bike_component_path(bike) %> </p>
 
-          <% bike.bike_components.each do |bike_component| %>
-            <%= link_to bike_bike_component_path(bike, bike_component) do %>
-              <div class="component-card" data-controller="delete-check">
+            <% bike.bike_components.each do |bike_component| %>
+              <%= link_to bike_bike_component_path(bike, bike_component) do %>
+                <div class="component-card" data-controller="delete-check" data-delete-check-path-value='bike_components/<%= bike_component.id %>'>
 
                 <div class="card-image-info-wrapper">
                   <div class="component-card-image">
@@ -59,22 +64,28 @@
                       </div>
                     </div>
 
+                      <div class="progress-info">
+                        <div class="component-name-and-delete">
+                          <h2> <%= bike_component.component.name %> </h2>
+                          <div>
+                            <button class="component-delete-button" data-action="click->delete-check#delete_component"><i class="fa-solid fa-xmark"></i></button>                          </div>
+                        </div>
 
-                      <div class="progress-bar-text">
-                        <% if bike_component.weeks_left > 2%>
-                          <p> <%= bike_component.weeks_left.to_i %> weeks until check </p>
-                        <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
-                          <p> <%= bike_component.days_left.to_i %> days until check </p>
-                        <% else %>
-                          <p>Check now! <span style="color: red">⚠</span></p>
-                        <% end %>
-
-                        <% distance_percentage = bike_component.distance_progress_percentage %>
-                        <% if distance_percentage < 1%>
-                          <p>Check now!</p>
-                        <% else %>
-                          <p><%= bike_component.distance_left.round %> km until check</p>
-                        <% end %>
+                        <div class="progress-bar-text">
+                          <% if bike_component.weeks_left > 2%>
+                            <p> <%= bike_component.weeks_left.to_i %> weeks until check </p>
+                          <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
+                            <p> <%= bike_component.days_left.to_i %> days until check </p>
+                          <% else %>
+                            <p>Check now! <span style="color: red">⚠</span></p>
+                          <% end %>
+                          <% distance_percentage = bike_component.distance_progress_percentage %>
+                          <% if distance_percentage < 1%>
+                            <p>Check now!</p>
+                          <% else %>
+                            <p><%= bike_component.distance_left.round %> km until check</p>
+                          <% end %>
+                        </div>
                       </div>
                   </div>
                 </div>
@@ -102,9 +113,9 @@
             <% end %>
           <% end %>
 
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
     </div>
 
 

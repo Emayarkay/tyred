@@ -3,6 +3,9 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="delete-check"
 export default class extends Controller {
   static targets = ['link', 'icon']
+  static values = {
+    path: String
+  }
 
   connect() {
     console.log("hello from delete check")
@@ -20,9 +23,27 @@ export default class extends Controller {
       confirmButtonText: "Delete"
     }).then((result) => {
       if (result.isConfirmed) {
-        this.iconTarget.click()
+        this.sendDelete()
       }
-    })}
+    })
+  }
+
+  sendDelete() {
+    fetch(this.pathValue, {
+      method: 'DELETE',
+      headers: {
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
+        "Accept": "text/plain"
+      }
+    }).then(response => {
+      if (response.status === 200) {
+        this.element.classList.add('away')
+        setTimeout(() => {
+          this.element.style.marginBottom = `-${this.element.clientHeight}px`;
+        }, 300);
+      }
+    })
+  }
 
   delete_bike(e) {
     e.preventDefault();
@@ -37,6 +58,7 @@ export default class extends Controller {
       if (result.isConfirmed) {
         this.linkTarget.click()
       }
-    })}
+    })
+  }
 
 }

@@ -8,6 +8,7 @@ gem "devise"
 gem "rails", "~> 7.1.2"
 
 gem "geocoder"
+gem 'mapbox-sdk'
 
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]

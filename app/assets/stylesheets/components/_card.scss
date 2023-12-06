@@ -58,6 +58,11 @@
       margin-top: 5px;
     }
   }
+  transition: all .5s ease;
+  &.away {
+    transform: scale(0.3);
+    opacity: 0;
+  }
 }
 
 .component-card-image {

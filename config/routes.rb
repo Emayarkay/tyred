@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   get '/fetch_distances', to: 'strava#fetch_distances'
   get '/fetch_auth_token', to: "strava#fetch_auth_token"
+  get '/bike_shops/search', to: 'bike_shops#search', as: 'search_bike_shops'
+
 
   root to: 'bikes#index'
   # root to: "pages#home"
@@ -17,12 +19,13 @@ Rails.application.routes.draw do
     post 'sync_strava', on: :collection
   end
   resources :bikes do
-    resources :bike_components, except: :index
+    resources :bike_components, except: [:index, :destroy]
     resources :components, only: :create
     patch 'reset_meter', on: :member
     post 'apply_preset', on: :member
   end
   resources :checks, only: :update
+  resources :bike_components, only: :destroy
   resources :bike_shops, only: %i[index]
 
   # todo: only show this for admins or remove altoghether
