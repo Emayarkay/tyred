@@ -42,18 +42,32 @@
               <% end %>
             </div>
 
-            <%# <%= cl_image_tag @bike.photo.key %>
+            <!-- Your new code goes here -->
+            <div style="text-align: right; font-style: italic">
+              <% if bike.present? %>
+                <%= link_to "Add Component", new_bike_bike_component_path(bike), class: "btn btn-primary add-component-btn", data: { bike_id: bike.id } %>
+              <% else %>
+                <p>no bike</p>
+              <% end %>
 
-            <p style="text-align: right; font-style: italic"> <%= link_to "Add Component", new_bike_bike_component_path(bike) %> </p>
+            </div>
 
-          <% bike.bike_components.each do |bike_component| %>
-            <%= link_to bike_bike_component_path(bike, bike_component) do %>
+
+
+            <% bike.bike_components.each do |bike_component| %>
+            <div class="show-component-button">
+               <%= link_to 'Show', bike_bike_component_custom_path(@bike, bike_component), class: 'btn btn-primary show-component-btn' %>
+             </div>
+             <%= link_to bike_bike_component_path(bike, bike_component) do %>
               <div class="component-card" data-controller="delete-check">
 
                 <div class="card-image-info-wrapper">
                     <div class="component-card-image">
-                      <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
-                      </div>
+                      <% if bike_component.component.icon.attached? %>
+                        <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
+                      <% else %>
+                      <% end %>
+                    </div>
 
                   <div class="progress-info">
                     <div class="component-name-and-delete">
@@ -113,6 +127,8 @@
     </div>
 
 
+    </div>
+    </div>
   <% else %>
     <h2 class="pt-4"> Get Started </h2>
     <h5> Your Garage is Empty </h5>
@@ -120,6 +136,5 @@
     <div class="Add-your-first-bike pt-4">
       <button class="green custom-btn"> <%= link_to "Add Your First Bike", new_bike_path%> </button>
     </div>
-
   <% end %>
 </div>

@@ -1,5 +1,6 @@
 class BikeComponentsController < ApplicationController
 
+
   def show
     @bike = Bike.find(params[:bike_id])
     @bike_component = BikeComponent.find(params[:id])
@@ -13,12 +14,15 @@ class BikeComponentsController < ApplicationController
   end
 
   def create
-    @bikecomponent = BikeComponent.new(bike_component_params, date_added: DateTime.now, distance_travelled: 0)
     @bike = Bike.find(params[:bike_id])
-    @bikecomponent.bike = @bike
-    if @bikecomponent.save!
-      redirect_to bikes_path
+    @component = Component.find(params[:component_id])
+
+    @bike_component = BikeComponent.new(bike: @bike, component: @component, date_added: DateTime.now, distance_travelled: 0)
+
+    if @bike_component.save
+      redirect_to bikes_path, notice: 'BikeComponent was successfully created.'
     else
+      @components = Component.all # Assuming you want to re-render the form with components if the save fails
       render :new, status: :unprocessable_entity
     end
   end

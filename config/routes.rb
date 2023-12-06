@@ -17,7 +17,10 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users, only: %i[show]
   resources :bikes do
-    resources :bike_components, except: :index
+    resources :bike_components, except: :index, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    get 'component/:id', to: 'bike_components#show', as: 'bike_component_custom' # Custom show route with a unique name
+ # Custom show route
+
     resources :components, only: :create
     patch 'reset_meter', on: :member
     post 'apply_preset', on: :member
