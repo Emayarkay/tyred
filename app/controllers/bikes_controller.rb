@@ -7,7 +7,7 @@ class BikesController < ApplicationController
     #   bike.bike_components.each do |bike_component|
     #     @days_left = (bike_component.component.time_until_check * 7) - (Date.today - bike_component.date_added).to_f
     #     @weeks_left = bike_component.component.time_until_check - ((Date.today - bike_component.date_added) / 7).to_i
-    #     @distance_left = bike_component.component.distance_until_check
+    #     @distance_left = bike_component.distance_until_check
     #     @time_progress_percentage = (@days_left / (bike_component.component.time_until_check * 7)) * 100
     #   end
     # end

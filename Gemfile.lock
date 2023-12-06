@@ -214,6 +214,8 @@ GEM
     nio4r (2.6.1)
     nokogiri (1.15.5-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.5-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
@@ -289,6 +291,7 @@ GEM
     rake (13.1.0)
     rdoc (6.6.0)
       psych (>= 4.0.0)
+    redis (4.8.1)
     regexp_parser (2.8.2)
     reline (0.4.1)
       io-console (~> 0.5)
@@ -317,6 +320,12 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sidekiq (6.5.12)
+      connection_pool (>= 2.2.5, < 3)
+      rack (~> 2.0)
+      redis (>= 4.5.0, < 5)
+    sidekiq-failures (1.0.4)
+      sidekiq (>= 4.0.0)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -394,6 +403,8 @@ DEPENDENCIES
   rails (~> 7.1.2)
   sassc-rails
   selenium-webdriver
+  sidekiq (< 7)
+  sidekiq-failures (~> 1.0)
   simple_form!
   sprockets-rails
   stimulus-rails

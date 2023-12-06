@@ -15,6 +15,7 @@
       <% end %>
       <% if @strava_connected %>
         <p style="margin-top: 16px;">Strava connected ✅</p>
+        <%= button_to "Sync Strava rides", sync_strava_users_path, data: { turbo: false }, class: 'custom-btn' %><br />
       <% else %>
         <p style="margin-top: 32px !important;">Strava not connected ❌</p>
       <% end %>
