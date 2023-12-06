@@ -1,11 +1,32 @@
 .logo {
-  font-size: 96px;
-  color: $black;
-  margin: 88px 0 0 0;
+  font-size: 110px;
+  color: $orange;
+  text-shadow: 0px 1px 2px $black;
+  margin: 8px 0 0 0;
 }
 
 .logo_strap_line {
   color: $black;
-  margin: 8px 0 64px 0;
-  font-size: 18px;
+  margin: 8px 0 40px 0;
+  font-size: 16px;
+}
+
+.logo-img {
+  scale: 0.8;
+  margin: 24px 0 0 0;
+  -webkit-animation:spin 12s linear infinite;
+  -moz-animation:spin 12s linear infinite;
+  animation:spin 12s linear infinite;
+}
+@-moz-keyframes spin {
+  100% { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  100% {
+      -webkit-transform: rotate(360deg);
+      transform:rotate(360deg);
+  }
 }
