@@ -8,7 +8,6 @@ if Rails.env == 'production'
   
       def use_ssl=(flag)
         self.ca_file = Rails.root.join('ca-cert-bundle.pem').to_s
-        self.use_ssl = true
         self.verify_mode = OpenSSL::SSL::VERIFY_NONE 
         self.original_use_ssl = flag
       end
