@@ -5,6 +5,7 @@
       <%= text_field_tag :query,
           params[:query],
           class: "form-control",
+          id: "stand-out",
           placeholder: "Enter your location",
           data: {
             action: "keyup->search-bar#search"
