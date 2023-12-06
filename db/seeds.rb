@@ -18,7 +18,7 @@ BikeShop.destroy_all
 # users
 puts "Creating Users"
 user1 = User.create first_name: "Jonny", last_name: "Shipton", email: "jonny@gmail.com", password: "123456"
-user2 = User.create first_name: "Mark", last_name: "Cavendish", email: "mark@gmail.com", password: "123456"
+user2 = User.create first_name: "Mark", last_name: "Watkinson", email: "mark@gmail.com", password: "123456"
 user3 = User.create first_name: "Eliot", last_name: "Smith", email: "eliot@gmail.com", password: "123456"
 user4 = User.create first_name: "Robbie", last_name: "Bullough", email: "robbie@gmail.com", password: "123456"
 puts "Finished creating users"
