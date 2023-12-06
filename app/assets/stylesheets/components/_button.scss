@@ -29,12 +29,11 @@
   color: $ivory;
 }
 
-.btn-primary {
+.btn-green {
   background-color: $green;
+  padding: 0 16px;
+  text-align: center;
   border: none;
-  :hover {
-    background: $green;
-  }
 }
 
 .green {
