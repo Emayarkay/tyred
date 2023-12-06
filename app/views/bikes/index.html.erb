@@ -41,52 +41,42 @@
                 <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg" %>
               <% end %>
             </div>
-            
+
             <p style="text-align: right; font-style: italic"> <%= link_to "Add Component", new_bike_bike_component_path(bike) %> </p>
 
-          <% bike.bike_components.each do |bike_component| %>
-            <%= link_to bike_bike_component_path(bike, bike_component) do %>
-              <div class="component-card" data-controller="delete-check">
+            <% bike.bike_components.each do |bike_component| %>
+              <%= link_to bike_bike_component_path(bike, bike_component) do %>
+                <div class="component-card" data-controller="delete-check" data-delete-check-path-value='bike_components/<%= bike_component.id %>'>
 
-                <div class="card-image-info-wrapper">
+                  <div class="card-image-info-wrapper">
                     <div class="component-card-image">
                       <%= cl_image_tag(bike_component.component.icon.key, class:"bike-component-image") %>
-                  <div class="progress-info">
-                    <div class="component-name-and-delete">
-                      <h2> <%= bike_component.component.name %> </h2>
-                      <div>
-                        <button class="component-delete-button" data-action="click->delete-check#delete_component"><i class="fa-solid fa-xmark"></i></button>
-                        <%= link_to "", bike_bike_component_path(bike, bike_component), class: "text-decoration-none d-none", data: { 'delete-check-target' => 'icon', turbo_method: :delete } %>
-                      </div>
-
                     </div>
 
-                    <div class="progress-info">
-                      <div class="component-name-and-delete">
-                        <h2> <%= bike_component.component.name %> </h2>
-                        <%= link_to bike_bike_component_path(bike, bike_component), class: "text-decoration-none", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this part?" } do %>
-                          <i class="fa-solid fa-xmark"></i>
-                        <% end %>
-                      </div>
+                      <div class="progress-info">
+                        <div class="component-name-and-delete">
+                          <h2> <%= bike_component.component.name %> </h2>
+                          <div>
+                            <button class="component-delete-button" data-action="click->delete-check#delete_component"><i class="fa-solid fa-xmark"></i></button>                          </div>
+                        </div>
 
-                      <div class="progress-bar-text">
-                        <% if bike_component.weeks_left > 2%>
-                          <p> <%= bike_component.weeks_left.to_i %> weeks until check </p>
-                        <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
-                          <p> <%= bike_component.days_left.to_i %> days until check </p>
-                        <% else %>
-                          <p>Check now! <span style="color: red">⚠</span></p>
-                        <% end %>
-
-                        <% distance_percentage = bike_component.distance_progress_percentage %>
-                        <% if distance_percentage < 1%>
-                          <p>Check now!</p>
-                        <% else %>
-                          <p><%= bike_component.distance_left.round %> km until check</p>
-                        <% end %>
+                        <div class="progress-bar-text">
+                          <% if bike_component.weeks_left > 2%>
+                            <p> <%= bike_component.weeks_left.to_i %> weeks until check </p>
+                          <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
+                            <p> <%= bike_component.days_left.to_i %> days until check </p>
+                          <% else %>
+                            <p>Check now! <span style="color: red">⚠</span></p>
+                          <% end %>
+                          <% distance_percentage = bike_component.distance_progress_percentage %>
+                          <% if distance_percentage < 1%>
+                            <p>Check now!</p>
+                          <% else %>
+                            <p><%= bike_component.distance_left.round %> km until check</p>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
                     <div class="bars">
                       <div class="bar-names">
@@ -104,15 +94,15 @@
                           </div>
                         </div>
 
+                        </div>
                       </div>
-                    </div>
-                </div>
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
 
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
     </div>
 
 
