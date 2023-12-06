@@ -48,7 +48,7 @@
                 <%= image_tag "https://i.etsystatic.com/19543171/r/il/f13c94/4513785165/il_fullxfull.4513785165_h290.jpg", :class => "img-thumbnail" %>
               <% end %>
             </div>
-
+            
               <div class="d-flex justify-content-between">
                 <p>Components:</p>
                 <%= link_to new_bike_bike_component_path(bike), class: "align-icon text-decoration-none" do %>
@@ -78,19 +78,13 @@
                         </div>
 
                         <div class="progress-bar-text">
-                          <% if bike_component.weeks_left > 2%>
-                            <p> <%= bike_component.weeks_left.to_i %> weeks until check </p>
-                          <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
-                            <p> <%= bike_component.days_left.to_i %> days until check </p>
-                          <% else %>
-                            <p>Check now! <span style="color: red">⚠</span></p>
-                          <% end %>
-                          <% distance_percentage = bike_component.distance_progress_percentage %>
-                          <% if distance_percentage < 1%>
-                            <p>Check now!</p>
-                          <% else %>
-                            <p><%= bike_component.distance_left.round %> km until check</p>
-                          <% end %>
+                            <p>Check every
+                              <% if bike_component.component.time_until_check > 1 %>
+                                <%= bike_component.component.time_until_check %> weeks
+                              <% else %>
+                                week
+                              <% end %>
+                               or <br /> every <%= bike_component.component.distance_until_check.round %> kilometers</p>
                         </div>
                       </div>
                   </div>
@@ -99,8 +93,19 @@
 
                   <div class="bars">
                     <div class="bar-names">
-                      <p class="time-text">Time >></p>
-                      <p class="distance-text">Distance >></p>
+                      <p class="time-text"><% if bike_component.weeks_left > 1 %>
+                            <p> <%= bike_component.weeks_left.to_i %> weeks</p>
+                          <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
+                            <p> <%= bike_component.days_left.to_i %> days </p>
+                          <% else %>
+                            <p style="font-weight: bold; color: #C30010;">Check now!</p>
+                          <% end %></p>
+                      <p class="distance-text"><% distance_percentage = bike_component.distance_progress_percentage %>
+                          <% if distance_percentage < 1%>
+                            <p style="font-weight: bold; color: #C30010;">Check now!</p>
+                          <% else %>
+                            <p><%= bike_component.distance_left.round %> km</p>
+                          <% end %></p>
                     </div>
                     <div class="progress-bars-container">
                       <div class="progress">
