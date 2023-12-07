@@ -127,9 +127,9 @@ suspension_fork = Component.create!(
   name: "Suspension Fork",
   time_until_check: 20,
   distance_until_check: 1000.0,
-  check_advice: "<ul class='advise-drop'><li>Smoothness: A well-functioning suspension fork should feel smooth and responsive when compressing and rebounding.</li><li>If it feels excessively stiff, sticky, or too soft, there might be an issue.</li>
-  <li>Noise: Listen for any unusual noises like creaking, clunking, or grinding sounds when compressing or rebounding the fork. Unusual sounds could indicate internal damage or worn-out components.</li>
-  <li>Sag Test: Perform a sag test to check the fork's compression. Set the sag as per manufacturer recommendations and see if the fork holds the correct amount of sag when you sit on the bike without bouncing. If it doesn't, it might indicate worn-out internals.</li></ul>",
+  check_advice: "Smoothness: A well-functioning suspension fork should feel smooth and responsive when compressing and rebounding. If it feels excessively stiff, sticky, or too soft, there might be an issue.
+  Noise: Listen for any unusual noises like creaking, clunking, or grinding sounds when compressing or rebounding the fork. Unusual sounds could indicate internal damage or worn-out components.
+  Sag Test: Perform a sag test to check the fork's compression. Set the sag as per manufacturer recommendations and see if the fork holds the correct amount of sag when you sit on the bike without bouncing. If it doesn't, it might indicate worn-out internals.",
   custom: false
 )
 
