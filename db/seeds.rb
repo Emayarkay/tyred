@@ -39,7 +39,7 @@ puts "Created #{bike1.make}"
 bike2 = Bike.create!(
   make: "Nero",
   model: "Cappuccino",
-  user_id: user2.id
+  user_id: user3.id
 )
 bike2.photo.attach(io: File.open('app/assets/images/nero_cappuccino.jpg'), filename: "nero_cappuccino.jpg", content_type: "image/jpg")
 puts "Created #{bike2.make}"
@@ -55,7 +55,7 @@ puts "Created #{bike3.make}"
 bike4 = Bike.create!(
   make: "Mango",
   model: "Disc Brake Commuter Bike",
-  user_id: user3.id
+  user_id: user2.id
 )
 bike4.photo.attach(io: File.open('app/assets/images/mango.jpg'), filename: "mango.jpg", content_type: "image/jpg")
 puts "Created #{bike4.make}"
@@ -107,7 +107,7 @@ rear_tyre = Component.create!(
   custom: false
 )
 
-rear_tyre.check_img.attach(io: File.open('app/assets/images/pinch_test.jpeg'), filename: "pinch_test.jpeg", content_type: "image/jpeg")
+rear_tyre.check_img.attach(io: File.open('app/assets/images/check_tyre.jpeg'), filename: "check_tyre.jpeg", content_type: "image/jpeg")
 rear_tyre.icon.attach(io: File.open('app/assets/images/bike_tyre.png'), filename: "bike_tyre.png", content_type: "image/png")
 puts "Created #{rear_tyre.name}"
 
@@ -185,7 +185,7 @@ bike_component5 = BikeComponent.new(
   date_added: Date.today - 16.weeks
 )
 bike_component5.component = chain
-bike_component5.bike = bike2
+bike_component5.bike = bike3
 bike_component5.save!
 
 bike_component6 = BikeComponent.new(
@@ -194,7 +194,7 @@ bike_component6 = BikeComponent.new(
   date_added: Date.today - 16
 )
 bike_component6.component = front_tyre
-bike_component6.bike = bike2
+bike_component6.bike = bike3
 bike_component6.save!
 
 bike_component7 = BikeComponent.new(
@@ -203,7 +203,7 @@ bike_component7 = BikeComponent.new(
   date_added: Date.today - 11
 )
 bike_component7.component = rear_tyre
-bike_component7.bike = bike2
+bike_component7.bike = bike3
 bike_component7.save!
 
 bike_component8 = BikeComponent.new(
@@ -212,7 +212,7 @@ bike_component8 = BikeComponent.new(
   date_added: Date.today - 3.weeks
 )
 bike_component8.component = brake_pad
-bike_component8.bike = bike2
+bike_component8.bike = bike3
 bike_component8.save!
 
 puts "Finished Creating Bike Components"
