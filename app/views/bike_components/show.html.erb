@@ -20,7 +20,7 @@
         <%= cl_image_tag(@bike_component.component.icon.key, class:"bike-component-image") %>
       </div>
       <p style="text-align: left; font-size: 18px; margin: 0; padding-left: 16px;">
-        Your <%= @bike_component.component.name.downcase %> is set to be checked  every <span style="font-weight: bold;"><%= @bike_component.component.time_until_check %> weeks</span> or every <span style="font-weight: bold;"><%= @bike_component.distance_until_check.round %> kms</span>
+        Your <%= @bike_component.component.name.downcase %> is set to be checked  every <span style="font-weight: bold;"><%= @bike_component.component.time_until_check %> weeks</span> or every <span style="font-weight: bold;"><%= @bike_component.distance_until_check.round %> km</span>
       </p>
     </div>
 
@@ -31,7 +31,7 @@
         <% elsif @bike_component.weeks_left > 0 && @bike_component.weeks_left <= 2 %>
           <%= @bike_component.days_left.to_i %> days until check
         <% else %>
-          <span style="color: #D1001F">Check now!</span>
+          <span style="color: #D1001F"><%= @bike_component.component.time_until_check %> weeks up! Check now!</span>
         <% end %>
       </h2>
 
@@ -44,7 +44,7 @@
       <h2 data-progress-bar-target="distance">
         <% distance_percentage = @bike_component.distance_progress_percentage %>
         <% if distance_percentage < 1%>
-          Check now!
+          <%= @bike_component.distance_until_check.round %> km ridden! Check now!
         <% else %>
           <%= @bike_component.distance_left.round %> km until check
         <% end %>
