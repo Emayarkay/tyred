@@ -52,15 +52,11 @@
     </div>
   </div>
 
- <button class="custom-btn green my-4" data-action="click->progress-bar#reset">I've Checked My <%= @bike_component.component.name %></button>
+  <button class="custom-btn green" style="margin-top: 32px" data-action="click->progress-bar#reset">I've Checked My <%= @bike_component.component.name %></button>
 
-  <div data-controller="toggle-advice" data-toggle-advice-component-value="<%= @bike_component.component.name %>">
-  <button data-action="click->toggle-advice#fire" data-toggle-advice-target="button" class="custom-btn green my-2">Show Me How To Check My <%= @bike_component.component.name %></button>
-    <div data-toggle-advice-target="togglableElement" class="d-none check-advise">
-    <div class="comp-advise-image"></div>
-    <p><%= @bike_component.component.check_advice %></p>
-    <p style="margin-bottom: 16px;">If you feel this component needs replacing, either replace it yourself or use our handy Bike Shop Locator tool below!</p>
-    <%= link_to "Bike Shop Locator", bike_shops_path, class: "custom-btn green"%>
-    </div>
-  </div>
+  <details>
+    <summary style="font-weight: 700; font-size: 16px;">How to check my chain</summary>
+    <p class="advise-drop"><%= raw @bike_component.component.check_advice %></p>
+  </details>
+
 </div>
