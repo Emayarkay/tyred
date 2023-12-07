@@ -67,7 +67,7 @@ bike5 = Bike.create!(
   model: "Hummingbird",
   user_id: user3.id
 )
-bike5.photo.attach(io: File.open('app/assets/images/hummingbird.jpg'), filename: "hummingbird..jpg", content_type: "image/jpg")
+bike5.photo.attach(io: File.open('app/assets/images/hummingbird.jpg'), filename: "hummingbird.jpg", content_type: "image/jpg")
 puts "Created #{bike5.make}"
 puts "Finished creating bikes"
 
