@@ -36,3 +36,18 @@
   padding: 0;
   overflow: hidden;
 }
+
+select {
+  background-color: $orange;
+  border-radius: 8px;
+  width: 45vw;
+  padding: 8px 16px;
+  color: $ivory;
+  font-weight: 700;
+  margin: 16px 0 0 0;
+}
+
+option {
+  background-color: white;
+  color: $ivory !important;
+}
