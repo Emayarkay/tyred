@@ -31,14 +31,14 @@ export default class extends Controller {
         crd.latitude,
         crd.longitude
       )
-      this.distanceTarget.innerHTML = `${distance.toFixed(1)} km away`
+      this.distanceTarget.innerHTML = `<span class="shop-card-small-text">${distance.toFixed(1)} km</span>`
     } else {
-      this.distanceTarget.innerHTML = "Cannot determine distance"
+      this.distanceTarget.innerHTML = `<span class="shop-card-small-text">Not found</span>`
     }
   }
 
   error(err) {
-    this.distanceTarget.innerHTML = "Something went wrong. Could not load distance"
+    this.distanceTarget.innerHTML = `<span class="shop-card-small-text">TBD</span>`
   }
 
   getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {

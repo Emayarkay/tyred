@@ -60,7 +60,7 @@
   <button class="custom-btn green" style="margin-top: 32px" data-action="click->progress-bar#reset">I've Checked My <%= @bike_component.component.name %></button>
 
   <details>
-    <summary style="font-weight: 700; font-size: 16px;">How to check my chain</summary>
+    <summary style="font-weight: 700; font-size: 16px;">How to check my <%= @bike_component.component.name.downcase %></summary>
     <div>
     <% if @bike_component.component.check_img.attached? %>
       <%= cl_image_tag @bike_component.component.check_img.key, class:"img-thumbnail"%>
@@ -70,6 +70,6 @@
     </div>
     <p><%= raw @bike_component.component.check_advice %></p>
   </details>
-  <p style="margin-top: 24px;">If you feel this <%= @bike_component.component.name %> needs replacing, either replace it yourself or if you would like some expert help, find local Bike Shops with our tool below!</p>
+  <p style="margin-top: 24px;">If you feel this <%= @bike_component.component.name.downcase %> needs replacing, either replace it yourself or if you would like some expert help, find local Bike Shops with our tool below!</p>
 
 </div>
