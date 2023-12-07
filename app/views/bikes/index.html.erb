@@ -60,7 +60,7 @@
               <% end %>
             </div>
 
-            <% bike.bike_components.sort_by_time_until_check.each do |bike_component| %>
+            <% bike.bike_components.sort_by_weeks_left.each do |bike_component| %>
               <%= link_to bike_bike_component_path(bike, bike_component) do %>
                 <div class="component-card" data-controller="delete-check" data-delete-check-path-value='bike_components/<%= bike_component.id %>'>
 
@@ -126,7 +126,7 @@
                         <div class="progress-bar" role="progressbar" data-progress-bar-target="distance_bar" style="width: <%= distance_percentage %>%" aria-valuenow="<%= distance_percentage %>" aria-valuemin="0" aria-valuemax="100">
                         </div>
                       </div>
-                      
+
                     </div>
                   </div>
                 </div>

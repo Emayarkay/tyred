@@ -55,8 +55,7 @@ class BikeComponent < ApplicationRecord
     end
   end
 
-  def self.sort_by_time_until_check
-    # sort_by { |bike_component| bike_component.distance_left }
-    all.sort_by(&:time_until_check)
+  def self.sort_by_weeks_left
+    all.sort_by(&:weeks_left)
   end
 end

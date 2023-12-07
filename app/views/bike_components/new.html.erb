@@ -13,7 +13,7 @@
           if component.custom == false
             [component.name, component_url(component)]
           end
-        end), data: { autofill_target: 'component' } %>
+        end.sort_by { |item| item[0] }.reverse), data: { autofill_target: 'component' } %>
 
         <%= submit_tag 'Apply Preset', data: { 'action' => 'click->autofill#autofill' }, class: 'custom-btn green' %>
 
