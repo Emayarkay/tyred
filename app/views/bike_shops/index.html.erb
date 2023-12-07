@@ -4,7 +4,7 @@
     <%= form_with url: bike_shops_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
           params[:query],
-          class: "form-control",
+          class: "form-control shop-search-bar",
           id: "stand-out",
           placeholder: "Enter your location",
           data: {

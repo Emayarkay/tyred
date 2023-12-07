@@ -78,7 +78,7 @@ chain = Component.create!(
   name: "Chain",
   time_until_check: 4.0, # weeks
   distance_until_check: 400.0,
-  check_advice: "<ul><li>You can check for chain wear with a ruler.</li><li> Start at one link pin and measure 12 complete links.</li><li>You need to put some tension on the chain to be accurate.</li><li>12 complete links will measure 12in, but when a chain is worn the 12in mark of the ruler won't quite reach the relevant link pin.</li><li>If the distance from the 12in mark to the centre of the link pin is less than 1/16in, your chain is fine, but if it gets to 1/8in (or 2/16) mark it has gone beyond the point at which it needs replacing.</li></ul>",
+  check_advice: "<ul class='advise-drop'><li>You can check for chain wear with a ruler.</li><li> Start at one link pin and measure 12 complete links.</li><li>You need to put some tension on the chain to be accurate.</li><li>12 complete links will measure 12in, but when a chain is worn the 12in mark of the ruler won't quite reach the relevant link pin.</li><li>If the distance from the 12in mark to the centre of the link pin is less than 1/16in, your chain is fine, but if it gets to 1/8in (or 2/16) mark it has gone beyond the point at which it needs replacing.</li></ul>",
   custom: false
 )
 
