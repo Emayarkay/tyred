@@ -91,7 +91,7 @@ front_tyre = Component.create!(
   name: "Front Tyre",
   time_until_check: 1.0, # weeks
   distance_until_check: 150.0,
-  check_advice: "The easiest way to check is to pinch each side of your tire to see the amount of pressure. Put a finger on each side of the tire and try to touch them together with the tire in between. This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. If you have a lot of flex, you will more than likely need to get more air in.",
+  check_advice: "<ul><li>The easiest way to check is to pinch each side of your tire to see the amount of pressure. </li><li> Put a finger on each side of the tire and try to touch them together with the tire in between.</li><li> This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. </li><li> If you have a lot of flex, you will more than likely need to get more air in. </ul>",
   custom: false
 )
 
@@ -103,7 +103,7 @@ rear_tyre = Component.create!(
   name: "Rear Tyre",
   time_until_check: 1.0, # weeks
   distance_until_check: 150.0,
-  check_advice: "<ul><li>The easiest way to check is to pinch each side of your tire to see the amount of pressure. </li><li> Put a finger on each side of the tire and try to touch them together with the tire in between.</li><li> This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. </li><li> If you have a lot of flex, you will more than likely need to get more air in. </ul>",
+  check_advice: "<ul><li>The easiest way to check is to pinch each side of your tire to see the amount of pressure.</li><li> Put a finger on each side of the tire and try to touch them together with the tire in between.</li><li> This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. </li><li> If you have a lot of flex, you will more than likely need to get more air in. </ul>",
   custom: false
 )
 
@@ -115,7 +115,7 @@ brake_pad = Component.create!(
   name: "Brake Pads",
   time_until_check: 5.0, # weeks
   distance_until_check: 1000.0,
-  check_advice: "A simple visual inspection of the brake assembly should allow you to determine how much brake pad material remains. Shine a flashlight or other bright light onto the brake assembly so you can clearly see the brake pad backing, brake pads, and rotor. If very little brake pad thickness remains and the brake pad backing is almost touching the rotor, it's time to replace your brake pads.",
+  check_advice: "<ul><li>A simple visual inspection of the brake assembly should allow you to determine how much brake pad material remains.</li><li> Shine a flashlight or other bright light onto the brake assembly so you can clearly see the brake pad backing, brake pads, and rotor.</li><li> If very little brake pad thickness remains and the brake pad backing is almost touching the rotor, it's time to replace your brake pads. </li></ul>",
   custom: false
 )
 
@@ -127,9 +127,9 @@ suspension_fork = Component.create!(
   name: "Suspension Fork",
   time_until_check: 20,
   distance_until_check: 1000.0,
-  check_advice: "Smoothness: A well-functioning suspension fork should feel smooth and responsive when compressing and rebounding. If it feels excessively stiff, sticky, or too soft, there might be an issue.
-  Noise: Listen for any unusual noises like creaking, clunking, or grinding sounds when compressing or rebounding the fork. Unusual sounds could indicate internal damage or worn-out components.
-  Sag Test: Perform a sag test to check the fork's compression. Set the sag as per manufacturer recommendations and see if the fork holds the correct amount of sag when you sit on the bike without bouncing. If it doesn't, it might indicate worn-out internals.",
+  check_advice: "<ul><li>Smoothness: A well-functioning suspension fork should feel smooth and responsive when compressing and rebounding. If it feels excessively stiff, sticky, or too soft, there might be an issue.</li>
+  <li>Noise: Listen for any unusual noises like creaking, clunking, or grinding sounds when compressing or rebounding the fork. Unusual sounds could indicate internal damage or worn-out components.</li>
+  <li>Sag Test: Perform a sag test to check the fork's compression. Set the sag as per manufacturer recommendations and see if the fork holds the correct amount of sag when you sit on the bike without bouncing. If it doesn't, it might indicate worn-out internals.</li></ul>",
   custom: false
 )
 
