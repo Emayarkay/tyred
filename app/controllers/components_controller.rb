@@ -14,7 +14,7 @@ class ComponentsController < ApplicationController
       @component.check_img.attach(io: File.open('app/assets/images/check_chain.jpg'), filename: "check_chain.jpg", content_type: "image/jpg")
       @component.icon.attach(io: File.open('app/assets/images/bike_chain.png'), filename: "bike_chain.png", content_type: "image/png")
     elsif @component.name.downcase.include?('tyre')
-      @component.attach(io: File.open('app/assets/images/pinch_test.jpeg'), filename: "pinch_test.jpeg", content_type: "image/jpeg")
+      @component.check_img.attach(io: File.open('app/assets/images/pinch_test.jpeg'), filename: "pinch_test.jpeg", content_type: "image/jpeg")
       @component.icon.attach(io: File.open('app/assets/images/bike_tyre.png'), filename: "bike_tyre.png", content_type: "image/png")
     elsif @component.name.downcase == 'brake pads'
       @component.check_img.attach(io: File.open('app/assets/images/check_brake_pads.jpg'), filename: "check_brake_pads.jpg", content_type: "image/jpg")

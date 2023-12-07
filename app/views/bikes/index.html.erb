@@ -59,7 +59,7 @@
                 <% end %>
               </div>
 
-            <% bike.bike_components.each do |bike_component| %>
+            <% bike.bike_components.sort_by_time_until_check.each do |bike_component| %>
               <%= link_to bike_bike_component_path(bike, bike_component) do %>
                 <div class="component-card" data-controller="delete-check" data-delete-check-path-value='bike_components/<%= bike_component.id %>'>
 
@@ -72,27 +72,30 @@
                       <% end %>
                     </div>
 
-                      <div class="progress-info">
-                        <div class="component-name-and-delete">
-                          <h2 style="color: #0D5D56;"> <%= bike_component.component.name %> </h2>
-                          <div>
-                            <button class="component-delete-button" data-action="click->delete-check#delete_component"><i class="fa-solid fa-xmark"></i></button>
-                          </div>
-                        </div>
+                    <div class="progress-info">
 
-                        <div class="progress-bar-text">
-                            <p>Check every
-                              <% if bike_component.component.time_until_check > 1 %>
-                                <%= bike_component.component.time_until_check %> weeks
-                              <% else %>
-                                week
-                              <% end %>
-                               or <br /> every <%= bike_component.component.distance_until_check.round %> kilometers</p>
+                      <div class="progress-bar-text">
+                        <% distance_percentage = bike_component.distance_progress_percentage %>
+                          <% if distance_percentage < 1 || bike_component.weeks_left <= 0 %>
+                              <p>Check now! <span style="color: red">⚠</span></p>
+                          <% elsif bike_component.weeks_left > 2 %>
+                            <p><%= bike_component.weeks_left.to_i %> weeks until check </p>
+                          <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
+                            <p><%= bike_component.days_left.to_i %> days until check </p>
+                          <% else %>
+                            <p><%= bike_component.distance_left.round %> km until check</p>
+                          <% end %>
+                        </div>
+                      </div>
+
+
+                     <div class="component-name-and-delete">
+                        <h2 style="color: #0D5D56;"> <%= bike_component.component.name %> </h2>
+                        <div>
+                          <button class="component-delete-button" data-action="click->delete-check#delete_component"><i class="fa-solid fa-xmark"></i></button>
                         </div>
                       </div>
                   </div>
-
-
 
                   <div class="bars">
                     <div class="bar-names">
