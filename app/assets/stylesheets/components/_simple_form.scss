@@ -65,10 +65,15 @@ form.new_component {
 .form-control {
   background-color: white;
   border-radius: 8px;
- border: 0.4px solid $green;
- margin-bottom: 8px;
+  border: 0.4px solid $green;
+  margin-bottom: 8px;
 }
 
 .new_component {
   text-align: left;
+}
+
+.shop-search-bar {
+  border-radius: 0px !important;
+  margin: 0 !important;
 }
