@@ -55,3 +55,20 @@
 #stand-out {
   background-color: white !important;
 }
+
+form.new_component {
+  .form-label {
+    font-size: 18px;
+  }
+}
+
+.form-control {
+  background-color: white;
+  border-radius: 8px;
+ border: 0.4px solid $green;
+ margin-bottom: 8px;
+}
+
+.new_component {
+  text-align: left;
+}
