@@ -16,9 +16,9 @@
 
   <div>
     <%= simple_form_for [@bike, @component] do |f| %>
-      <%= f.input :name, label: 'Component Name', input_html: { data: { autofill_target: 'name' } } %>
-      <%= f.input :time_until_check, label: 'Set the time between each check:', input_html: { data: { autofill_target: 'time' } } %>
-      <%= f.input :distance_until_check, label: 'Set the range between each check:', input_html: { data: { autofill_target: 'distance' } } %>
+      <%= f.input :name, required: false, label: 'Component Name', input_html: { data: { autofill_target: 'name' } } %>
+      <%= f.input :time_until_check, required: false, label: 'Set the time between each check:', input_html: { data: { autofill_target: 'time' } } %>
+      <%= f.input :distance_until_check, required: false, label: 'Set the range between each check:', input_html: { data: { autofill_target: 'distance' } } %>
       <%= f.input :check_advice, label: 'Add a description for how to check this component (optional):', input_html: { rows: 5, data: { autofill_target: 'description' } } %>
       <%= f.submit value: 'Add this component to your bike', class: 'custom-btn green' %>
     <% end %>
