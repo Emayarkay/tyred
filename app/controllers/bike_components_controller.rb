@@ -16,6 +16,7 @@ class BikeComponentsController < ApplicationController
     @bikecomponent = BikeComponent.new(bike_component_params, date_added: DateTime.now, distance_travelled: 0)
     @bike = Bike.find(params[:bike_id])
     @bikecomponent.bike = @bike
+    @bikecomponent.custom = true if @bikecomponent.id > 4
     if @bikecomponent.save!
       redirect_to bikes_path
     else
