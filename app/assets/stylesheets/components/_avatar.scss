@@ -1,9 +1,12 @@
 .avatar {
- height: 180px;
+ height: 100%;
  aspect-ratio: 1;
- background-color: rgba($green, 0.5);
+//  background-color: rgba($green, 0.5);
  border-radius: 50%;
  overflow: hidden;
+//  margin: 24px 0;
+ background-image: url(mark.jpeg);
+ background-size: cover;
 }
 
 .profile-image {

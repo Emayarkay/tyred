@@ -7,6 +7,7 @@ class ComponentsController < ApplicationController
   end
 
   def create
+    @components = Component.all
     @component = Component.new(component_params)
     @bike = Bike.find(params[:bike_id])
     if @component.name.downcase == 'chain'
@@ -19,14 +20,17 @@ class ComponentsController < ApplicationController
       @component.check_img.attach(io: File.open('app/assets/images/check_brake_pads.jpg'), filename: "check_brake_pads.jpg", content_type: "image/jpg")
       @component.icon.attach(io: File.open('app/assets/images/brake_pad.png'), filename: "brake_pad.png", content_type: "image/png")
     end
-    if @component.save!
+    if @component.save
       @component.custom = true if @component.id > 4
-      @component.save!
-      @bike_component = BikeComponent.new(bike: @bike, component: @component, date_added: DateTime.now, distance_travelled: 0)
-      @bike_component.save!
-      redirect_to bikes_path
+      if @component.save
+        @bike_component = BikeComponent.new(bike: @bike, component: @component, date_added: DateTime.now, distance_travelled: 0)
+        @bike_component.save!
+        redirect_to bikes_path
+      else
+        render 'bike_components/new', status: :unprocessable_entity
+      end
     else
-      render :new, status: :unprocessable_entity
+      render 'bike_components/new', status: :unprocessable_entity
     end
   end
 

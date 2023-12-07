@@ -1,16 +1,17 @@
 <div class="page-container">
   <%# <h1>My Garage</h1> %>
+
   <% if current_user.bikes.count >= 1 %>
     <!-- Dropdown button for bikes -->
-    <div class="dropdown">
+    <div class="dropdown nav" id="pills-tab" role="tablist">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="bikeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
         My Bike Garage
       </button>
       <!-- Dropdown menu -->
       <ul class="dropdown-menu" aria-labelledby="bikeDropdown">
         <% @bikes.each_with_index do |bike, index| %>
-          <li>
-            <button class="dropdown-item <%= "active" if index == 0 %>" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" aria-controls="pills-<%= index %>" aria-selected="<%= index == 0 %>"><%= bike.make %> <%= bike.model %></button>
+          <li role="presentation">
+            <button class="dropdown-item <%= "active" if index == 0 %>" id="pills-<%= index %>-tab" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" type="button" role="tab" aria-controls="pills-<%= index %>" aria-selected="true"><%= bike.model %></button>
           </li>
         <% end %>
         <!-- New Bike option -->
@@ -51,10 +52,10 @@
               <% end %>
             </div>
 
-              <div class="d-flex justify-content-between">
-                <p>Components:</p>
+              <div class="d-flex justify-content-between mb-2">
+                <p style="margin-bottom: 4px; font-size: 16px;"><span style="font-weight: 700; font-size: 24px !important;">Components:</span></p>
                 <%= link_to new_bike_bike_component_path(bike), class: "align-icon text-decoration-none" do %>
-                <i class="fa-solid fa-plus" style="margin-right: 3px;"></i>
+                <i class="fa-solid fa-plus" style="margin-right: 3px; padding-top: 3px;"></i>
                 <% end %>
               </div>
 
@@ -98,7 +99,7 @@
                       <p class="time-text"><% if bike_component.weeks_left > 1 %>
                             <p> <%= bike_component.weeks_left.to_i %> weeks</p>
                           <% elsif bike_component.weeks_left > 0 && bike_component.weeks_left <= 2 %>
-                            <p> <%= bike_component.days_left.to_i %> days </p>
+                            <p> <%= bike_component.days_left.to_i %> days left</p>
                           <% else %>
                             <p style="font-weight: bold; color: #C30010;">Check now!</p>
                           <% end %></p>
@@ -106,7 +107,7 @@
                           <% if distance_percentage < 1%>
                             <p style="font-weight: bold; color: #C30010;">Check now!</p>
                           <% else %>
-                            <p><%= bike_component.distance_left.round %> km</p>
+                            <p><%= bike_component.distance_left.round %> km left</p>
                           <% end %></p>
                     </div>
                     <div class="progress-bars-container">

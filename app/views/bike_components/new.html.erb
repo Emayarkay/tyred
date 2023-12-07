@@ -1,27 +1,34 @@
 <div class="page-container">
-  <h2>Add Component</h2>
+  <h2 style="margin-bottom: 24px">Add Component</h2>
+
+  <p style="margin: 0;">Add your own custom component, or a pre-built component from the dropdown menu.</p>
 
   <div data-controller="autofill">
-  <div>
-    <%= form_tag(apply_preset_bike_path(@bike), method: :post) do %>
-      <%= select_tag 'preset', options_for_select(@components.map do |component|
-        if component.custom == false
-          [component.name, component_url(component)]
-        end
-      end), data: { autofill_target: 'component' } %>
+    <div>
       <br>
-      <%= submit_tag 'Apply Preset', data: { 'action' => 'click->autofill#autofill' }, class: 'custom-btn green' %>
-    <% end %>
-  </div>
+      <%= form_tag(apply_preset_bike_path(@bike), method: :post) do %>
 
-  <div>
-    <%= simple_form_for [@bike, @component] do |f| %>
-      <%= f.input :name, label: 'Component Name', input_html: { data: { autofill_target: 'name' } } %>
-      <%= f.input :time_until_check, label: 'Set the time between each check:', input_html: { data: { autofill_target: 'time' } } %>
-      <%= f.input :distance_until_check, label: 'Set the range between each check:', input_html: { data: { autofill_target: 'distance' } } %>
-      <%= f.input :check_advice, label: 'Add a description for how to check this component (optional):', input_html: { rows: 5, data: { autofill_target: 'description' } } %>
-      <%= f.submit value: 'Add this component to your bike', class: 'custom-btn green' %>
-    <% end %>
-  </div>
+        <%= select_tag 'preset', options_for_select(@components.map do |component|
+
+          if component.custom == false
+            [component.name, component_url(component)]
+          end
+        end), data: { autofill_target: 'component' } %>
+
+        <%= submit_tag 'Apply Preset', data: { 'action' => 'click->autofill#autofill' }, class: 'custom-btn green' %>
+
+      <% end %>
+    </div>
+
+    <div>
+      <br>
+      <%= simple_form_for [@bike, @component] do |f| %>
+        <%= f.input :name, label: 'Component Name', input_html: { data: { autofill_target: 'name' } } %>
+        <%= f.input :time_until_check, label: 'How many weeks between checks?', input_html: { data: { autofill_target: 'time' } } %>
+        <%= f.input :distance_until_check, label: 'How many kilometers between checks?', input_html: { data: { autofill_target: 'distance' } } %>
+        <%= f.input :check_advice, label: 'Add a description for how to check this component (optional):', input_html: { rows: 5, data: { autofill_target: 'description' } } %>
+        <%= f.submit value: 'Add this component to your bike', class: 'custom-btn' %>
+      <% end %>
+    </div>
   </div>
 </div>
