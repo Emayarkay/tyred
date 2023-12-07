@@ -103,7 +103,7 @@ rear_tyre = Component.create!(
   name: "Rear Tyre",
   time_until_check: 1.0, # weeks
   distance_until_check: 150.0,
-  check_advice: "The easiest way to check is to pinch each side of your tire to see the amount of pressure. Put a finger on each side of the tire and try to touch them together with the tire in between. This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. If you have a lot of flex, you will more than likely need to get more air in.",
+  check_advice: "<ul><li>The easiest way to check is to pinch each side of your tire to see the amount of pressure. </li><li> Put a finger on each side of the tire and try to touch them together with the tire in between.</li><li> This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. </li><li> If you have a lot of flex, you will more than likely need to get more air in. </ul>",
   custom: false
 )
 
@@ -135,7 +135,7 @@ suspension_fork = Component.create!(
 
 suspension_fork.check_img.attach(io: File.open('app/assets/images/check_suspension_fork.jpg'), filename: "check_suspension_fork.jpg", content_type: "image/jpg")
 suspension_fork.icon.attach(io: File.open('app/assets/images/suspension_fork.png'), filename: "suspension_fork.png", content_type: "image/png")
-puts "Created #{brake_pad.name}"
+puts "Created #{suspension_fork.name}"
 
 puts "Finished Creating Core Components"
 
@@ -309,5 +309,3 @@ shop7.photo.attach(io: File.open("app/assets/images/sbc-cycles.jpg"), filename: 
 puts "Finished Creating Bike Shops"
 
 puts "Finished!"
-
-#added for pushing purposes, will remove next pull.
