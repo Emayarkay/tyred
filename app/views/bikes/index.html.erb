@@ -1,16 +1,17 @@
 <div class="page-container">
   <%# <h1>My Garage</h1> %>
+
   <% if current_user.bikes.count >= 1 %>
     <!-- Dropdown button for bikes -->
-    <div class="dropdown">
+    <div class="dropdown nav" id="pills-tab" role="tablist">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="bikeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
         My Bike Garage
       </button>
       <!-- Dropdown menu -->
       <ul class="dropdown-menu" aria-labelledby="bikeDropdown">
         <% @bikes.each_with_index do |bike, index| %>
-          <li>
-            <button class="dropdown-item <%= "active" if index == 0 %>" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" aria-controls="pills-<%= index %>" aria-selected="<%= index == 0 %>"><%= bike.make %> <%= bike.model %></button>
+          <li role="presentation">
+            <button class="dropdown-item <%= "active" if index == 0 %>" id="pills-<%= index %>-tab" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" type="button" role="tab" aria-controls="pills-<%= index %>" aria-selected="true"><%= bike.model %></button>
           </li>
         <% end %>
         <!-- New Bike option -->
