@@ -134,7 +134,7 @@ suspension_fork = Component.create!(
 )
 
 suspension_fork.check_img.attach(io: File.open('app/assets/images/check_suspension_fork.jpg'), filename: "check_suspension_fork.jpg", content_type: "image/jpg")
-suspension_fork.icon.attach(io: File.open('app/assets/images/suspension_fork..png'), filename: "suspension_fork.png", content_type: "image/png")
+suspension_fork.icon.attach(io: File.open('app/assets/images/suspension_fork.png'), filename: "suspension_fork.png", content_type: "image/png")
 puts "Created #{brake_pad.name}"
 
 puts "Finished Creating Core Components"

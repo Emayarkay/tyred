@@ -1,0 +1,33 @@
+.dropdown {
+  .btn {
+    width: 100%;
+    height: 60px;
+    background-color: $ivory;
+    border-radius: 16px;
+    padding: 0 8px 8px 20px;
+    font-weight: 400;
+    font-size: 32px;
+    border: none;
+    color: $black;
+    font-family: $body-font;
+  }
+}
+
+.dropdown-item {
+  background-color: $ivory;
+  width: 100%;
+  color: $black;
+  font-weight: 400;
+  border-radius: 16px;
+}
+
+.dropdown-item.active {
+  background-color: $orange !important;
+  font-weight: 700;
+}
+
+.dropdown-menu {
+  background-color: $ivory !important;
+  width: 100%;
+  border-radius: 16px;
+}
