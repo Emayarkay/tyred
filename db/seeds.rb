@@ -39,7 +39,7 @@ puts "Created #{bike1.make}"
 bike2 = Bike.create!(
   make: "Nero",
   model: "Cappuccino",
-  user_id: user2.id
+  user_id: user3.id
 )
 bike2.photo.attach(io: File.open('app/assets/images/nero_cappuccino.jpg'), filename: "nero_cappuccino.jpg", content_type: "image/jpg")
 puts "Created #{bike2.make}"
@@ -55,7 +55,7 @@ puts "Created #{bike3.make}"
 bike4 = Bike.create!(
   make: "Mango",
   model: "Disc Brake Commuter Bike",
-  user_id: user3.id
+  user_id: user2.id
 )
 bike4.photo.attach(io: File.open('app/assets/images/mango.jpg'), filename: "mango.jpg", content_type: "image/jpg")
 puts "Created #{bike4.make}"
@@ -91,7 +91,7 @@ front_tyre = Component.create!(
   name: "Front Tyre",
   time_until_check: 1.0, # weeks
   distance_until_check: 150.0,
-  check_advice: "The easiest way to check is to pinch each side of your tire to see the amount of pressure. Put a finger on each side of the tire and try to touch them together with the tire in between. This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. If you have a lot of flex, you will more than likely need to get more air in.",
+  check_advice: "<ul><li>The easiest way to check is to pinch each side of your tire to see the amount of pressure. </li><li> Put a finger on each side of the tire and try to touch them together with the tire in between.</li><li> This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. </li><li> If you have a lot of flex, you will more than likely need to get more air in. </ul>",
   custom: false
 )
 
@@ -103,11 +103,11 @@ rear_tyre = Component.create!(
   name: "Rear Tyre",
   time_until_check: 1.0, # weeks
   distance_until_check: 150.0,
-  check_advice: "The easiest way to check is to pinch each side of your tire to see the amount of pressure. Put a finger on each side of the tire and try to touch them together with the tire in between. This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. If you have a lot of flex, you will more than likely need to get more air in.",
+  check_advice: "<ul><li>The easiest way to check is to pinch each side of your tire to see the amount of pressure.</li><li> Put a finger on each side of the tire and try to touch them together with the tire in between.</li><li> This will be different depending on the tires you have but what you're looking for is your fingers to only move a couple of mm max. </li><li> If you have a lot of flex, you will more than likely need to get more air in. </ul>",
   custom: false
 )
 
-rear_tyre.check_img.attach(io: File.open('app/assets/images/pinch_test.jpeg'), filename: "pinch_test.jpeg", content_type: "image/jpeg")
+rear_tyre.check_img.attach(io: File.open('app/assets/images/check_tyre.jpeg'), filename: "check_tyre.jpeg", content_type: "image/jpeg")
 rear_tyre.icon.attach(io: File.open('app/assets/images/bike_tyre.png'), filename: "bike_tyre.png", content_type: "image/png")
 puts "Created #{rear_tyre.name}"
 
@@ -115,7 +115,7 @@ brake_pad = Component.create!(
   name: "Brake Pads",
   time_until_check: 5.0, # weeks
   distance_until_check: 1000.0,
-  check_advice: "A simple visual inspection of the brake assembly should allow you to determine how much brake pad material remains. Shine a flashlight or other bright light onto the brake assembly so you can clearly see the brake pad backing, brake pads, and rotor. If very little brake pad thickness remains and the brake pad backing is almost touching the rotor, it's time to replace your brake pads.",
+  check_advice: "<ul><li>A simple visual inspection of the brake assembly should allow you to determine how much brake pad material remains.</li><li> Shine a flashlight or other bright light onto the brake assembly so you can clearly see the brake pad backing, brake pads, and rotor.</li><li> If very little brake pad thickness remains and the brake pad backing is almost touching the rotor, it's time to replace your brake pads. </li></ul>",
   custom: false
 )
 
@@ -127,15 +127,15 @@ suspension_fork = Component.create!(
   name: "Suspension Fork",
   time_until_check: 20,
   distance_until_check: 1000.0,
-  check_advice: "Smoothness: A well-functioning suspension fork should feel smooth and responsive when compressing and rebounding. If it feels excessively stiff, sticky, or too soft, there might be an issue.
-  Noise: Listen for any unusual noises like creaking, clunking, or grinding sounds when compressing or rebounding the fork. Unusual sounds could indicate internal damage or worn-out components.
-  Sag Test: Perform a sag test to check the fork's compression. Set the sag as per manufacturer recommendations and see if the fork holds the correct amount of sag when you sit on the bike without bouncing. If it doesn't, it might indicate worn-out internals.",
+  check_advice: "<ul><li>Smoothness: A well-functioning suspension fork should feel smooth and responsive when compressing and rebounding. If it feels excessively stiff, sticky, or too soft, there might be an issue.</li>
+  <li>Noise: Listen for any unusual noises like creaking, clunking, or grinding sounds when compressing or rebounding the fork. Unusual sounds could indicate internal damage or worn-out components.</li>
+  <li>Sag Test: Perform a sag test to check the fork's compression. Set the sag as per manufacturer recommendations and see if the fork holds the correct amount of sag when you sit on the bike without bouncing. If it doesn't, it might indicate worn-out internals.</li></ul>",
   custom: false
 )
 
 suspension_fork.check_img.attach(io: File.open('app/assets/images/check_suspension_fork.jpg'), filename: "check_suspension_fork.jpg", content_type: "image/jpg")
 suspension_fork.icon.attach(io: File.open('app/assets/images/suspension_fork.png'), filename: "suspension_fork.png", content_type: "image/png")
-puts "Created #{brake_pad.name}"
+puts "Created #{suspension_fork.name}"
 
 puts "Finished Creating Core Components"
 
@@ -185,7 +185,7 @@ bike_component5 = BikeComponent.new(
   date_added: Date.today - 16.weeks
 )
 bike_component5.component = chain
-bike_component5.bike = bike2
+bike_component5.bike = bike3
 bike_component5.save!
 
 bike_component6 = BikeComponent.new(
@@ -194,7 +194,7 @@ bike_component6 = BikeComponent.new(
   date_added: Date.today - 16
 )
 bike_component6.component = front_tyre
-bike_component6.bike = bike2
+bike_component6.bike = bike3
 bike_component6.save!
 
 bike_component7 = BikeComponent.new(
@@ -203,7 +203,7 @@ bike_component7 = BikeComponent.new(
   date_added: Date.today - 11
 )
 bike_component7.component = rear_tyre
-bike_component7.bike = bike2
+bike_component7.bike = bike3
 bike_component7.save!
 
 bike_component8 = BikeComponent.new(
@@ -212,7 +212,7 @@ bike_component8 = BikeComponent.new(
   date_added: Date.today - 3.weeks
 )
 bike_component8.component = brake_pad
-bike_component8.bike = bike2
+bike_component8.bike = bike3
 bike_component8.save!
 
 puts "Finished Creating Bike Components"
@@ -309,5 +309,3 @@ shop7.photo.attach(io: File.open("app/assets/images/sbc-cycles.jpg"), filename: 
 puts "Finished Creating Bike Shops"
 
 puts "Finished!"
-
-#added for pushing purposes, will remove next pull.

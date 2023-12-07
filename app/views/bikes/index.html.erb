@@ -10,7 +10,7 @@
       <!-- Dropdown menu -->
       <ul class="dropdown-menu" aria-labelledby="bikeDropdown">
         <% @bikes.each_with_index do |bike, index| %>
-          <li role="presentation">
+          <li>
             <button class="dropdown-item <%= "active" if index == 0 %>" id="pills-<%= index %>-tab" data-bs-toggle="pill" data-bs-target="#pills-<%= index %>" type="button" role="tab" aria-controls="pills-<%= index %>" aria-selected="true"><%= bike.model %></button>
           </li>
         <% end %>
