@@ -309,3 +309,5 @@ shop7.photo.attach(io: File.open("app/assets/images/sbc-cycles.jpg"), filename: 
 puts "Finished Creating Bike Shops"
 
 puts "Finished!"
+
+#added for pushing purposes, will remove next pull.
