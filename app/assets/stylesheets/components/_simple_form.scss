@@ -48,10 +48,6 @@
   display: none;
 }
 
-.input#query:hover {
-
-}
-
 #stand-out {
   background-color: white !important;
 }
@@ -71,6 +67,10 @@ form.new_component {
 
 .new_component {
   text-align: left;
+}
+
+.button-center {
+  text-align: center !important;
 }
 
 .shop-search-bar {
