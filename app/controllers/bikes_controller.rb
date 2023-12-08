@@ -2,7 +2,7 @@ class BikesController < ApplicationController
   before_action :set_bike, only: %i[edit update destroy]
 
   def index
-    @bikes = current_user.bikes
+    @bikes = current_user.bikes.order(:model)
     # current_user.bikes.each do |bike|
     #   bike.bike_components.each do |bike_component|
     #     @days_left = (bike_component.component.time_until_check * 7) - (Date.today - bike_component.date_added).to_f
