@@ -44,7 +44,7 @@
       <h2 data-progress-bar-target="distance">
         <% distance_percentage = @bike_component.distance_progress_percentage %>
         <% if distance_percentage < 1%>
-          <%= @bike_component.distance_until_check.round %> km ridden! Check now!
+          <span style="color: #D1001F"><%= @bike_component.distance_until_check.round %> km ridden! Check now!</span>
         <% else %>
           <%= @bike_component.distance_left.round %> km until check
         <% end %>
