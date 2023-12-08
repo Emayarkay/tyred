@@ -8,11 +8,8 @@
       <br>
       <%= form_tag(apply_preset_bike_path(@bike), method: :post) do %>
 
-        <%= select_tag 'preset', options_for_select(@components.map do |component|
-
-          if component.custom == false
-            [component.name, component_url(component)]
-          end
+        <%= select_tag 'preset', options_for_select(@components.without_custom.map do |component|
+          [component.name, component_url(component)]
         end.sort_by { |item| item[0] }.reverse), data: { autofill_target: 'component' } %>
 
         <%= submit_tag 'Apply Preset', data: { 'action' => 'click->autofill#autofill' }, class: 'custom-btn green' %>

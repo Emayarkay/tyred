@@ -5,4 +5,8 @@ class Component < ApplicationRecord
 
   has_one_attached :icon
   has_one_attached :check_img
+
+  def self.without_custom
+    all.where(custom: false)
+  end
 end
