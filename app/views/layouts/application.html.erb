@@ -17,10 +17,13 @@
 
   <body>
     <%# <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="wrapper">
+      <%= yield %>
     <% unless @disable_navbar %>
       <%= render 'layouts/navbar' %>
     <% end %>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
   </body>

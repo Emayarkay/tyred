@@ -1,12 +1,21 @@
+.wrapper {
+  height: 90%;
+  max-width: 450px;
+  margin-inline: auto;
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+
 .page-container {
-  height: 91vh;
-  width: 100%;
+  // max-width: 450px;
   padding: 16px 16px 0px 16px;
-  margin: 0 0 75px 0;
+  margin-inline: auto;
   background: $ivory;
   color: $black;
   text-align: center;
   overflow: scroll;
+  border-radius: 1rem;
   a {
     text-decoration: none;
     color: $black;
@@ -15,11 +24,11 @@
 
 .page-login {
   height: 100vh;
-  margin: 0;
+  margin-inline: auto;
 }
 
 .profile-container {
-  width: 100%;
+  max-width: 450px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -45,9 +54,6 @@
   box-shadow: 0 0 1px $green;
   button {
     margin: 0px;
-  }
-  p {
-  //   margin: 0;
   }
 }
 
@@ -106,7 +112,6 @@
   height: 100%;
   width: auto;
   flex-grow: 1;
-  // position: relative;
 }
 
 .comp-show-prog-container {
@@ -114,7 +119,6 @@
   height: auto;
   margin: 48px 0 0 0;
   h4 {
-    // margin-bottom: 32px;
   }
 }
 

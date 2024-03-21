@@ -1,14 +1,15 @@
 .navbar {
-  width: 100%;
+  max-width: 450px;
   height: 75px;
-  position: fixed;
+  position: sticky;
   bottom: 0px;
   background-color: $orange;
   color: $ivory;
   padding: 0;
-  margin: 0;
+  margin-inline: auto;
   display: flex;
   justify-content: space-around;
+  border-radius: 0 0 1rem 1rem;
   a {
     text-decoration: none;
     color: $ivory;
